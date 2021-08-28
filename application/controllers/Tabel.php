@@ -5,15 +5,14 @@ class Tabel extends CI_Controller
 {
     public function __construct()
     {
-        parent::__construct();
-
-        $this->load->model('Tabel_model');
+        parent::__construct();        
         $this->load->library('form_validation');
+        $this->load->model('Tabel_model');
     }
 
     public function index()
     {
-        $data['judul'] = 'Halaman Utama';
+        $data['judul'] = 'Tabel';
         $data['tabel'] = $this->Tabel_model->getAllData();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');
@@ -24,7 +23,7 @@ class Tabel extends CI_Controller
 
     public function tambah()
     {
-        $data['judul'] = 'Halaman Utama';
+        $data['judul'] = 'Tambah Data';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
@@ -34,7 +33,7 @@ class Tabel extends CI_Controller
 
     public function update()
     {
-        $data['judul'] = 'Halaman Utama';
+        $data['judul'] = 'Update Data';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
