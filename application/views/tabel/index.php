@@ -48,7 +48,26 @@
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
-
+                                <?php foreach ($tabel as $tb) : ?>
+                                    <tr>
+                                        <td><?= $tb['no_drp']; ?></td>
+                                        <td><?= $tb['no_sppbj']; ?></td>
+                                        <td><?= $tb['tanggal']; ?></td>
+                                        <td><?= $tb['code']; ?></td>
+                                        <td><?= $tb['kategori']; ?></td>
+                                        <td><?= $tb['tahun']; ?></td>
+                                        <td><?= $tb['deskripsi']; ?></td>
+                                        <td><?= $tb['program']; ?></td>
+                                        <td><?= $tb['pic']; ?></td>
+                                        <td><?= $tb['target']; ?></td>
+                                        <td><?= $tb['mata_anggaran']; ?></td>
+                                        <td><?= $tb['jenis_anggaran']; ?></td>
+                                        <td><?= $tb['anggaran_edrp']; ?></td>
+                                        <td><?= $tb['nilai_sppbj']; ?></td>
+                                        <td><?= $tb['status']; ?></td>
+                                        <td><?= $tb['keterangan']; ?></td>
+                                    </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
