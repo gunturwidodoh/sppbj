@@ -30,9 +30,9 @@
                         <div class="form-group">
                             <label for="role">Role</label>
                             <select class="form-control" id="role" name="role">
-                                <option value="admin">admin</option>
-                                <option value="user">user</option>
-                                <option value="guest">guest</option>
+                                <option value="1">admin</option>
+                                <option value="2">user</option>
+                                <option value="3">guest</option>
                             </select>
                         </div>
                     </div>
