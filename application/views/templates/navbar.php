@@ -12,7 +12,7 @@
         </ul>
         <!-- Right navbar links -->
         <div class="navbar-nav ml-auto">
-            <button type="submit" class="btn btn-danger btn-block">Logout</button>
+            <a href="<?= site_url() ?>/login/logout" type="submit" class="btn btn-danger btn-block">Logout</a>
         </div>
     </nav>
     <!-- /.navbar -->

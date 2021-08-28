@@ -56,4 +56,12 @@ class Login extends CI_Controller
             redirect('login');
         }
     }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('role');
+        $this->session->set_flashdata('message', 'Anda telah logout');
+        redirect('login');
+    }
 }
