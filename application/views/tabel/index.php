@@ -68,7 +68,12 @@
                                         <td><?= $tb['status']; ?></td>
                                         <td><?= $tb['keterangan']; ?></td>
                                         <td></td>
-                                        <td><a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">update</a></td>
+                                        <!-- Action -->
+                                        <td>
+                                            <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">update</a>
+                                            <br>
+                                            <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>">delete</a>
+                                        </td>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>
