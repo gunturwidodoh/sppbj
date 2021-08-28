@@ -49,4 +49,10 @@ class Tabel extends CI_Controller
         $this->load->view('tabel/update', $data);
         $this->load->view('templates/footer');
     }
+
+    public function delete($id)
+    {
+        $this->Tabel_model->deleteData($id);
+        redirect('tabel');
+    }
 }

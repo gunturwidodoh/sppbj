@@ -30,4 +30,9 @@ class Tabel_model extends CI_model
         ];
         $this->db->insert('project', $data);
     }
+
+    public function deleteData($id)
+    {
+        $this->db->delete('project', ['id' => $id]);
+    }
 }
