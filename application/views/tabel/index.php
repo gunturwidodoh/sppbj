@@ -45,6 +45,7 @@
                                     <th class="sortting_asc" rowspan="1" colspan="1">Nilai SPPBJ</th>
                                     <th class="sortting_asc" rowspan="1" colspan="1">Status</th>
                                     <th class="sortting_asc" rowspan="1" colspan="1">Keterangan</th>
+                                    <th class="sortting_asc" rowspan="1" colspan="1">Action</th>
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
@@ -66,6 +67,8 @@
                                         <td><?= $tb['nilai_sppbj']; ?></td>
                                         <td><?= $tb['status']; ?></td>
                                         <td><?= $tb['keterangan']; ?></td>
+                                        <td></td>
+                                        <td><a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">update</a></td>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>

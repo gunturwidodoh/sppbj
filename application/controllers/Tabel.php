@@ -31,4 +31,14 @@ class Tabel extends CI_Controller
         $this->load->view('tabel/tambah', $data);
         $this->load->view('templates/footer');
     }
+
+    public function update()
+    {
+        $data['judul'] = 'Halaman Utama';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/sidebar');
+        $this->load->view('tabel/update', $data);
+        $this->load->view('templates/footer');
+    }
 }
