@@ -19,14 +19,14 @@
                 <div class="col-sm-6">
                     <form action="" method="post">
                         <div class="form-group">
-                            <label for="inputNomorDRP">Nomor DRP</label>
-                            <input type="text" value="" class="form-control" id="inputNomorDRP" name="inputNomorDRP">
+                            <label for="inputNoDRP">No. DRP</label>
+                            <input type="text" value="" class="form-control" id="inputNoDRP" name="inputNoDRP">
                         </div>
                     </form>
                     <form action="" method="post">
                         <div class="form-group">
-                            <label for="inputSPPBJ">Nomor SPPBJ</label>
-                            <input type="text" value="" class="form-control" id="inputSPPBJ" name="inputSPPBJ">
+                            <label for="inputNoSPPBJ">No. SPPBJ</label>
+                            <input type="text" value="" class="form-control" id="inputNoSPPBJ" name="inputNoSPPBJ">
                         </div>
                     </form>
                     <form action="" method="post">
@@ -37,8 +37,8 @@
                     </form>
                     <form action="" method="post">
                         <div class="form-group">
-                            <label for="inputID">ID</label>
-                            <input type="date" value="" class="form-control" id="inputID" name="inputID">
+                            <label for="inputKode">Kode</label>
+                            <input type="text" value="" class="form-control" id="inputKode" name="inputKode">
                         </div>
                     </form>
                     <form action="" method="post">
@@ -97,7 +97,7 @@
                             <!-- Input Group "Rp." -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp.</span>
+                                    <span class="input-group-text">Rp</span>
                                 </div>
                                 <input type="text" value="" class="form-control" id="inputMataAnggaran" name="inputMataAnggaran">
                             </div>
@@ -109,7 +109,7 @@
                             <!-- Input Group "Rp." -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp.</span>
+                                    <span class="input-group-text">Rp</span>
                                 </div>
                                 <input type="text" value="" class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
                             </div>                           
@@ -121,7 +121,7 @@
                             <!-- Input Group "Rp." -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp.</span>
+                                    <span class="input-group-text">Rp</span>
                                 </div>
                                 <input type="text" value="" class="form-control" id="inputAnggaranEDRP" name="inputAnggaranEDRP">
                             </div>                            
@@ -149,7 +149,7 @@
             </div>
             <div class="row mb-2">
                 <div class="col-sm-2">
-                    <a href="#" type="submit" class="btn btn-primary btn-block">Simpan</a>
+                    <input class="btn btn-primary" type="submit" value="Simpan">
                 </div>
             </div>
         </div><!-- /.container-fluid -->
