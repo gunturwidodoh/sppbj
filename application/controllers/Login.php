@@ -40,7 +40,7 @@ class Login extends CI_Controller
         $user = $this->db->get_where('login', ['username' => $username])->row_array();
         if ($user) {
             //cek password
-            if ($password == $user['password']) {
+            if (password_verify($password, $user['password'])) {
                 $data = [
                     'username' => $user['username'],
                     'role' => $user['role']
