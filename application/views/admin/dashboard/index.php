@@ -16,7 +16,7 @@
             </div>
             <div class="row mb-2">
                 <?php if ($this->session->flashdata('message')) : ?>
-                    <div class="alert alert-danger" role="alert"><?= $this->session->flashdata('message'); ?></div>
+                    <div class="alert alert-success" role="alert"><?= $this->session->flashdata('message'); ?></div>
                     <?php unset($_SESSION['message']); ?>
                 <?php endif; ?>
             </div>

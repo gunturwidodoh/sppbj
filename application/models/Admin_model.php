@@ -22,7 +22,7 @@ class Admin_model extends CI_model
                 [
                     'field' => 'pass',
                     'label' => 'Password',
-                    'rules' => 'trim|required'
+                    'rules' => 'trim|required|matches[password]'
                 ]
             ];
     }

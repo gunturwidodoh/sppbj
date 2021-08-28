@@ -40,18 +40,18 @@
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="text" value="" class="form-control" id="password" name="password">
-                            <?php if (form_error('username')) : ?>
-                                <div id="usernameError" class="form-text text-danger">
-                                    <?= form_error('username'); ?>
+                            <?php if (form_error('password')) : ?>
+                                <div id="passwordError" class="form-text text-danger">
+                                    <?= form_error('password'); ?>
                                 </div>
                             <?php endif; ?>
                         </div>
                         <div class="form-group">
                             <label for="pass">Ulang Password</label>
                             <input type="text" value="" class="form-control" id="pass" name="pass">
-                            <?php if (form_error('username')) : ?>
-                                <div id="usernameError" class="form-text text-danger">
-                                    <?= form_error('username'); ?>
+                            <?php if (form_error('pass')) : ?>
+                                <div id="passError" class="form-text text-danger">
+                                    <?= form_error('pass'); ?>
                                 </div>
                             <?php endif; ?>
                         </div>
