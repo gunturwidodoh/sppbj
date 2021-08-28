@@ -12,7 +12,7 @@ class Tabel extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Rekap Pengadaan';
+        $data['judul'] = 'Tabel';
         $data['tabel'] = $this->Tabel_model->getAllData();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');
