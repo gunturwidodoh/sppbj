@@ -82,13 +82,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputJenisAnggaran">Jenis Anggaran</label>
-                            <!-- Input Group "Rp." -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp</span>
-                                </div>
-                                <input type="text" value="" class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
-                            </div>                           
+                            <input type="text" value="" class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
                         </div>
                         <div class="form-group">
                             <label for="inputAnggaranEDRP">Anggaran EDRP</label>
