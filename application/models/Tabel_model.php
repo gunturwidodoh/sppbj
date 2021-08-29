@@ -7,6 +7,11 @@ class Tabel_model extends CI_model
         return $this->db->get('project')->result_array();
     }
 
+    public function getDataById($id)
+    {
+        return $this->db->get_where('project', ['id' => $id])->row_array();
+    }
+
     public function addData()
     {
         $data = [
