@@ -55,6 +55,7 @@
                                         <td><?= $tb['no_sppbj']; ?></td>
                                         <td><?= $tb['tanggal']; ?></td>
                                         <td><?= $tb['code']; ?></td>
+                                        <td><?= $tb['nama']; ?></td>
                                         <td><?= $tb['kategori']; ?></td>
                                         <td><?= $tb['tahun']; ?></td>
                                         <td><?= $tb['deskripsi']; ?></td>
@@ -67,7 +68,6 @@
                                         <td><?= $tb['nilai_sppbj']; ?></td>
                                         <td><?= $tb['status']; ?></td>
                                         <td><?= $tb['keterangan']; ?></td>
-                                        <td></td>
                                         <!-- Action -->
                                         <td>
                                             <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">update</a>
