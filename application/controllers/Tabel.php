@@ -41,6 +41,9 @@ class Tabel extends CI_Controller
 
     public function update($id)
     {
+        // get data pada row yg di-update
+        $data['row'] = $this->Tabel_model->getDataById($id);
+
         // view
         $data['judul'] = 'Update Data';
         $this->load->view('templates/header', $data);
