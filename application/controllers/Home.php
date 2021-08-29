@@ -6,10 +6,15 @@ class Home extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Halaman Utama';
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/navbar');
-        $this->load->view('templates/sidebar');
-        $this->load->view('home/index', $data);
-        $this->load->view('templates/footer');
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] != NULL) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('home/index', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('errors/html/error_404');
+        }
     }
 }

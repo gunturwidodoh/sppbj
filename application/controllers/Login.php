@@ -41,12 +41,15 @@ class Login extends CI_Controller
         if ($user) {
             //cek password
             if (password_verify($password, $user['password'])) {
-                $data = [
-                    'username' => $user['username'],
-                    'role' => $user['role']
-                ];
+                $data = ['role' => $user['role']];
                 $this->session->set_userdata($data);
-                redirect('home');
+                if ($user['role'] == 1) {
+                    redirect('admin');
+                } else if ($user['role'] == 2) {
+                    redirect('home');
+                } else {
+                    redirect('guest');
+                }
             } else {
                 $this->session->set_flashdata('message', 'Password salah');
                 redirect('login');

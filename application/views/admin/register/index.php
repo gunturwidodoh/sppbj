@@ -39,7 +39,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="text" value="" class="form-control" id="password" name="password">
+                            <input type="password" value="" class="form-control" id="password" name="password">
                             <?php if (form_error('password')) : ?>
                                 <div id="passwordError" class="form-text text-danger">
                                     <?= form_error('password'); ?>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pass">Ulang Password</label>
-                            <input type="text" value="" class="form-control" id="pass" name="pass">
+                            <input type="password" value="" class="form-control" id="pass" name="pass">
                             <?php if (form_error('pass')) : ?>
                                 <div id="passError" class="form-text text-danger">
                                     <?= form_error('pass'); ?>
