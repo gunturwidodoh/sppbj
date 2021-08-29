@@ -18,8 +18,8 @@ class Tabel extends CI_Controller
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] != NULL) {
             $this->load->view('templates/header', $data);
-            $this->load->view('admin/tempadm/navbaradm');
-            $this->load->view('admin/tempadm/sidebaradm');
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
             $this->load->view('tabel/index', $data);
             $this->load->view('templates/footer');
         } else {
