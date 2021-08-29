@@ -14,15 +14,12 @@ class Admin extends CI_Controller
     {
         $data['judul'] = 'Administration Page';
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('admin/tempadm/navbaradm');
-            $this->load->view('admin/tempadm/sidebaradm');
-            $this->load->view('admin/dashboard/index', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('errors/html/error_404');
-        }
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('admin/tempadm/navbaradm');
+        $this->load->view('admin/tempadm/sidebaradm');
+        $this->load->view('admin/dashboard/index', $data);
+        $this->load->view('templates/footer');
     }
 
     public function register()
