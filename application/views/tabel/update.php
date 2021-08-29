@@ -104,7 +104,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputKeterangan">Keterangan</label>
-                            <textarea value="<?php echo $row['keterangan']; ?>" class="form-control" id="inputKeterangan" name="inputKeterangan"></textarea>
+                            <textarea class="form-control" id="inputKeterangan" name="inputKeterangan"><?php echo $row['keterangan']; ?></textarea>
                         </div>
                     </div>
                 </div>
