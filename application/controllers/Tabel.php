@@ -39,7 +39,7 @@ class Tabel extends CI_Controller
         }
     }
 
-    public function update()
+    public function update($id)
     {
         // view
         $data['judul'] = 'Update Data';
@@ -48,6 +48,12 @@ class Tabel extends CI_Controller
         $this->load->view('templates/sidebar');
         $this->load->view('tabel/update', $data);
         $this->load->view('templates/footer');
+
+        // fungsi update
+        if ($this->input->post()) {
+            $this->Tabel_model->updateData($id);
+            redirect('tabel');
+        }
     }
 
     public function delete($id)

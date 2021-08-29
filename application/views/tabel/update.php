@@ -15,45 +15,33 @@
                     </ol>
                 </div>
             </div>
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <form action="" method="post">
+            <form action="" method="post">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="inputNomorDRP">Nomor DRP</label>
-                            <input type="text" value="" class="form-control" id="inputNomorDRP" name="inputNomorDRP">
+                            <label for="inputNoDRP">No. DRP</label>
+                            <input type="text" value="" class="form-control" id="inputNoDRP" name="inputNoDRP">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
-                            <label for="inputSPPBJ">Nomor SPPBJ</label>
-                            <input type="text" value="" class="form-control" id="inputSPPBJ" name="inputSPPBJ">
+                            <label for="inputNoSPPBJ">No. SPPBJ</label>
+                            <input type="text" value="" class="form-control" id="inputNoSPPBJ" name="inputNoSPPBJ">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputTanggal">Tanggal</label>
                             <input type="date" value="" class="form-control" id="inputTanggal" name="inputTanggal">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
-                            <label for="inputID">ID</label>
-                            <input type="date" value="" class="form-control" id="inputID" name="inputID">
+                            <label for="inputKode">Kode</label>
+                            <input type="text" value="" class="form-control" id="inputKode" name="inputKode">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputNamaPengadaan">Nama Pengadaan</label>
                             <input type="text" value="" class="form-control" id="inputNamaPengadaan" name="inputNamaPengadaan">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputKategori">Kategori</label>
                             <input type="text" value="" class="form-control" id="inputKategori" name="inputKategori">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputTahun">Tahun</label>
                             <select class="form-control" id="inputTahun" name="inputTahun">
@@ -64,94 +52,74 @@
                                 <option>2023</option>
                             </select>
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputDeskripsi">Deskripsi</label>
                             <input type="text" value="" class="form-control" id="inputDeskripsi" name="inputDeskripsi">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputProgramUtama">Program Utama</label>
                             <input type="text" value="" class="form-control" id="inputProgramUtama" name="inputProgramUtama">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputPIC">Person In Charge</label>
                             <input type="text" value="" class="form-control" id="inputPIC" name="inputPIC">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputTarget">Target</label>
                             <input type="date" value="" class="form-control" id="inputTarget" name="inputTarget">
                         </div>
-                    </form>
-                </div>
-                <div class="col-sm-6">
-                    <form action="" method="post">
+                    </div>
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label for="inputMataAnggaran">Mata Anggaran</label>
                             <!-- Input Group "Rp." -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp.</span>
+                                    <span class="input-group-text">Rp</span>
                                 </div>
                                 <input type="text" value="" class="form-control" id="inputMataAnggaran" name="inputMataAnggaran">
                             </div>
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputJenisAnggaran">Jenis Anggaran</label>
                             <!-- Input Group "Rp." -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp.</span>
+                                    <span class="input-group-text">Rp</span>
                                 </div>
                                 <input type="text" value="" class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
-                            </div>
+                            </div>                           
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputAnggaranEDRP">Anggaran EDRP</label>
                             <!-- Input Group "Rp." -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp.</span>
+                                    <span class="input-group-text">Rp</span>
                                 </div>
                                 <input type="text" value="" class="form-control" id="inputAnggaranEDRP" name="inputAnggaranEDRP">
-                            </div>
+                            </div>                            
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputNilaiSPPBJ">Nilai SPPBJ</label>
                             <input type="text" value="" class="form-control" id="inputNilaiSPPBJ" name="inputNilaiSPPBJ">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputStatus">Status</label>
                             <input type="text" value="" class="form-control" id="inputStatus" name="inputStatus">
                         </div>
-                    </form>
-                    <form action="" method="post">
                         <div class="form-group">
                             <label for="inputKeterangan">Keterangan</label>
                             <textarea value="" class="form-control" id="inputKeterangan" name="inputKeterangan"></textarea>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-2">
-                <div class="col-sm-2">
-                    <a href="#" type="submit" class="btn btn-primary btn-block">Simpan</a>
+                <div class="row mb-2">
+                    <div class="col-sm-2">
+                        <input class="btn btn-primary" type="submit" value="Simpan">
+                    </div>
                 </div>
-            </div>
+            </form>
         </div><!-- /.container-fluid -->
     </section>
 </div>
