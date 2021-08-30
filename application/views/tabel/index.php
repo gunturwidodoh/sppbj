@@ -86,5 +86,3 @@
         </div><!-- /.container-fluid -->
     </section>
 </div>
-
-<p>test</p>
