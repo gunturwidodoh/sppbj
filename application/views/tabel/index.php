@@ -20,11 +20,14 @@
             </div>
             <div class="row">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Data Tabel</h3>
-                    </div>
-                    <!-- /.card-header -->
                     <div class="card-body" style="overflow-x:auto">
+                        <!-- navs -->
+                        <nav class="nav nav-tabs">
+                            <a class="nav-link active" href="#">Active</a>
+                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </nav>
                         <table id="dataTable" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr role="row" style="white-space: nowrap">
