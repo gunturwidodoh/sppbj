@@ -7,13 +7,6 @@
                 <div class="col-sm-6">
                     <h1><?php echo $judul; ?></h1>
                 </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= site_url(); ?>/admin">Admin</a></li>
-                        <li class="breadcrumb-item active"><a href="<?= site_url(); ?>/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><?php echo $judul; ?></li>
-                    </ol>
-                </div>
             </div>
             <form action="" method="post">
                 <div class="row mb-2">

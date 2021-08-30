@@ -7,13 +7,6 @@
                 <div class="col-sm-6">
                     <h1><?php echo $judul; ?></h1>
                 </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="<?= site_url(); ?>/tabel">Tabel</a></li>
-                        <li class="breadcrumb-item active"><?php echo $judul; ?></li>
-                    </ol>
-                </div>
             </div>
             <form action="" method="post">
                 <div class="row mb-2">
@@ -92,7 +85,7 @@
                                     <span class="input-group-text">Rp</span>
                                 </div>
                                 <input type="text" value="<?php echo $row['anggaran_edrp']; ?>" class="form-control" id="inputAnggaranEDRP" name="inputAnggaranEDRP">
-                            </div>                            
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="inputNilaiSPPBJ">Nilai SPPBJ</label>
