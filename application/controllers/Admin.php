@@ -14,12 +14,15 @@ class Admin extends CI_Controller
     {
         $data['judul'] = 'Administration Page';
         $data['role'] = $this->session->userdata('role');
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('admin/tempadm/navbaradm');
-        $this->load->view('admin/tempadm/sidebaradm');
-        $this->load->view('admin/dashboard/index', $data);
-        $this->load->view('templates/footer');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('admin/tempadm/navbaradm');
+            $this->load->view('admin/tempadm/sidebaradm');
+            $this->load->view('admin/dashboard/index', $data);
+            $this->load->view('templates/footer');
+        } else {
+            echo "Wrong Session";
+        }
     }
 
     public function register()
@@ -29,11 +32,15 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules($this->Admin_model->rules());
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('admin/tempadm/navbaradm');
-            $this->load->view('admin/tempadm/sidebaradm');
-            $this->load->view('admin/register/index', $data);
-            $this->load->view('templates/footer');
+            if ($data["role"] == '1') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('admin/tempadm/navbaradm');
+                $this->load->view('admin/tempadm/sidebaradm');
+                $this->load->view('admin/register/index', $data);
+                $this->load->view('templates/footer');
+            } else {
+                echo "Wrong Session";
+            }
         } else {
             $this->Admin_model->addDataRegistrasi();
             $this->session->set_flashdata('message', 'Data telah ditambahkan');

@@ -16,11 +16,15 @@ class Tabel extends CI_Controller
         $data['judul'] = 'Tabel';
         $data['tabel'] = $this->Tabel_model->getAllData();
         $data['role'] = $this->session->userdata('role');
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/navbar');
-        $this->load->view('templates/sidebar');
-        $this->load->view('tabel/index', $data);
-        $this->load->view('templates/footer');
+        if ($data["role"] != NULL) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('tabel/index', $data);
+            $this->load->view('templates/footer');
+        } else {
+            echo "Wrong Session";
+        }
     }
 
     public function tambah()
@@ -28,11 +32,15 @@ class Tabel extends CI_Controller
         // view
         $data['judul'] = 'Tambah Data';
         $data['role'] = $this->session->userdata('role');
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/navbar');
-        $this->load->view('templates/sidebar');
-        $this->load->view('tabel/tambah', $data);
-        $this->load->view('templates/footer');
+        if ($data["role"] != NULL) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('tabel/tambah', $data);
+            $this->load->view('templates/footer');
+        } else {
+            echo "Wrong Session";
+        }
 
         // fungsi add
         if ($this->input->post()) {

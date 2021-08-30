@@ -6,6 +6,10 @@
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
+            <?php
+            $this->session->unset_userdata('username');
+            $this->session->unset_userdata('role');
+            ?>
             <?php if ($this->session->flashdata('message')) : ?>
                 <div class="alert alert-danger" role="alert"><?= $this->session->flashdata('message'); ?></div>
                 <?php unset($_SESSION['message']); ?>
