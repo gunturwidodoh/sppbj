@@ -17,12 +17,13 @@
                     <div class="card-body" style="overflow-x:auto">
                         <!-- navs -->
                         <nav class="nav nav-tabs">
-                            <a class="nav-link active" href="#">Active</a>
-                            <a class="nav-link" href="#">Link</a>
-                            <a class="nav-link" href="#">Link</a>
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            <a class="nav-link active" href="#" id="navAwal">Awal</a>
+                            <a class="nav-link" href="#" id="navDRP">DRP & SPPBJ</a>
+                            <a class="nav-link" href="#" id="navKontrak">Kontrak</a>
                         </nav>
-                        <table id="dataTable" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
+
+                        <!-- Tabel Awal -->
+                        <table id="tableAwal" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr role="row" style="white-space: nowrap">
                                     <th class="sortting_asc" rowspan="1" colspan="1" width="50px" style="text-align: center;">No. DRP</th>
@@ -75,6 +76,55 @@
                                 <?php endforeach ?>
                             </tbody>
                         </table>
+
+                        <!-- Tabel DRP & SAPPBJ -->
+                        <table id="tableDRP" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
+                            <thead>
+                                <tr role="row" style="white-space: nowrap">
+                                    <th class="sortting_asc" rowspan="1" colspan="1" width="50px" style="text-align: center;">No. DRP</th>
+                                    <th class="sortting_asc" rowspan="1" colspan="1">No. SPPBJ</th>
+                                    <th class="sortting_asc" rowspan="1" colspan="1">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;">
+                                <?php foreach ($tabel as $tb) : ?>
+                                    <tr>
+                                        <td><?= $tb['no_drp']; ?></td>
+                                        <td><?= $tb['no_sppbj']; ?></td>
+                                        <!-- Action -->
+                                        <td>
+                                            <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">update</a>
+                                            <br>
+                                            <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>">delete</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+
+                        <!-- Tabel Kontrak -->
+                        <table id="tableKontrak" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
+                            <thead>
+                                <tr role="row" style="white-space: nowrap">
+                                    <th class="sortting_asc" rowspan="1" colspan="1">Status</th>
+                                    <th class="sortting_asc" rowspan="1" colspan="1">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;">
+                                <?php foreach ($tabel as $tb) : ?>
+                                    <tr>
+                                        <td><?= $tb['status']; ?></td>
+                                        <!-- Action -->
+                                        <td>
+                                            <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">update</a>
+                                            <br>
+                                            <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>">delete</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+
                     </div>
                     <!-- /.card-body -->
                 </div>
