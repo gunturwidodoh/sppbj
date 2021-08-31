@@ -27,51 +27,37 @@
                         <table id="tableAwal" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr role="row" style="white-space: nowrap">
-                                    <th rowspan="1" colspan="1" width="50px" style="text-align: center;">No. DRP</th>
-                                    <th rowspan="1" colspan="1">No. SPPBJ</th>
-                                    <th rowspan="1" colspan="1">Tanggal</th>
-                                    <th rowspan="1" colspan="1">ID</th>
-                                    <th rowspan="1" colspan="1">Nama Pengadaan</th>
-                                    <th rowspan="1" colspan="1">Kategori</th>
-                                    <th rowspan="1" colspan="1">Tahun</th>
-                                    <th rowspan="1" colspan="1">Deskripsi</th>
-                                    <th rowspan="1" colspan="1">Program Utama</th>
-                                    <th rowspan="1" colspan="1">Person in Charge</th>
-                                    <th rowspan="1" colspan="1">Target Selesai</th>
-                                    <th rowspan="1" colspan="1">Mata Anggaran</th>
-                                    <th rowspan="1" colspan="1">Jenis Anggaran</th>
-                                    <th rowspan="1" colspan="1">Anggaran EDRP</th>
-                                    <th rowspan="1" colspan="1">Nilai SPPBJ</th>
-                                    <th rowspan="1" colspan="1">Status</th>
-                                    <th rowspan="1" colspan="1">Keterangan</th>
-                                    <th rowspan="1" colspan="1">Action</th>
+                                    <th>No.</th>
+                                    <th>ID</th>
+                                    <th>Nama Pengadaan</th>
+                                    <th>Kategori</th>
+                                    <th>Tahun</th>
+                                    <th>Deskripsi</th>
+                                    <th>PIC</th>
+                                    <th>Program Utama</th>
+                                    <th>Mata Anggaran</th>
+                                    <th>Jenis Anggaran</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody style="text-align: center;">
+                            <tbody>
                                 <?php foreach ($tabel as $tb) : ?>
                                     <tr>
-                                        <td><?= $tb['no_drp']; ?></td>
-                                        <td><?= $tb['no_sppbj']; ?></td>
-                                        <td><?= $tb['tanggal']; ?></td>
+                                        <td><?= $tb['id']; ?></td>
                                         <td><?= $tb['code']; ?></td>
                                         <td><?= $tb['nama']; ?></td>
                                         <td><?= $tb['kategori']; ?></td>
                                         <td><?= $tb['tahun']; ?></td>
                                         <td><?= $tb['deskripsi']; ?></td>
-                                        <td><?= $tb['program']; ?></td>
                                         <td><?= $tb['pic']; ?></td>
-                                        <td><?= $tb['target']; ?></td>
+                                        <td><?= $tb['program']; ?></td>
                                         <td><?= $tb['mata_anggaran']; ?></td>
                                         <td><?= $tb['jenis_anggaran']; ?></td>
-                                        <td><?= $tb['anggaran_edrp']; ?></td>
-                                        <td><?= $tb['nilai_sppbj']; ?></td>
-                                        <td><?= $tb['status']; ?></td>
-                                        <td><?= $tb['keterangan']; ?></td>
                                         <!-- Action -->
                                         <td>
-                                            <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">update</a>
+                                            <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">Update</a>
                                             <br>
-                                            <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>">delete</a>
+                                            <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
@@ -82,21 +68,29 @@
                         <table id="tableDRP" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr role="row" style="white-space: nowrap">
-                                    <th rowspan="1" colspan="1" width="50px" style="text-align: center;">No. DRP</th>
-                                    <th rowspan="1" colspan="1">No. SPPBJ</th>
-                                    <th rowspan="1" colspan="1">Action</th>
+                                    <th>No.</th>
+                                    <th>No. DRP</th>
+                                    <th>Anggaran DRP</th>
+                                    <th>No. SPPBJ</th>
+                                    <th>Nilai SPPBJ (Include PPN 10%)</th>
+                                    <th>Tgl. Terbit SPPBJ</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody style="text-align: center;">
+                            <tbody>
                                 <?php foreach ($tabel as $tb) : ?>
                                     <tr>
+                                        <td><?= $tb['id']; ?></td>
                                         <td><?= $tb['no_drp']; ?></td>
+                                        <td><?= $tb['anggaran_edrp']; ?></td>
                                         <td><?= $tb['no_sppbj']; ?></td>
+                                        <td><?= $tb['nilai_sppbj']; ?></td>
+                                        <td><?= $tb['tanggal']; ?></td>
                                         <!-- Action -->
                                         <td>
-                                            <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">update</a>
+                                            <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">Update</a>
                                             <br>
-                                            <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>">delete</a>
+                                            <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
@@ -107,19 +101,25 @@
                         <table id="tableKontrak" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr role="row" style="white-space: nowrap">
-                                    <th rowspan="1" colspan="1">Status</th>
-                                    <th rowspan="1" colspan="1">Action</th>
+                                    <th>No.</th>
+                                    <th>No. Kontrak</th>
+                                    <th>Nilai Kontrak (Include PPN 10%)</th>
+                                    <th>No. PO</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody style="text-align: center;">
+                            <tbody>
                                 <?php foreach ($tabel as $tb) : ?>
                                     <tr>
-                                        <td><?= $tb['status']; ?></td>
+                                        <td><?= $tb['id']; ?></td>
+                                        <td><?= $tb['nomor_kontrak']; ?></td>
+                                        <td><?= $tb['nilai_kontrak']; ?></td>
+                                        <td><?= $tb['nomor_po']; ?></td>
                                         <!-- Action -->
                                         <td>
-                                            <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">update</a>
+                                            <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>">Update</a>
                                             <br>
-                                            <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>">delete</a>
+                                            <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
