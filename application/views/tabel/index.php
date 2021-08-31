@@ -24,7 +24,7 @@
                         </nav>
 
                         <!-- Tabel Awal -->
-                        <table id="tableAwal" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
+                        <table id="tableAwal" class="table table-sm table-striped table-bordered" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr role="row" style="white-space: nowrap">
                                     <th>No.</th>
@@ -65,7 +65,7 @@
                         </table>
 
                         <!-- Tabel DRP & SAPPBJ -->
-                        <table id="tableDRP" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
+                        <table id="tableDRP" class="table table-sm table-striped table-bordered" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr role="row" style="white-space: nowrap">
                                     <th>No.</th>
@@ -98,7 +98,7 @@
                         </table>
 
                         <!-- Tabel Kontrak -->
-                        <table id="tableKontrak" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
+                        <table id="tableKontrak" class="table table-sm table-striped table-bordered" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr role="row" style="white-space: nowrap">
                                     <th>No.</th>
