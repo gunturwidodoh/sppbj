@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    // hide tabel DRP dan kontrak di awal
+    $('#tableDRP').hide();
+    $('#tableKontrak').hide();
+
+    // click tab ganti tabel
     $('#navAwal').click(function() {
         $('#tableAwal').show();
         $('#tableDRP').hide();
@@ -14,4 +19,21 @@ $(document).ready(function() {
         $('#tableDRP').hide();
         $('#tableKontrak').show();
     });
+
+    // click tab activate style
+    $('#navAwal').click(function() {
+        $('#navAwal').addClass('active');
+        $('#navDRP').removeClass('active');
+        $('#navKontrak').removeClass('active');
+    });
+    $('#navDRP').click(function() {
+        $('#navAwal').removeClass('active');
+        $('#navDRP').addClass('active');
+        $('#navKontrak').removeClass('active');
+    });
+    $('#navKontrak').click(function() {
+        $('#navAwal').removeClass('active');
+        $('#navDRP').removeClass('active');
+        $('#navKontrak').addClass('active');
+    });    
 });
