@@ -3,9 +3,14 @@
 class Admin_model extends CI_model
 {
 
-    public function getAllData()
+    public function getAllDataLogin()
     {
         return $this->db->get('login')->result_array();
+    }
+
+    public function getAllDataAplikasi()
+    {
+        return $this->db->get('aplikasi_eksisting')->result_array();
     }
 
     public function rules()
