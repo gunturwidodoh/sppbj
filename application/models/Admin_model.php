@@ -3,6 +3,11 @@
 class Admin_model extends CI_model
 {
 
+    public function getAllData()
+    {
+        return $this->db->get('login')->result_array();
+    }
+
     public function rules()
     {
         return
@@ -36,5 +41,10 @@ class Admin_model extends CI_model
         ];
 
         $this->db->insert('login', $data);
+    }
+
+    public function deleteData($id)
+    {
+        $this->db->delete('login', ['id' => $id]);
     }
 }

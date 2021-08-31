@@ -13,6 +13,7 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Administration Page';
+        $data['tabel'] = $this->Admin_model->getAllData();
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
@@ -21,7 +22,9 @@ class Admin extends CI_Controller
             $this->load->view('admin/dashboard/index', $data);
             $this->load->view('templates/footer');
         } else {
-            echo "Wrong Session";
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
         }
     }
 
@@ -39,12 +42,20 @@ class Admin extends CI_Controller
                 $this->load->view('admin/register/index', $data);
                 $this->load->view('templates/footer');
             } else {
-                echo "Wrong Session";
+                $this->load->view('templates/header', $data);
+                $this->load->view('errors/html/error_session');
+                $this->load->view('templates/footer');
             }
         } else {
             $this->Admin_model->addDataRegistrasi();
             $this->session->set_flashdata('message', 'Data telah ditambahkan');
             redirect('admin');
         }
+    }
+
+    public function delete($id)
+    {
+        $this->Admin_model->deleteData($id);
+        redirect('admin');
     }
 }

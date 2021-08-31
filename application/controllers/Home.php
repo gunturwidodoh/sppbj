@@ -14,7 +14,9 @@ class Home extends CI_Controller
             $this->load->view('home/index', $data);
             $this->load->view('templates/footer');
         } else {
-            echo "Wrong Session";
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
         }
     }
 }

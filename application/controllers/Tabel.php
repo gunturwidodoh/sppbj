@@ -23,7 +23,9 @@ class Tabel extends CI_Controller
             $this->load->view('tabel/index', $data);
             $this->load->view('templates/footer');
         } else {
-            echo "Wrong Session";
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
         }
     }
 
@@ -39,7 +41,9 @@ class Tabel extends CI_Controller
             $this->load->view('tabel/tambah', $data);
             $this->load->view('templates/footer');
         } else {
-            echo "Wrong Session";
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
         }
 
         // fungsi add
