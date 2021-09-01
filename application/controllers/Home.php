@@ -11,13 +11,13 @@ class Home extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('home/index', $data);
+            $this->load->view('user/home/index', $data);
             $this->load->view('templates/footer');
         } else if ($data["role"] == '2') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('home/index', $data);
+            $this->load->view('user/home/index', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/header', $data);

@@ -8,11 +8,6 @@ class Admin_model extends CI_model
         return $this->db->get('login')->result_array();
     }
 
-    public function getAllDataAplikasi()
-    {
-        return $this->db->get('aplikasi_eksisting')->result_array();
-    }
-
     public function rules()
     {
         return
