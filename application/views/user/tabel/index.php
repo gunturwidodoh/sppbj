@@ -9,7 +9,7 @@
             </div>
             <div class="row mb-2">
                 <div class="col-sm-2">
-                    <a href="<?php echo site_url(); ?>/tabel/tambah" type="submit" class="btn btn-primary btn-block">Tambah Data</a>
+                    <a href="<?php echo site_url(); ?>/tabel/tambah_awal" type="submit" class="btn btn-primary btn-block">Tambah Data</a>
                 </div>
             </div>
             <div class="row">
@@ -60,7 +60,7 @@
                                             <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                             <!-- Action -->
                                             <td>
-                                                <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
+                                                <a href="<?= site_url() ?>/tabel/update_sppbj/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
                                                 <br>
                                                 <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                             </td>

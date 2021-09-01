@@ -53,8 +53,6 @@ class Admin extends CI_Controller
         }
     }
 
-
-
     public function delete($id)
     {
         $this->Admin_model->deleteData($id);
