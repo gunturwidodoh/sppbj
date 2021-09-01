@@ -61,7 +61,6 @@
                                             <!-- Action -->
                                             <td>
                                                 <a href="<?= site_url() ?>/tabel/update_sppbj/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-                                                <br>
                                                 <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                             </td>
                                         </tr>
@@ -98,7 +97,6 @@
                                                     <!-- Action -->
                                                     <td>
                                                         <a href="<?= site_url() ?>/tabel/update_kontrak/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-                                                        <br>
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
@@ -138,10 +136,10 @@
                                                 <th>Termin 5</th>
                                                 <th>Total Pembayaran</th>
                                                 <th>Selisih Termin</th>
-                                                <th>Q 1</th>
-                                                <th>Q 2</th>
-                                                <th>Q 3</th>
-                                                <th>Q 4</th>
+                                                <th>Q1</th>
+                                                <th>Q2</th>
+                                                <th>Q3</th>
+                                                <th>Q4</th>
                                                 <th>Opex (Biaya)</th>
                                                 <th>Capex (Investasi)</th>
                                             </tr>
@@ -179,7 +177,6 @@
                                                     <!-- Action -->
                                                     <td>
                                                         <a href="<?= site_url() ?>/tabel/update_kontrak/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-                                                        <br>
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
