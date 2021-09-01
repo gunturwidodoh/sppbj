@@ -69,6 +69,7 @@ class Tabel extends CI_Controller
     {
         // get data pada row yg di-update
         $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['role'] = $this->session->userdata('role');
 
         // view
         $data['judul'] = 'Update Data';
@@ -89,5 +90,66 @@ class Tabel extends CI_Controller
     {
         $this->Tabel_model->deleteData($id);
         redirect('tabel');
+    }
+
+    public function tambah_awal()
+    {
+        // view
+        $data['judul'] = 'Tambah Data Awal';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tambah_awal', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tambah_awal', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->addDataTambahAwal();
+            redirect('tabel');
+        }
+    }
+
+    public function update_sppbj($id)
+    {
+        // view
+        $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['judul'] = 'Update Data SPPBJ';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/update_sppbj', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/update_sppbj', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->addDataUpdateSPPBJ($id);
+            redirect('tabel');
+        }
     }
 }
