@@ -97,17 +97,59 @@ class Tabel extends CI_Controller
         // view
         $data['judul'] = 'Tambah Data Awal';
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
+        if ($data["role"] == '1' || $data["role"] == '2') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
             $this->load->view('user/tabel/tambah_awal', $data);
             $this->load->view('templates/footer');
-        } else if ($data["role"] == '2') {
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->addDataTambahAwal();
+            redirect('tabel');
+        }
+    }
+
+    public function tambah_sppbj()
+    {
+        // view
+        $data['judul'] = 'Tambah Data SPPBJ';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1' || $data["role"] == '2') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tambah_awal', $data);
+            $this->load->view('user/tabel/tambah_sppbj', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->addDataTambahAwal();
+            redirect('tabel');
+        }
+    }
+
+    public function tambah_kontrak()
+    {
+        // view
+        $data['judul'] = 'Tambah Data SPPBJ';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1' || $data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tambah_sppbj', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/header', $data);
@@ -128,13 +170,7 @@ class Tabel extends CI_Controller
         $data['row'] = $this->Tabel_model->getDataById($id);
         $data['judul'] = 'Update Data SPPBJ';
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/update_sppbj', $data);
-            $this->load->view('templates/footer');
-        } else if ($data["role"] == '2') {
+        if ($data["role"] == '1' || $data["role"] == '2') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
@@ -159,13 +195,7 @@ class Tabel extends CI_Controller
         $data['row'] = $this->Tabel_model->getDataById($id);
         $data['judul'] = 'Update Data Kontrak';
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/update_kontrak', $data);
-            $this->load->view('templates/footer');
-        } else if ($data["role"] == '2') {
+        if ($data["role"] == '1' || $data["role"] == '2') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
