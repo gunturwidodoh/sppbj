@@ -9,10 +9,7 @@
             </div>
             <div class="row">
                 <div class="card">
-                    <div class="col-sm-4">
-                        <a id="btnTambahAwal" href="<?php echo site_url(); ?>/tabel/tambah_awal" type="submit" class="btn btn-primary btn-block">Tambah Data Project baru</a>
-                        <a id="btnTambahAwal" href="<?php echo site_url(); ?>/tabel/tambah" type="submit" class="btn btn-primary btn-block">Tambah Data Project Eksisting</a>
-                    </div>
+
                     <div class="card-body" style="overflow-x:auto">
                         <!-- navs -->
                         <nav class="nav nav-pills">
@@ -188,6 +185,16 @@
                                     <?php endforeach ?>
                                 </tbody>
                             </table>
+
+                            <!-- Tombol Tambah Data -->
+                            <div class="row mb-2">
+                                <div class="col-sm-2">
+                                    <a id="btnTambahAwal" href="<?php echo site_url(); ?>/tabel/tambah_awal" type="submit" class="btn btn-primary btn-block">Tambah Data Awal</a>
+                                    <a id="btnTambahSPPBJ" href="<?php echo site_url(); ?>/tabel/tambah_sppbj" type="submit" class="btn btn-primary btn-block">Tambah Data SPPBJ</a>
+                                    <a id="btnTambahKontrak" href="<?php echo site_url(); ?>/tabel/tambah_kontrak" type="submit" class="btn btn-primary btn-block">Tambah Data Kontrak</a>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
