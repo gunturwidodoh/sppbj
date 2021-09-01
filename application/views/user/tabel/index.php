@@ -97,7 +97,7 @@
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <!-- Action -->
                                                     <td>
-                                                        <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
+                                                        <a href="<?= site_url() ?>/tabel/update_kontrak/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
                                                         <br>
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
@@ -178,7 +178,7 @@
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <!-- Action -->
                                                     <td>
-                                                        <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
+                                                        <a href="<?= site_url() ?>/tabel/update_kontrak/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
                                                         <br>
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>

@@ -29,7 +29,7 @@ class Tabel_model extends CI_model
         $this->db->insert('project', $data);
     }
 
-    public function addDataUpdateSPPBJ()
+    public function updateDataSPPBJ()
     {
         $data = [
             'no_drp' => $this->input->post('inputNoDRP', true),
@@ -39,6 +39,39 @@ class Tabel_model extends CI_model
             'tanggal' => $this->input->post('inputTanggalTerbit', true),
         ];
         $this->db->where('id', $this->input->post('id'));
+        $this->db->update('project', $data);
+    }
+
+    public function updateDataKontrak($id)
+    {
+        $data = [
+            'nomor_kontrak' => $this->input->post('inputNoKontrak', true),
+            'nilai_kontrak' => $this->input->post('inputNilaiKontrak', true),
+            'nomor_po' => $this->input->post('inputNoPO', true),
+            'tanggal_kontrak' => $this->input->post('inputTanggalKontrak', true),
+            'jangka_waktu' => $this->input->post('inputWaktuPengerjaan', true),
+            'tanggal_berakhir' => $this->input->post('inputTanggalBerakhir', true),
+            'jaminan_pelaksanaan' => $this->input->post('inputJaminanPelaksanaan', true),
+            'rekanan' => $this->input->post('inputNamaRekanan', true),
+            'npwp_rekanan' => $this->input->post('inputNPWPRekanan', true),
+            'nama_am' => $this->input->post('inputNamaAM', true),
+            'alamat_rekanan' => $this->input->post('inputAlamatRekanan', true),
+            'termin_1' => $this->input->post('inputTerminSatu', true),
+            'termin_2' => $this->input->post('inputTerminDua', true),
+            'termin_3' => $this->input->post('TerminTiga', true),
+            'termin_4' => $this->input->post('inputTerminEmpat', true),
+            'termin_5' => $this->input->post('inputTerminLima', true),
+            'tot_pembayaran' => $this->input->post('inputTotalPembayaran', true),
+            'selisih' => $this->input->post('inputSelisihTermin', true),
+            'q1' => $this->input->post('inputQ1', true),
+            'q2' => $this->input->post('inputQ2', true),
+            'q3' => $this->input->post('inputQ3', true),
+            'q4' => $this->input->post('inputQ4', true),
+            'opex' => $this->input->post('inputOpex', true),
+            'capex' => $this->input->post('inputCapex', true),
+            'perbandingan' => $this->input->post('inputPerbandinganNilai', true),
+        ];
+        $this->db->where('id', $id);
         $this->db->update('project', $data);
     }
 

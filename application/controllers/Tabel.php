@@ -148,7 +148,38 @@ class Tabel extends CI_Controller
 
         // fungsi add
         if ($this->input->post()) {
-            $this->Tabel_model->addDataUpdateSPPBJ($id);
+            $this->Tabel_model->updateDataSPPBJ($id);
+            redirect('tabel');
+        }
+    }
+
+    public function update_kontrak($id)
+    {
+        // view
+        $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['judul'] = 'Update Data Kontrak';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/update_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/update_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->updateDataKontrak($id);
             redirect('tabel');
         }
     }
