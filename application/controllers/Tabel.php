@@ -16,11 +16,17 @@ class Tabel extends CI_Controller
         $data['judul'] = 'Tabel';
         $data['tabel'] = $this->Tabel_model->getAllData();
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] != NULL) {
+        if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('tabel/index', $data);
+            $this->load->view('user/tabel/index', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/index', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/header', $data);
@@ -34,11 +40,17 @@ class Tabel extends CI_Controller
         // view
         $data['judul'] = 'Tambah Data';
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] != NULL) {
+        if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('tabel/tambah', $data);
+            $this->load->view('user/tabel/tambah', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tambah', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/header', $data);
@@ -63,7 +75,7 @@ class Tabel extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('tabel/update', $data);
+        $this->load->view('user/tabel/update', $data);
         $this->load->view('templates/footer');
 
         // fungsi update

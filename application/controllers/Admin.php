@@ -13,7 +13,6 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Administration Page';
-        $data['tabel'] = $this->Admin_model->getAllDataLogin();
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
@@ -32,6 +31,7 @@ class Admin extends CI_Controller
     {
         $data['judul'] = 'Registration';
         $data['role'] = $this->session->userdata('role');
+        $data['tabel'] = $this->Admin_model->getAllDataLogin();
         $this->form_validation->set_rules($this->Admin_model->rules());
 
         if ($this->form_validation->run() == FALSE) {
@@ -74,6 +74,7 @@ class Admin extends CI_Controller
     public function delete($id)
     {
         $this->Admin_model->deleteData($id);
+        $this->session->set_flashdata('message', 'Data telah dihapus');
         redirect('admin');
     }
 }

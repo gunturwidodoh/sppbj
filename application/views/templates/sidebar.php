@@ -14,7 +14,13 @@ $menu = $this->db->query($queryMenu)->result_array();
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo site_url(); ?>/home" class="brand-link">
+    <a href="<?php if ($role == '1') {
+                    echo site_url('/home');
+                } else if ($role == '2') {
+                    echo site_url('/home');
+                } else if ($role == '3') {
+                    echo site_url('/guest');
+                } ?>" class="brand-link">
         <img src="<?php echo base_url('assets/dist'); ?>/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Project Tracker</span>
     </a>
@@ -23,13 +29,13 @@ $menu = $this->db->query($queryMenu)->result_array();
     <div class="sidebar">
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <!-- Add icons to the links using the .nav-icon class
-            with font-awesome or any other icon font library -->
             <?php foreach ($menu as $m) : ?>
-                <h2 style="color:white;">
-                    <!-- Looping menu dan submenu -->
-                    <?= $m['menu']; ?>
-                </h2>
+                <div class="user-panel mt-2 pb-1 mb-1 d-flex">
+                    <h2 style="color:#c2c7d0;">
+                        <!-- Looping menu dan submenu -->
+                        <?= $m['menu']; ?>
+                    </h2>
+                </div>
                 <!-- Query Sub menu -->
                 <?php
                 $menuId = $m['id'];
@@ -45,6 +51,7 @@ $menu = $this->db->query($queryMenu)->result_array();
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="<?= site_url($sm['url']); ?>" class="nav-link">
+                                <i class="nav-icon <?= $sm['icon']; ?>"></i>
                                 <?= $sm['title']; ?>
                             </a>
                         </li>

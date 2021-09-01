@@ -7,7 +7,13 @@ class Home extends CI_Controller
     {
         $data['judul'] = 'Halaman Utama';
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] != NULL) {
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('home/index', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
