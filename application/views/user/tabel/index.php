@@ -44,9 +44,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($tabel as $tb) : ?>
+                                    <?php $i = 1;
+                                    foreach ($tabel as $tb) : ?>
                                         <tr>
-                                            <td><?= $tb['id']; ?></td>
+                                            <td><?= $i++; ?></td>
                                             <td><?= $tb['code']; ?></td>
                                             <td><?= $tb['nama']; ?></td>
                                             <td><?= $tb['kategori']; ?></td>
@@ -85,9 +86,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($tabel as $tb) : ?>
+                                            <?php $i = 1;
+                                            foreach ($tabel as $tb) : ?>
                                                 <tr>
-                                                    <td><?= $tb['id']; ?></td>
+                                                    <td><?= $i++; ?></td>
                                                     <td><?= $tb['no_drp']; ?></td>
                                                     <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
@@ -145,9 +147,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($tabel as $tb) : ?>
+                                            <?php $i = 1;
+                                            foreach ($tabel as $tb) : ?>
                                                 <tr>
-                                                    <td><?= $tb['id']; ?></td>
+                                                    <td><?= $i++; ?></td>
                                                     <td><?= $tb['nomor_kontrak']; ?></td>
                                                     <td><?= $tb['nilai_kontrak']; ?></td>
                                                     <td><?= $tb['nomor_po']; ?></td>
