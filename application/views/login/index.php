@@ -1,6 +1,6 @@
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Project</b>Tracker</a>
+        <div><b>Project</b>Tracker</div>
     </div>
     <!-- /.login-logo -->
     <div class="card">

@@ -12,7 +12,7 @@ class Login extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Halaman Utama';
+        $data['judul'] = 'Login';
         $this->load->view('templates/headerlogin', $data);
         $this->load->view('login/index', $data);
         $this->load->view('templates/footer');
@@ -22,7 +22,7 @@ class Login extends CI_Controller
     {
         $this->form_validation->set_rules($this->Login_model->rules());
         if ($this->form_validation->run() == FALSE) {
-            $data['judul'] = 'Halaman Utama';
+            $data['judul'] = 'Login';
             $this->load->view('templates/headerlogin', $data);
             $this->load->view('login/index', $data);
             $this->load->view('templates/footer');
