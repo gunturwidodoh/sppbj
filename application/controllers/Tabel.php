@@ -92,6 +92,7 @@ class Tabel extends CI_Controller
         redirect('tabel');
     }
 
+    //Controlle Tambah dan Edit Data Awal
     public function tambah_awal()
     {
         // view
@@ -122,6 +123,39 @@ class Tabel extends CI_Controller
         }
     }
 
+    public function edit_awal($id)
+    {
+        // view
+        $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['judul'] = 'Edit Data Awal';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_awal', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tambah_awal', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->editDataAwal();
+            redirect('tabel');
+        }
+    }
+    //End of Tambah dan Edit Data Awal
+
+    //Controller Update dan Edit data sppbj
     public function update_sppbj($id)
     {
         // view
@@ -153,6 +187,39 @@ class Tabel extends CI_Controller
         }
     }
 
+    public function edit_sppbj($id)
+    {
+        // view
+        $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['judul'] = 'Edit Data SPPBJ';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_sppbj', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_sppbj', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->editDataSPPBJ($id);
+            redirect('tabel');
+        }
+    }
+    //End of Controller Update dan Edit data sppbj
+
+    //Controller Update dan Edit data kontrak
     public function update_kontrak($id)
     {
         // view
@@ -183,4 +250,36 @@ class Tabel extends CI_Controller
             redirect('tabel');
         }
     }
+
+    public function edit_kontrak($id)
+    {
+        // view
+        $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['judul'] = 'Edit Data Kontrak';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->editDataKontrak($id);
+            redirect('tabel');
+        }
+    }
+    //End of Controller Update dan Edit data kontrak
 }
