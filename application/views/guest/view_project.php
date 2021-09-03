@@ -10,7 +10,6 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body" style="overflow-x:auto">
-
                         <!-- navs -->
                         <nav class="nav nav-pills">
                             <a class="nav-link active" href="#" id="navAwal">Awal</a>
@@ -19,6 +18,14 @@
                         </nav>
 
                         <!-- Tabel Awal -->
+                        <form action="" method="post">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="keyword" class="form-control float-right" placeholder="Cari data">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary">Cari</button>
+                                </div>
+                            </div>
+                        </form>
                         <div class="table-responsive">
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>
@@ -33,7 +40,6 @@
                                         <th>Mata Anggaran</th>
                                         <th>Jenis Anggaran</th>
                                         <th>Status</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,12 +55,6 @@
                                             <td><?= $tb['mata_anggaran']; ?></td>
                                             <td><?= $tb['jenis_anggaran']; ?></td>
                                             <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
-                                            <!-- Action -->
-                                            <td>
-                                                <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-                                                <br>
-                                                <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
-                                            </td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -74,7 +74,6 @@
                                                 <th>Nilai SPPBJ (Include PPN 10%)</th>
                                                 <th>Tgl. Terbit SPPBJ</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -88,12 +87,6 @@
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
-                                                    <!-- Action -->
-                                                    <td>
-                                                        <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-                                                        <br>
-                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
-                                                    </td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -147,26 +140,45 @@
                                                     <td><?= $tb['nomor_kontrak']; ?></td>
                                                     <td><?= $tb['nilai_kontrak']; ?></td>
                                                     <td><?= $tb['nomor_po']; ?></td>
+                                                    <td><?= $tb['tanggal_kontrak']; ?></td>
+                                                    <td><?= $tb['jangka_waktu']; ?></td>
+                                                    <td><?= $tb['tanggal_berakhir']; ?></td>
+                                                    <td><?= $tb['jaminan_pelaksanaan']; ?></td>
+                                                    <td><?= $tb['rekanan']; ?></td>
+                                                    <td><?= $tb['npwp_rekanan']; ?></td>
+                                                    <td><?= $tb['nama_am']; ?></td>
+                                                    <td><?= $tb['alamat_rekanan']; ?></td>
+                                                    <td><?= $tb['termin_1']; ?></td>
+                                                    <td><?= $tb['termin_2']; ?></td>
+                                                    <td><?= $tb['termin_3']; ?></td>
+                                                    <td><?= $tb['termin_4']; ?></td>
+                                                    <td><?= $tb['termin_5']; ?></td>
+                                                    <td><?= $tb['tot_pembayaran']; ?></td>
+                                                    <td><?= $tb['selisih']; ?></td>
+                                                    <td><?= $tb['q1']; ?></td>
+                                                    <td><?= $tb['q2']; ?></td>
+                                                    <td><?= $tb['q3']; ?></td>
+                                                    <td><?= $tb['q4']; ?></td>
+                                                    <td><?= $tb['opex']; ?></td>
+                                                    <td><?= $tb['capex']; ?></td>
+                                                    <td><?= $tb['perbandingan']; ?></td>
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
-                                                    <!-- Action -->
-                                                    <td>
-                                                        <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-                                                        <br>
-                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
-                                                    </td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
                                     </table>
+                                    <?= $this->pagination->create_links(); ?>
                                 </div>
-
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
+                        <!-- /.card-body -->
                     </div>
-                </div><!-- /.container-fluid -->
-    </section>
+                    <!-- /.card -->
+                </div>
+            </div><!-- /.container-fluid -->
+        </div>
+</div>
+</section>
 </div>
 
 <div class="modal" id="modalStatus" tabindex="-1" role="dialog">

@@ -203,6 +203,7 @@
                                             <?php endforeach; ?>
                                         </tbody>
                                     </table>
+                                    <?= $this->pagination->create_links(); ?>
                                 </div>
 
                             </div>
@@ -218,13 +219,19 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Status Project</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <div class="modal-body">
+                    <p>SPPBJ Telah di Tanda Tangani Oleh : </p>
+                    <p>Status Keseluruhan : </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Save changes</button>

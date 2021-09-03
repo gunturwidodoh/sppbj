@@ -165,7 +165,7 @@
                                             <?php endforeach ?>
                                         </tbody>
                                     </table>
-                                    <?= $this->pagination->create_links(); ?>
+
                                 </div>
 
                             </div>
@@ -187,8 +187,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>SPPBJ Telah di Tanda Tangani Oleh : <?= $tb['ttd']; ?></p>
-                <p>Status Keseluruhan : <?= $tb['status']; ?></p>
+                <p>SPPBJ Telah di Tanda Tangani Oleh : </p>
+                <p>Status Keseluruhan : </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

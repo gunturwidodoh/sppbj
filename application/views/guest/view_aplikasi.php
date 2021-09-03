@@ -10,6 +10,14 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body" style="overflow-x:auto">
+                        <form action="" method="post">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="keyword" class="form-control float-right" placeholder="Cari data">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary">Cari</button>
+                                </div>
+                            </div>
+                        </form>
                         <table id="dataTable" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr class="text-center" role="row" style="white-space: nowrap">
@@ -32,6 +40,7 @@
                                 <?php endforeach ?>
                             </tbody>
                         </table>
+                        <?= $this->pagination->create_links(); ?>
                     </div>
                     <!-- /.card-body -->
                 </div>
