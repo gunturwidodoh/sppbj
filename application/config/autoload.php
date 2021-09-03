@@ -58,7 +58,11 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
+<<<<<<< Updated upstream
 $autoload['libraries'] = array('database', 'session');
+=======
+$autoload['libraries'] = array('database', 'session', 'pagination', 'form_validation');
+>>>>>>> Stashed changes
 
 /*
 | -------------------------------------------------------------------

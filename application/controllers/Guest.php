@@ -62,4 +62,22 @@ class Guest extends CI_Controller
             $this->load->view('templates/footer');
         }
     }
+
+    public function view_history_project()
+    {
+        $data['judul'] = 'Tabel History Aplikasi';
+        $data['tabel'] = $this->Guest_model->getAllData();
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] != NULL) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('guest/view_history_project', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
 }

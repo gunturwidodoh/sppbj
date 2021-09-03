@@ -17,7 +17,6 @@
                             <a class="nav-link" href="#" id="navDRP">DRP & SPPBJ</a>
                             <a class="nav-link" href="#" id="navKontrak">Kontrak</a>
                         </nav>
-
                         <!-- Tabel Awal -->
                         <div class="table-responsive">
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
@@ -29,36 +28,28 @@
                                         <th>Tahun</th>
                                         <th>Deskripsi</th>
                                         <th>PIC</th>
+                                        <th>Target Selesai</th>
                                         <th>Program Utama</th>
                                         <th>Mata Anggaran</th>
                                         <th>Jenis Anggaran</th>
                                         <th>Status</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($tabel as $tb) : ?>
                                         <tr>
-<<<<<<< Updated upstream
-                                            <td><?= $tb['id']; ?></td>
-=======
->>>>>>> Stashed changes
                                             <td><?= $tb['code']; ?></td>
                                             <td><?= $tb['nama']; ?></td>
                                             <td><?= $tb['kategori']; ?></td>
                                             <td><?= $tb['tahun']; ?></td>
                                             <td><?= $tb['deskripsi']; ?></td>
                                             <td><?= $tb['pic']; ?></td>
+                                            <td><?= $tb['target']; ?></td>
                                             <td><?= $tb['program']; ?></td>
                                             <td><?= $tb['mata_anggaran']; ?></td>
                                             <td><?= $tb['jenis_anggaran']; ?></td>
                                             <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                             <!-- Action -->
-                                            <td>
-                                                <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-                                                <br>
-                                                <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
-                                            </td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -78,30 +69,21 @@
                                                 <th>Nilai SPPBJ (Include PPN 10%)</th>
                                                 <th>Tgl. Terbit SPPBJ</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($tabel as $tb) : ?>
+                                            <?php $i = 1;
+                                            foreach ($tabel as $tb) : ?>
                                                 <tr>
-<<<<<<< Updated upstream
-                                                    <td><?= $tb['id']; ?></td>
-=======
                                                     <td><?= $tb['code']; ?></td>
                                                     <td><?= $tb['nama']; ?></td>
->>>>>>> Stashed changes
                                                     <td><?= $tb['no_drp']; ?></td>
                                                     <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
-                                                    <!-- Action -->
-                                                    <td>
-                                                        <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-                                                        <br>
-                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
-                                                    </td>
+
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -112,15 +94,6 @@
                                 <div class="table-responsive">
                                     <table id="tableKontrak" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
-<<<<<<< Updated upstream
-                                            <tr role="row" style="white-space: nowrap">
-                                                <th>No.</th>
-                                                <th>No. Kontrak</th>
-                                                <th>Nilai Kontrak (Include PPN 10%)</th>
-                                                <th>No. PO</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-=======
                                             <tr class="justify-content-center" role="row" style="white-space: nowrap">
                                                 <th rowspan="2">ID</th>
                                                 <th rowspan="2">Nama Pengadaan</th>
@@ -154,32 +127,45 @@
                                                 <th>Q4</th>
                                                 <th>Opex (Biaya)</th>
                                                 <th>Capex (Investasi)</th>
->>>>>>> Stashed changes
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($tabel as $tb) : ?>
+                                            <?php $i = 1;
+                                            foreach ($tabel as $tb) : ?>
                                                 <tr>
-<<<<<<< Updated upstream
-                                                    <td><?= $tb['id']; ?></td>
-=======
                                                     <td><?= $tb['code']; ?></td>
                                                     <td><?= $tb['nama']; ?></td>
->>>>>>> Stashed changes
                                                     <td><?= $tb['nomor_kontrak']; ?></td>
                                                     <td><?= $tb['nilai_kontrak']; ?></td>
                                                     <td><?= $tb['nomor_po']; ?></td>
+                                                    <td><?= $tb['tanggal_kontrak']; ?></td>
+                                                    <td><?= $tb['jangka_waktu']; ?></td>
+                                                    <td><?= $tb['tanggal_berakhir']; ?></td>
+                                                    <td><?= $tb['jaminan_pelaksanaan']; ?></td>
+                                                    <td><?= $tb['rekanan']; ?></td>
+                                                    <td><?= $tb['npwp_rekanan']; ?></td>
+                                                    <td><?= $tb['nama_am']; ?></td>
+                                                    <td><?= $tb['alamat_rekanan']; ?></td>
+                                                    <td><?= $tb['termin_1']; ?></td>
+                                                    <td><?= $tb['termin_2']; ?></td>
+                                                    <td><?= $tb['termin_3']; ?></td>
+                                                    <td><?= $tb['termin_4']; ?></td>
+                                                    <td><?= $tb['termin_5']; ?></td>
+                                                    <td><?= $tb['tot_pembayaran']; ?></td>
+                                                    <td><?= $tb['selisih']; ?></td>
+                                                    <td><?= $tb['q1']; ?></td>
+                                                    <td><?= $tb['q2']; ?></td>
+                                                    <td><?= $tb['q3']; ?></td>
+                                                    <td><?= $tb['q4']; ?></td>
+                                                    <td><?= $tb['opex']; ?></td>
+                                                    <td><?= $tb['capex']; ?></td>
+                                                    <td><?= $tb['perbandingan']; ?></td>
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
-                                                    <!-- Action -->
-                                                    <td>
-                                                        <a href="<?= site_url() ?>/tabel/update/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-                                                        <br>
-                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
-                                                    </td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
                                     </table>
+                                    <?= $this->pagination->create_links(); ?>
                                 </div>
 
                             </div>
@@ -195,16 +181,16 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Status Project</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <p>SPPBJ Telah di Tanda Tangani Oleh : <?= $tb['ttd']; ?></p>
+                <p>Status Keseluruhan : <?= $tb['status']; ?></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

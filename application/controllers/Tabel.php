@@ -14,7 +14,27 @@ class Tabel extends CI_Controller
     {
         // view
         $data['judul'] = 'Tabel';
+<<<<<<< Updated upstream
         $data['tabel'] = $this->Tabel_model->getAllData();
+=======
+
+        //pagination
+        //config
+        $config['base_url'] = 'http://localhost:8080/sppbj/index.php/tabel/index';
+        $config['total_rows'] = $this->Tabel_model->countAllData();
+        $config['per_page'] = 10;
+        //inisialisasi
+        $this->pagination->initialize($config);
+
+        //get data
+        $data['start'] = $this->uri->segment(3);
+        $data['tabel'] = $this->Tabel_model->getData($config['per_page'], $data['start']);
+        if ($this->input->post('keyword')) {
+            $data['tabel'] = $this->Tabel_model->cariDataProject();
+        }
+
+        //cek role yang sedang login
+>>>>>>> Stashed changes
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
@@ -89,6 +109,7 @@ class Tabel extends CI_Controller
     public function delete($id)
     {
         $this->Tabel_model->deleteData($id);
+        $this->session->set_flashdata('message', 'Data Telah Dihapus !');
         redirect('tabel');
     }
 
@@ -118,10 +139,48 @@ class Tabel extends CI_Controller
         // fungsi add
         if ($this->input->post()) {
             $this->Tabel_model->addDataTambahAwal();
+            $this->session->set_flashdata('message', 'Data Telah Ditambahkan !');
             redirect('tabel');
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    public function edit_awal($id)
+    {
+        // view
+        $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['judul'] = 'Edit Data Awal';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_awal', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_awal', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->editDataAwal();
+            $this->session->set_flashdata('message', 'Data Awal Telah Diedit !');
+            redirect('tabel');
+        }
+    }
+    //End of Tambah dan Edit Data Awal
+
+    //Controller Update dan Edit data sppbj
+>>>>>>> Stashed changes
     public function update_sppbj($id)
     {
         // view
@@ -149,10 +208,48 @@ class Tabel extends CI_Controller
         // fungsi add
         if ($this->input->post()) {
             $this->Tabel_model->updateDataSPPBJ($id);
+            $this->session->set_flashdata('message', 'Data Awal Telah Diupdate !');
             redirect('tabel');
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    public function edit_sppbj($id)
+    {
+        // view
+        $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['judul'] = 'Edit Data SPPBJ';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_sppbj', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_sppbj', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->editDataSPPBJ($id);
+            $this->session->set_flashdata('message', 'Data SPPBJ Telah Diedit !');
+            redirect('tabel');
+        }
+    }
+    //End of Controller Update dan Edit data sppbj
+
+    //Controller Update dan Edit data kontrak
+>>>>>>> Stashed changes
     public function update_kontrak($id)
     {
         // view
@@ -180,7 +277,76 @@ class Tabel extends CI_Controller
         // fungsi add
         if ($this->input->post()) {
             $this->Tabel_model->updateDataKontrak($id);
+            $this->session->set_flashdata('message', 'Data SPPBJ Telah Diedit !');
             redirect('tabel');
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    public function edit_kontrak($id)
+    {
+        // view
+        $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['judul'] = 'Edit Data Kontrak';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->editDataKontrak($id);
+            $this->session->set_flashdata('message', 'Data Kontrak Telah Diedit !');
+            redirect('tabel');
+        }
+    }
+    //End of Controller Update dan Edit data kontrak
+
+    public function edit_data($id)
+    {
+        // view
+        $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['judul'] = 'Edit Data Awal';
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/edit', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+
+        // fungsi add
+        if ($this->input->post()) {
+            $this->Tabel_model->editData();
+            $this->session->set_flashdata('message', 'Data Telah Diedit !');
+            redirect('tabel');
+        }
+    }
+>>>>>>> Stashed changes
 }

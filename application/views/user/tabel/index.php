@@ -9,13 +9,18 @@
             </div>
             <div class="row mb-2">
                 <div class="col-sm-2">
-                    <a href="<?php echo site_url(); ?>/tabel/tambah_awal" type="submit" class="btn btn-primary btn-block">Tambah Data</a>
+                    <a href="<?php echo site_url(); ?>/tabel/tambah_awal" type="submit" class="btn btn-primary btn-block btn-sm mb-5">Tambah Project Baru</a>
                 </div>
+            </div>
+            <div>
+                <?php if ($this->session->flashdata('message')) : ?>
+                    <div style="color:green;"><?= $this->session->flashdata('message'); ?></div>
+                    <?php unset($_SESSION['message']); ?>
+                <?php endif; ?>
             </div>
             <div class="row">
                 <div class="card">
                     <div class="card-body" style="overflow-x:auto">
-
                         <!-- navs -->
                         <nav class="nav nav-pills">
                             <a class="nav-link active" href="#" id="navAwal">Awal</a>
@@ -24,6 +29,14 @@
                         </nav>
 
                         <!-- Tabel Awal -->
+                        <form action="" method="post">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="keyword" class="form-control float-right" placeholder="Cari data">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary">Cari</button>
+                                </div>
+                            </div>
+                        </form>
                         <div class="table-responsive">
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>
@@ -47,7 +60,10 @@
                                     <?php $i = 1;
                                     foreach ($tabel as $tb) : ?>
                                         <tr>
+<<<<<<< Updated upstream
                                             <td><?= $i++; ?></td>
+=======
+>>>>>>> Stashed changes
                                             <td><?= $tb['code']; ?></td>
                                             <td><?= $tb['nama']; ?></td>
                                             <td><?= $tb['kategori']; ?></td>
@@ -61,11 +77,15 @@
                                             <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                             <!-- Action -->
                                             <td>
+<<<<<<< Updated upstream
                                                 <a href="<?= site_url() ?>/tabel/update_sppbj/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
+=======
+                                                <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
+>>>>>>> Stashed changes
                                                 <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                             </td>
                                         </tr>
-                                    <?php endforeach ?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <div>
@@ -75,7 +95,12 @@
                                     <table id="tableDRP" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr role="row" style="white-space: nowrap">
+<<<<<<< Updated upstream
                                                 <th>No.</th>
+=======
+                                                <th>ID</th>
+                                                <th>Nama Pengadaan</th>
+>>>>>>> Stashed changes
                                                 <th>No. DRP</th>
                                                 <th>Anggaran DRP</th>
                                                 <th>No. SPPBJ</th>
@@ -89,7 +114,12 @@
                                             <?php $i = 1;
                                             foreach ($tabel as $tb) : ?>
                                                 <tr>
+<<<<<<< Updated upstream
                                                     <td><?= $i++; ?></td>
+=======
+                                                    <td><?= $tb['code']; ?></td>
+                                                    <td><?= $tb['nama']; ?></td>
+>>>>>>> Stashed changes
                                                     <td><?= $tb['no_drp']; ?></td>
                                                     <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
@@ -98,11 +128,15 @@
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <!-- Action -->
                                                     <td>
+<<<<<<< Updated upstream
                                                         <a href="<?= site_url() ?>/tabel/update_kontrak/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
+=======
+                                                        <a href="<?= site_url() ?>/tabel/edit/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
+>>>>>>> Stashed changes
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
-                                            <?php endforeach ?>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -112,7 +146,13 @@
                                     <table id="tableKontrak" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr class="justify-content-center" role="row" style="white-space: nowrap">
+<<<<<<< Updated upstream
                                                 <th rowspan="2">No.</th>
+=======
+                                                <!-- <th rowspan="2">No.</th> -->
+                                                <th rowspan="2">ID</th>
+                                                <th rowspan="2">Nama Pengadaan</th>
+>>>>>>> Stashed changes
                                                 <th rowspan="2">No. Kontrak</th>
                                                 <th rowspan="2">Nilai Kontrak (Include PPN 10%)</th>
                                                 <th rowspan="2">No. PO</th>
@@ -150,7 +190,12 @@
                                             <?php $i = 1;
                                             foreach ($tabel as $tb) : ?>
                                                 <tr>
+<<<<<<< Updated upstream
                                                     <td><?= $i++; ?></td>
+=======
+                                                    <td><?= $tb['code']; ?></td>
+                                                    <td><?= $tb['nama']; ?></td>
+>>>>>>> Stashed changes
                                                     <td><?= $tb['nomor_kontrak']; ?></td>
                                                     <td><?= $tb['nilai_kontrak']; ?></td>
                                                     <td><?= $tb['nomor_po']; ?></td>
@@ -179,11 +224,16 @@
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <!-- Action -->
                                                     <td>
+<<<<<<< Updated upstream
                                                         <a href="<?= site_url() ?>/tabel/update_kontrak/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
+=======
+                                                        <a href="<?= site_url() ?>/tabel/edit/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
+                                                        <a href="<?= site_url() ?>/tabel/selesai/<?= $tb['id']; ?>" class="badge badge-primary">Selesai</a>
+>>>>>>> Stashed changes
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
-                                            <?php endforeach ?>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
