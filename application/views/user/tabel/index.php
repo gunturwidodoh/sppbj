@@ -41,7 +41,6 @@
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>
                                     <tr role="row" style="white-space: nowrap">
-                                        <th>No.</th>
                                         <th>ID</th>
                                         <th>Nama Pengadaan</th>
                                         <th>Kategori</th>
@@ -60,10 +59,6 @@
                                     <?php $i = 1;
                                     foreach ($tabel as $tb) : ?>
                                         <tr>
-<<<<<<< Updated upstream
-                                            <td><?= $i++; ?></td>
-=======
->>>>>>> Stashed changes
                                             <td><?= $tb['code']; ?></td>
                                             <td><?= $tb['nama']; ?></td>
                                             <td><?= $tb['kategori']; ?></td>
@@ -77,11 +72,7 @@
                                             <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                             <!-- Action -->
                                             <td>
-<<<<<<< Updated upstream
-                                                <a href="<?= site_url() ?>/tabel/update_sppbj/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-=======
                                                 <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
->>>>>>> Stashed changes
                                                 <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                             </td>
                                         </tr>
@@ -95,12 +86,8 @@
                                     <table id="tableDRP" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr role="row" style="white-space: nowrap">
-<<<<<<< Updated upstream
-                                                <th>No.</th>
-=======
                                                 <th>ID</th>
                                                 <th>Nama Pengadaan</th>
->>>>>>> Stashed changes
                                                 <th>No. DRP</th>
                                                 <th>Anggaran DRP</th>
                                                 <th>No. SPPBJ</th>
@@ -114,12 +101,8 @@
                                             <?php $i = 1;
                                             foreach ($tabel as $tb) : ?>
                                                 <tr>
-<<<<<<< Updated upstream
-                                                    <td><?= $i++; ?></td>
-=======
                                                     <td><?= $tb['code']; ?></td>
                                                     <td><?= $tb['nama']; ?></td>
->>>>>>> Stashed changes
                                                     <td><?= $tb['no_drp']; ?></td>
                                                     <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
@@ -128,11 +111,7 @@
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <!-- Action -->
                                                     <td>
-<<<<<<< Updated upstream
-                                                        <a href="<?= site_url() ?>/tabel/update_kontrak/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-=======
                                                         <a href="<?= site_url() ?>/tabel/edit/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
->>>>>>> Stashed changes
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
@@ -146,13 +125,9 @@
                                     <table id="tableKontrak" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr class="justify-content-center" role="row" style="white-space: nowrap">
-<<<<<<< Updated upstream
-                                                <th rowspan="2">No.</th>
-=======
                                                 <!-- <th rowspan="2">No.</th> -->
                                                 <th rowspan="2">ID</th>
                                                 <th rowspan="2">Nama Pengadaan</th>
->>>>>>> Stashed changes
                                                 <th rowspan="2">No. Kontrak</th>
                                                 <th rowspan="2">Nilai Kontrak (Include PPN 10%)</th>
                                                 <th rowspan="2">No. PO</th>
@@ -190,12 +165,8 @@
                                             <?php $i = 1;
                                             foreach ($tabel as $tb) : ?>
                                                 <tr>
-<<<<<<< Updated upstream
-                                                    <td><?= $i++; ?></td>
-=======
                                                     <td><?= $tb['code']; ?></td>
                                                     <td><?= $tb['nama']; ?></td>
->>>>>>> Stashed changes
                                                     <td><?= $tb['nomor_kontrak']; ?></td>
                                                     <td><?= $tb['nilai_kontrak']; ?></td>
                                                     <td><?= $tb['nomor_po']; ?></td>
@@ -224,12 +195,8 @@
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <!-- Action -->
                                                     <td>
-<<<<<<< Updated upstream
-                                                        <a href="<?= site_url() ?>/tabel/update_kontrak/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
-=======
                                                         <a href="<?= site_url() ?>/tabel/edit/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
                                                         <a href="<?= site_url() ?>/tabel/selesai/<?= $tb['id']; ?>" class="badge badge-primary">Selesai</a>
->>>>>>> Stashed changes
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
