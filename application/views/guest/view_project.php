@@ -39,10 +39,6 @@
                                 <tbody>
                                     <?php foreach ($tabel as $tb) : ?>
                                         <tr>
-<<<<<<< Updated upstream
-                                            <td><?= $tb['id']; ?></td>
-=======
->>>>>>> Stashed changes
                                             <td><?= $tb['code']; ?></td>
                                             <td><?= $tb['nama']; ?></td>
                                             <td><?= $tb['kategori']; ?></td>
@@ -84,12 +80,8 @@
                                         <tbody>
                                             <?php foreach ($tabel as $tb) : ?>
                                                 <tr>
-<<<<<<< Updated upstream
-                                                    <td><?= $tb['id']; ?></td>
-=======
                                                     <td><?= $tb['code']; ?></td>
                                                     <td><?= $tb['nama']; ?></td>
->>>>>>> Stashed changes
                                                     <td><?= $tb['no_drp']; ?></td>
                                                     <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
@@ -112,15 +104,6 @@
                                 <div class="table-responsive">
                                     <table id="tableKontrak" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
-<<<<<<< Updated upstream
-                                            <tr role="row" style="white-space: nowrap">
-                                                <th>No.</th>
-                                                <th>No. Kontrak</th>
-                                                <th>Nilai Kontrak (Include PPN 10%)</th>
-                                                <th>No. PO</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-=======
                                             <tr class="justify-content-center" role="row" style="white-space: nowrap">
                                                 <th rowspan="2">ID</th>
                                                 <th rowspan="2">Nama Pengadaan</th>
@@ -154,18 +137,13 @@
                                                 <th>Q4</th>
                                                 <th>Opex (Biaya)</th>
                                                 <th>Capex (Investasi)</th>
->>>>>>> Stashed changes
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($tabel as $tb) : ?>
                                                 <tr>
-<<<<<<< Updated upstream
-                                                    <td><?= $tb['id']; ?></td>
-=======
                                                     <td><?= $tb['code']; ?></td>
                                                     <td><?= $tb['nama']; ?></td>
->>>>>>> Stashed changes
                                                     <td><?= $tb['nomor_kontrak']; ?></td>
                                                     <td><?= $tb['nilai_kontrak']; ?></td>
                                                     <td><?= $tb['nomor_po']; ?></td>
