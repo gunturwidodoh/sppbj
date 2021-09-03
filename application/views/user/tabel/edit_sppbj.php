@@ -37,6 +37,25 @@
                     </div>
                 </div>
                 <div class="row mb-2">
+                    <div>
+                        <h3>Status</h3>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col sm-6">
+                        <div class="form-group">
+                            <label for="inputTtd">SPPBJ telah ditandatangani oleh</label>
+                            <input type="text" value="" class="form-control" id="inputTtd" name="inputTtd">
+                        </div>
+                    </div>
+                    <div class="col sm-6">
+                        <div class="form-group">
+                            <label for="inputStatus">Status Keseluruhan</label>
+                            <input type="text" value="" class="form-control" id="inputStatus" name="inputStatus">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
                     <div class="col-sm-2">
                         <input class="btn btn-primary" type="submit" value="Simpan">
                     </div>

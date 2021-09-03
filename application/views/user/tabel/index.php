@@ -22,13 +22,12 @@
                             <a class="nav-link" href="#" id="navDRP">DRP & SPPBJ</a>
                             <a class="nav-link" href="#" id="navKontrak">Kontrak</a>
                         </nav>
-
                         <!-- Tabel Awal -->
                         <div class="table-responsive">
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>
                                     <tr role="row" style="white-space: nowrap">
-                                        <th>No.</th>
+                                        <!-- <th>No.</th> -->
                                         <th>ID</th>
                                         <th>Nama Pengadaan</th>
                                         <th>Kategori</th>
@@ -44,10 +43,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i = 1;
-                                    foreach ($tabel as $tb) : ?>
+                                    <?php foreach ($tabel as $tb) : ?>
                                         <tr>
-                                            <td><?= $i++; ?></td>
+
                                             <td><?= $tb['code']; ?></td>
                                             <td><?= $tb['nama']; ?></td>
                                             <td><?= $tb['kategori']; ?></td>
@@ -58,7 +56,7 @@
                                             <td><?= $tb['program']; ?></td>
                                             <td><?= $tb['mata_anggaran']; ?></td>
                                             <td><?= $tb['jenis_anggaran']; ?></td>
-                                            <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
+                                            <td><a href="<?= site_url() ?>/status/<?= $tb['id']; ?>" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                             <!-- Action -->
                                             <td>
                                                 <a href="<?= site_url() ?>/tabel/update_sppbj/<?= $tb['id']; ?>" class="badge badge-info">Update</a>
@@ -76,7 +74,7 @@
                                     <table id="tableDRP" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr role="row" style="white-space: nowrap">
-                                                <th>No.</th>
+                                                <!-- <th>No.</th> -->
                                                 <th>No. DRP</th>
                                                 <th>Anggaran DRP</th>
                                                 <th>No. SPPBJ</th>
@@ -90,7 +88,7 @@
                                             <?php $i = 1;
                                             foreach ($tabel as $tb) : ?>
                                                 <tr>
-                                                    <td><?= $i++; ?></td>
+
                                                     <td><?= $tb['no_drp']; ?></td>
                                                     <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
@@ -114,7 +112,7 @@
                                     <table id="tableKontrak" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr class="justify-content-center" role="row" style="white-space: nowrap">
-                                                <th rowspan="2">No.</th>
+                                                <!-- <th rowspan="2">No.</th> -->
                                                 <th rowspan="2">No. Kontrak</th>
                                                 <th rowspan="2">Nilai Kontrak (Include PPN 10%)</th>
                                                 <th rowspan="2">No. PO</th>
@@ -152,7 +150,7 @@
                                             <?php $i = 1;
                                             foreach ($tabel as $tb) : ?>
                                                 <tr>
-                                                    <td><?= $i++; ?></td>
+
                                                     <td><?= $tb['nomor_kontrak']; ?></td>
                                                     <td><?= $tb['nilai_kontrak']; ?></td>
                                                     <td><?= $tb['nomor_po']; ?></td>
@@ -188,6 +186,7 @@
                                             <?php endforeach ?>
                                         </tbody>
                                     </table>
+                                    <?= $this->pagination->create_links(); ?>
                                 </div>
 
                             </div>
@@ -203,16 +202,16 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Status Project</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <p>SPPBJ Telah di Tanda Tangani Oleh : VP something</p>
+                <p>Status Keseluruhan : BLABLABA</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

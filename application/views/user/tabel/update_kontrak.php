@@ -78,10 +78,6 @@
                         <input type="text" value="" class="form-control" id="inputTerminLima" name="inputTerminLima">
                     </div>
                     <div class="form-group">
-                        <label for="inputTotalPembayaran">Total Pembayaran</label>
-                        <input type="text" value="" class="form-control" id="inputTotalPembayaran" name="inputTotalPembayaran">
-                    </div>
-                    <div class="form-group">
                         <label for="inputSelisihTermin">Selisih Termin</label>
                         <input type="text" value="" class="form-control" id="inputSelisihTermin" name="inputSelisihTermin">
                     </div>
@@ -112,6 +108,25 @@
                     <div class="form-group">
                         <label for="inputPerbandinganNilai">Perbandingan Nilai Kontrak dan Pembayaran</label>
                         <input type="text" value="" class="form-control" id="inputPerbandinganNilai" name="inputPerbandinganNilai">
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div>
+                        <h3>Status</h3>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col sm-6">
+                        <div class="form-group">
+                            <label for="inputTtd">SPPBJ telah ditandatangani oleh</label>
+                            <input type="text" value="" class="form-control" id="inputTtd" name="inputTtd">
+                        </div>
+                    </div>
+                    <div class="col sm-6">
+                        <div class="form-group">
+                            <label for="inputStatus">Status Keseluruhan</label>
+                            <input type="text" value="" class="form-control" id="inputStatus" name="inputStatus">
+                        </div>
                     </div>
                 </div>
                 <div class="row mb-2">

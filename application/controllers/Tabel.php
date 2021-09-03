@@ -14,7 +14,20 @@ class Tabel extends CI_Controller
     {
         // view
         $data['judul'] = 'Tabel';
-        $data['tabel'] = $this->Tabel_model->getAllData();
+
+        //pagination
+        //config
+        $config['base_url'] = 'http://localhost:8080/sppbj/index.php/tabel/index';
+        $config['total_rows'] = $this->Tabel_model->countAllData();
+        $config['per_page'] = 10;
+        //inisialisasi
+        $this->pagination->initialize($config);
+
+        //get data
+        $data['start'] = $this->uri->segment(3);
+        $data['tabel'] = $this->Tabel_model->getData($config['per_page'], $data['start']);
+
+        //cek role yang sedang login
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
@@ -90,6 +103,11 @@ class Tabel extends CI_Controller
     {
         $this->Tabel_model->deleteData($id);
         redirect('tabel');
+    }
+
+    public function status($id)
+    {
+        $this->Tabel_model->getDataById($id);
     }
 
     //Controlle Tambah dan Edit Data Awal

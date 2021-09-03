@@ -30,8 +30,19 @@ class Guest extends CI_Controller
     {
         // view
         $data['judul'] = 'Tabel Project';
-        $data['tabel'] = $this->Guest_model->getAllData();
         $data['role'] = $this->session->userdata('role');
+
+        //pagination
+        //config
+        $config['base_url'] = 'http://localhost:8080/sppbj/index.php/guest/view_project';
+        $config['total_rows'] = $this->Guest_model->countAllData();
+        $config['per_page'] = 10;
+        //inisialisasi
+        $this->pagination->initialize($config);
+
+        //get data
+        $data['start'] = $this->uri->segment(3);
+        $data['tabel'] = $this->Guest_model->getData($config['per_page'], $data['start']);
         if ($data["role"] != NULL) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
