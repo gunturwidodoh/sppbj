@@ -34,7 +34,7 @@ class Guest extends CI_Controller
         //pagination
         //config
         $config['base_url'] = 'http://localhost:8080/sppbj/index.php/guest/view_project';
-        $config['total_rows'] = $this->Guest_model->countAllData();
+        $config['total_rows'] = $this->Guest_model->countAllDataProject();
         $config['per_page'] = 10;
         //inisialisasi
         $this->pagination->initialize($config);
@@ -67,7 +67,7 @@ class Guest extends CI_Controller
         //pagination
         //config
         $config['base_url'] = 'http://localhost:8080/sppbj/index.php/guest/view_aplikasi';
-        $config['total_rows'] = $this->Guest_model->countAllData();
+        $config['total_rows'] = $this->Guest_model->countAllDataAplikasi();
         $config['per_page'] = 10;
         //inisialisasi
         $this->pagination->initialize($config);
@@ -99,7 +99,7 @@ class Guest extends CI_Controller
         //pagination
         //config
         $config['base_url'] = 'http://localhost:8080/sppbj/index.php/guest/view_history';
-        $config['total_rows'] = $this->Guest_model->countAllData();
+        $config['total_rows'] = $this->Guest_model->countAllDataHistory();
         $config['per_page'] = 10;
         //inisialisasi
         $this->pagination->initialize($config);

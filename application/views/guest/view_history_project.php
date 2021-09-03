@@ -18,6 +18,14 @@
                             <a class="nav-link" href="#" id="navKontrak">Kontrak</a>
                         </nav>
                         <!-- Tabel Awal -->
+                        <form action="" method="post">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="keyword" class="form-control float-right" placeholder="Cari data">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary">Cari</button>
+                                </div>
+                            </div>
+                        </form>
                         <div class="table-responsive">
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>

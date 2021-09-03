@@ -109,6 +109,12 @@ class Tabel extends CI_Controller
         redirect('tabel');
     }
 
+    public function moveData($id)
+    {
+        $this->Tabel_model->moveDataById($id);
+        redirect('tabel');
+    }
+
     public function tambah_awal()
     {
         // view

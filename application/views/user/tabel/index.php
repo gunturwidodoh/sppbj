@@ -196,7 +196,7 @@
                                                     <!-- Action -->
                                                     <td>
                                                         <a href="<?= site_url() ?>/tabel/edit/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
-                                                        <a href="<?= site_url() ?>/tabel/selesai/<?= $tb['id']; ?>" class="badge badge-primary">Selesai</a>
+                                                        <a href="<?= site_url() ?>/tabel/moveData/<?= $tb['id']; ?>" class="badge badge-primary">Selesai</a>
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>

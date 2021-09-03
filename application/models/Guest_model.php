@@ -41,9 +41,19 @@ class Guest_model extends CI_model
         return $this->db->get()->result_array();
     }
 
-    public function countAllData()
+    public function countAllDataProject()
     {
         return $this->db->get('project')->num_rows();
+    }
+
+    public function countAllDataAplikasi()
+    {
+        return $this->db->get('aplikasi_eksisting')->num_rows();
+    }
+
+    public function countAllDataHistory()
+    {
+        return $this->db->get('history')->num_rows();
     }
 
     public function cariDataProject()
@@ -64,5 +74,14 @@ class Guest_model extends CI_model
         $this->db->or_like('ip_local', $keyword);
         $this->db->or_like('ip_public', $keyword);
         return $this->db->get('aplikasi_eksisting')->result_array();
+    }
+
+    public function cariDataHistory()
+    {
+        $keyword = $this->input->post('keyword');
+        $this->db->like('nama', $keyword);
+        $this->db->or_like('code', $keyword);
+        $this->db->or_like('tahun', $keyword);
+        return $this->db->get('history')->result_array();
     }
 }

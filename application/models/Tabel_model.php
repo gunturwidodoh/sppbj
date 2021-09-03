@@ -12,6 +12,13 @@ class Tabel_model extends CI_model
         return $this->db->get_where('project', ['id' => $id])->row_array();
     }
 
+    public function moveDataById($id)
+    {
+        $data = $this->db->get_where('project', ['id' => $id])->row_array();
+        $this->db->insert('history', $data);
+        $this->db->delete('project', ['id' => $id]);
+    }
+
     public function addDataTambahAwal()
     {
         $data = [
