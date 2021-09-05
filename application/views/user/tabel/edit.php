@@ -23,7 +23,7 @@
                             <input type="text" value="<?= $row['nama'] ?>" class="form-control" id="inputNamaPengadaan" name="inputNamaPengadaan">
                         </div>
                         <div class="form-group">
-                            <label for="inputTahun">Kategori</label>
+                            <label for="inputKategori">Kategori</label>
                             <select class="form-control" id="inputKategori" name="inputKategori">
                                 <?php foreach ($kategori as $kt) : ?>
                                     <?php if ($kt == $row['kategori']) : ?>
@@ -65,7 +65,7 @@
                             <input type="text" value="<?= $row['program'] ?>" class="form-control" id="inputProgramUtama" name="inputProgramUtama">
                         </div>
                         <div class="form-group">
-                            <label for="inputTahun">Mata Anggaran</label>
+                            <label for="inputMataAnggaran">Mata Anggaran</label>
                             <select class="form-control" id="inputMataAnggaran" name="inputMataAnggaran">
                                 <?php foreach ($mataAnggaran as $ma) : ?>
                                     <?php if ($ma == $row['mata_anggaran']) : ?>
@@ -77,7 +77,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="inputTahun">Tahun</label>
+                            <label for="inputJenisAnggaran">Jenis Anggaran</label>
                             <select class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
                                 <?php foreach ($jenisAnggaran as $ja) : ?>
                                     <?php if ($ja == $row['jenis_anggaran']) : ?>
@@ -261,13 +261,24 @@
                     <div class="col sm-6">
                         <div class="form-group">
                             <label for="inputTtd">SPPBJ telah ditandatangani oleh</label>
-                            <input type="text" value="" class="form-control" id="inputTtd" name="inputTtd">
+                            <input type="text" value="<?= $row['ttd'] ?>" class="form-control" id="inputTtd" name="inputTtd">
                         </div>
                     </div>
                     <div class="col sm-6">
                         <div class="form-group">
-                            <label for="inputStatus">Status Keseluruhan</label>
-                            <input type="text" value="" class="form-control" id="inputStatus" name="inputStatus">
+                            <label for="inputKeterangan">Keterangan</label>
+                            <input type="text" value="<?= $row['keterangan'] ?>" class="form-control" id="inputKeterangan" name="inputKeterangan">
+                        </div>
+                    </div>
+                    <div class="col sm-6">
+                        <div class="form-group">
+                            <label for="inputProgress">Progress</label>
+                            <input type="text" value="<?= $row['status'] ?>" class="form-control" id="inputProgress" name="inputProgress">
+                            <?php if (form_error('inputProgress')) : ?>
+                                <div id="progressError" class="form-text text-danger">
+                                    <?= form_error('inputProgress'); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

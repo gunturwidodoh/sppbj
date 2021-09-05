@@ -46,7 +46,6 @@
                                         <th>Program Utama</th>
                                         <th>Mata Anggaran</th>
                                         <th>Jenis Anggaran</th>
-                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,8 +61,6 @@
                                             <td><?= $tb['program']; ?></td>
                                             <td><?= $tb['mata_anggaran']; ?></td>
                                             <td><?= $tb['jenis_anggaran']; ?></td>
-                                            <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
-                                            <!-- Action -->
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -82,7 +79,6 @@
                                                 <th>No. SPPBJ</th>
                                                 <th>Nilai SPPBJ (Include PPN 10%)</th>
                                                 <th>Tgl. Terbit SPPBJ</th>
-                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -96,8 +92,6 @@
                                                     <td><?= $tb['no_sppbj']; ?></td>
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
-                                                    <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
-
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -125,7 +119,6 @@
                                                 <th colspan="7">Termin</th>
                                                 <th colspan="6">Realisasi</th>
                                                 <th rowspan="2">Perbandingan Nilai Kontrak dan Pembayaran</th>
-                                                <th rowspan="2">Status</th>
                                             </tr>
                                             <tr>
                                                 <th>Termin 1</th>
@@ -174,7 +167,6 @@
                                                     <td><?= $tb['opex']; ?></td>
                                                     <td><?= $tb['capex']; ?></td>
                                                     <td><?= $tb['perbandingan']; ?></td>
-                                                    <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>

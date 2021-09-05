@@ -14,6 +14,11 @@
                         <div class="form-group">
                             <label for="inputKode">ID</label>
                             <input type="text" value="" class="form-control" id="inputKode" name="inputKode">
+                            <?php if (form_error('inputKode')) : ?>
+                                <div id="idError" class="form-text text-danger">
+                                    <?= form_error('inputKode'); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="form-group">
                             <label for="inputNamaPengadaa n">Nama Pengadaan</label>
@@ -21,16 +26,26 @@
                         </div>
                         <div class="form-group">
                             <label for="inputKategori">Kategori</label>
-                            <input type="text" value="" class="form-control" id="inputKategori" name="inputKategori">
+                            <select class="form-control" id="inputKategori" name="inputKategori">
+                                <?php foreach ($kategori as $kt) : ?>
+                                    <?php if ($kt == $row['kategori']) : ?>
+                                        <option value="<?= $kt; ?>" selected><?= $kt; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $kt; ?>"><?= $kt; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="inputTahun">Tahun</label>
                             <select class="form-control" id="inputTahun" name="inputTahun">
-                                <option>2019</option>
-                                <option>2020</option>
-                                <option selected>2021</option>
-                                <option>2022</option>
-                                <option>2023</option>
+                                <?php foreach ($tahun as $th) : ?>
+                                    <?php if ($th == $row['tahun']) : ?>
+                                        <option value="<?= $th; ?>" selected><?= $th; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $th; ?>"><?= $th; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
@@ -53,17 +68,27 @@
                         </div>
                         <div class="form-group">
                             <label for="inputMataAnggaran">Mata Anggaran</label>
-                            <!-- Input Group "Rp." -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp</span>
-                                </div>
-                                <input type="text" value="" class="form-control" id="inputMataAnggaran" name="inputMataAnggaran">
-                            </div>
+                            <select class="form-control" id="inputMataAnggaran" name="inputMataAnggaran">
+                                <?php foreach ($mataAnggaran as $ma) : ?>
+                                    <?php if ($ma == $row['mata_anggaran']) : ?>
+                                        <option value="<?= $ma; ?>" selected><?= $ma; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $ma; ?>"><?= $ma; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="inputJenisAnggaran">Jenis Anggaran</label>
-                            <input type="text" value="" class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
+                            <select class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
+                                <?php foreach ($jenisAnggaran as $ja) : ?>
+                                    <?php if ($ja == $row['jenis_anggaran']) : ?>
+                                        <option value="<?= $ja; ?>" selected><?= $ja; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $ja; ?>"><?= $ja; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,36 @@
 
 class Tabel_model extends CI_model
 {
+    public function rulesTambahAwal()
+    {
+        return
+            [
+                [
+                    'field' => 'inputKode',
+                    'label' => 'ID',
+                    'rules' => 'trim|required'
+                ],
+            ];
+    }
+
+    public function rulesEdit()
+    {
+        return
+            [
+                [
+                    'field' => 'inputKode',
+                    'label' => 'ID',
+                    'rules' => 'trim|required'
+                ],
+                [
+                    'field' => 'inputProgress',
+                    'label' => 'Progress',
+                    'rules' => 'trim|required|numeric|max_length[3]'
+                ],
+
+            ];
+    }
+
     public function tahun()
     {
         return
@@ -22,6 +52,7 @@ class Tabel_model extends CI_model
     {
         return
             [
+                ' ',
                 'Peralatan Teknologi Dan Komunikasi', 'Pemeliharaan Alat Teknologi Komunikasi', 'Pemeliharaan Instalasi Jaringan',
                 'Beban Koneksi Data', 'Jasa Sistem', 'Beban Tenaga Kerja', 'Perjalanan Dinas', 'Alat & Perlengkapan Kantor',
                 'Pelatihan Karyawan', 'Beban Jamuan Rapat'
@@ -145,6 +176,11 @@ class Tabel_model extends CI_model
     public function deleteData($id)
     {
         $this->db->delete('project', ['id' => $id]);
+    }
+
+    public function deleteDataHistory($id)
+    {
+        $this->db->delete('history', ['id' => $id]);
     }
 
     //pagination

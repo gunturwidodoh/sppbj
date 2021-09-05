@@ -138,6 +138,13 @@ class Tabel extends CI_Controller
         redirect('tabel');
     }
 
+    public function deleteHistory($id)
+    {
+        $this->Tabel_model->deleteDataHistory($id);
+        $this->session->set_flashdata('message', 'Data Telah Dihapus !');
+        redirect('tabel/history');
+    }
+
     public function moveData($id)
     {
         $this->Tabel_model->moveDataById($id);
@@ -148,31 +155,39 @@ class Tabel extends CI_Controller
     public function tambah_awal()
     {
         // view
+        $data['tahun'] = $this->Tabel_model->tahun();
+        $data['kategori'] = $this->Tabel_model->kategori();
+        $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
+        $data['jenisAnggaran'] = $this->Tabel_model->jenis_anggaran();
         $data['judul'] = 'Tambah Data Awal';
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tambah_awal', $data);
-            $this->load->view('templates/footer');
-        } else if ($data["role"] == '2') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tambah_awal', $data);
-            $this->load->view('templates/footer');
+        $this->form_validation->set_rules($this->Tabel_model->rulesTambahAwal());
+        if ($this->form_validation->run() == FALSE) {
+            if ($data["role"] == '1') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('user/tabel/tambah_awal', $data);
+                $this->load->view('templates/footer');
+            } else if ($data["role"] == '2') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('user/tabel/tambah_awal', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->load->view('templates/header', $data);
+                $this->load->view('errors/html/error_session');
+                $this->load->view('templates/footer');
+            }
         } else {
-            $this->load->view('templates/header', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
 
-        // fungsi add
-        if ($this->input->post()) {
-            $this->Tabel_model->addDataTambahAwal();
-            $this->session->set_flashdata('message', 'Data Telah Ditambahkan !');
-            redirect('tabel');
+            // fungsi add
+            if ($this->input->post()) {
+                $this->Tabel_model->addDataTambahAwal();
+                $this->session->set_flashdata('message', 'Data Telah Ditambahkan !');
+                redirect('tabel');
+            }
         }
     }
 
@@ -187,29 +202,32 @@ class Tabel extends CI_Controller
         $data['row'] = $this->Tabel_model->getDataById($id);
         $data['judul'] = 'Edit Data';
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/edit', $data);
-            $this->load->view('templates/footer');
-        } else if ($data["role"] == '2') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/edit', $data);
-            $this->load->view('templates/footer');
+        $this->form_validation->set_rules($this->Tabel_model->rulesEdit());
+        if ($this->form_validation->run() == FALSE) {
+            if ($data["role"] == '1') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('user/tabel/edit', $data);
+                $this->load->view('templates/footer');
+            } else if ($data["role"] == '2') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('user/tabel/edit', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->load->view('templates/header', $data);
+                $this->load->view('errors/html/error_session');
+                $this->load->view('templates/footer');
+            }
         } else {
-            $this->load->view('templates/header', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-
-        // fungsi add
-        if ($this->input->post()) {
-            $this->Tabel_model->editData();
-            $this->session->set_flashdata('message', 'Data Telah Diedit !');
-            redirect('tabel');
+            // fungsi add
+            if ($this->input->post()) {
+                $this->Tabel_model->editData();
+                $this->session->set_flashdata('message', 'Data Telah Diedit !');
+                redirect('tabel');
+            }
         }
     }
 

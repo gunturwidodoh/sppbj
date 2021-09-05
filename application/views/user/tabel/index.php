@@ -16,7 +16,6 @@
                 <div style="color:green;"><?= $this->session->flashdata('message'); ?></div>
                 <?php unset($_SESSION['message']); ?>
             <?php endif; ?>
-
             <div class="row">
                 <div class="card">
                     <div class="card-body" style="overflow-x:auto">
@@ -45,18 +44,23 @@
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>
                                     <tr role="row" style="white-space: nowrap">
-                                        <th>ID</th>
-                                        <th>Nama Pengadaan</th>
-                                        <th>Kategori</th>
-                                        <th>Tahun</th>
-                                        <th>Deskripsi</th>
-                                        <th>PIC</th>
-                                        <th>Target Selesai</th>
-                                        <th>Program Utama</th>
-                                        <th>Mata Anggaran</th>
-                                        <th>Jenis Anggaran</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th rowspan="2">ID</th>
+                                        <th rowspan="2">Nama Pengadaan</th>
+                                        <th rowspan="2">Kategori</th>
+                                        <th rowspan="2">Tahun</th>
+                                        <th rowspan="2">Deskripsi</th>
+                                        <th rowspan="2">PIC</th>
+                                        <th rowspan="2">Target Selesai</th>
+                                        <th rowspan="2">Program Utama</th>
+                                        <th rowspan="2">Mata Anggaran</th>
+                                        <th rowspan="2">Jenis Anggaran</th>
+                                        <th colspan="3">Status</th>
+                                        <th rowspan="2">Action</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Status SPPBJ</th>
+                                        <th>Keterangan</th>
+                                        <th>Progress</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,7 +77,14 @@
                                             <td><?= $tb['program']; ?></td>
                                             <td><?= $tb['mata_anggaran']; ?></td>
                                             <td><?= $tb['jenis_anggaran']; ?></td>
-                                            <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
+                                            <td>
+                                                <?php if ($tb['ttd'] != NULL) : ?>
+                                                    Telah ditanda tangani oleh <span><?= $tb['ttd']; ?></span>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td><?= $tb['keterangan']; ?></td>
+                                            <td><span><?= $tb['status']; ?></span>%</td>
+                                            <!-- <td><a id="detail" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td> -->
                                             <!-- Action -->
                                             <td>
                                                 <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
@@ -90,15 +101,20 @@
                                     <table id="tableDRP" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr role="row" style="white-space: nowrap">
-                                                <th>ID</th>
-                                                <th>Nama Pengadaan</th>
-                                                <th>No. DRP</th>
-                                                <th>Anggaran DRP</th>
-                                                <th>No. SPPBJ</th>
-                                                <th>Nilai SPPBJ (Include PPN 10%)</th>
-                                                <th>Tgl. Terbit SPPBJ</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th rowspan="2">ID</th>
+                                                <th rowspan="2">Nama Pengadaan</th>
+                                                <th rowspan="2">No. DRP</th>
+                                                <th rowspan="2">Anggaran DRP</th>
+                                                <th rowspan="2">No. SPPBJ</th>
+                                                <th rowspan="2">Nilai SPPBJ (Include PPN 10%)</th>
+                                                <th rowspan="2">Tgl. Terbit SPPBJ</th>
+                                                <th colspan="3">Status</th>
+                                                <th rowspan="2">Action</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Status SPPBJ</th>
+                                                <th>Keterangan</th>
+                                                <th>Progress</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -112,7 +128,10 @@
                                                     <td><?= $tb['no_sppbj']; ?></td>
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
-                                                    <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
+                                                    <td>Telah ditanda tangani oleh <span><?= $tb['ttd']; ?></span></td>
+                                                    <td><?= $tb['keterangan']; ?></td>
+                                                    <td><span><?= $tb['status']; ?></span>%</td>
+                                                    <!-- <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td> -->
                                                     <!-- Action -->
                                                     <td>
                                                         <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
@@ -146,7 +165,7 @@
                                                 <th colspan="7">Termin</th>
                                                 <th colspan="6">Realisasi</th>
                                                 <th rowspan="2">Perbandingan Nilai Kontrak dan Pembayaran</th>
-                                                <th rowspan="2">Status</th>
+                                                <th colspan="3">Status</th>
                                                 <th rowspan="2">Action</th>
                                             </tr>
                                             <tr>
@@ -163,6 +182,9 @@
                                                 <th>Q4</th>
                                                 <th>Opex (Biaya)</th>
                                                 <th>Capex (Investasi)</th>
+                                                <th>Status SPPBJ</th>
+                                                <th>Keterangan</th>
+                                                <th>Progress</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -196,7 +218,10 @@
                                                     <td><?= $tb['opex']; ?></td>
                                                     <td><?= $tb['capex']; ?></td>
                                                     <td><?= $tb['perbandingan']; ?></td>
-                                                    <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
+                                                    <td>Telah ditanda tangani oleh <span><?= $tb['ttd']; ?></span></td>
+                                                    <td><?= $tb['keterangan']; ?></td>
+                                                    <td><span><?= $tb['status']; ?></span>%</td>
+                                                    <!-- <td><button class="btn btn-primary btn-sm status" id="detail" data-toggle="modal" data-target="#modalStatus"></td> -->
                                                     <!-- Action -->
                                                     <td>
                                                         <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
@@ -230,8 +255,8 @@
             </div>
             <div class="modal-body">
                 <div class="modal-body">
-                    <p>SPPBJ Telah di Tanda Tangani Oleh : </p>
-                    <p>Status Keseluruhan : </p>
+                    <p>SPPBJ Telah di Tanda Tangani Oleh : <span name="ttd" id="ttd"></span></p>
+                    <p>Status Keseluruhan : <span name="status" id="status"></span></p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -240,3 +265,28 @@
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type='text/javascript'>
+    $('.status').click(function() {
+        $.ajax({
+            url: '<?= site_url() ?>/tabel/index' + $tb['id'],
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var ttd = $(this).data('ttd');
+                var status = $(this).data('status');
+                $('#ttd').val(ttd);
+                $('#status').val(status);
+            }
+        });
+    });
+    // $(document).ready(function() {
+    //     $(document).on('click', '#detail', function() {
+    //         var ttd = $(this).data('ttd');
+    //         var status = $(this).data('status');
+    //         $('#ttd').val(ttd);
+    //         $('#status').val(status);
+    //     })
+    // })
+</script>

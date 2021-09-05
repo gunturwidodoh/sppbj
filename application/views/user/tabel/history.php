@@ -7,6 +7,10 @@
                     <h1><?php echo $judul; ?></h1>
                 </div>
             </div>
+            <?php if ($this->session->flashdata('message')) : ?>
+                <div style="color:red;"><?= $this->session->flashdata('message'); ?></div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
             <div class="row">
                 <div class="card">
                     <div class="card-body" style="overflow-x:auto">
@@ -46,7 +50,6 @@
                                         <th>Program Utama</th>
                                         <th>Mata Anggaran</th>
                                         <th>Jenis Anggaran</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -63,10 +66,9 @@
                                             <td><?= $tb['program']; ?></td>
                                             <td><?= $tb['mata_anggaran']; ?></td>
                                             <td><?= $tb['jenis_anggaran']; ?></td>
-                                            <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                             <!-- Action -->
                                             <td>
-                                                <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
+                                                <a href="<?= site_url() ?>/tabel/deleteHistory/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
@@ -86,7 +88,6 @@
                                                 <th>No. SPPBJ</th>
                                                 <th>Nilai SPPBJ (Include PPN 10%)</th>
                                                 <th>Tgl. Terbit SPPBJ</th>
-                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -101,9 +102,8 @@
                                                     <td><?= $tb['no_sppbj']; ?></td>
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
-                                                    <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <td>
-                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
+                                                        <a href="<?= site_url() ?>/tabel/deleteHistory/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
@@ -132,7 +132,6 @@
                                                 <th colspan="7">Termin</th>
                                                 <th colspan="6">Realisasi</th>
                                                 <th rowspan="2">Perbandingan Nilai Kontrak dan Pembayaran</th>
-                                                <th rowspan="2">Status</th>
                                             </tr>
                                             <tr>
                                                 <th>Termin 1</th>
@@ -182,9 +181,8 @@
                                                     <td><?= $tb['opex']; ?></td>
                                                     <td><?= $tb['capex']; ?></td>
                                                     <td><?= $tb['perbandingan']; ?></td>
-                                                    <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <td>
-                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
+                                                        <a href="<?= site_url() ?>/tabel/deleteHistory/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
