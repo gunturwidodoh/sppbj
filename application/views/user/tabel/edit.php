@@ -23,17 +23,27 @@
                             <input type="text" value="<?= $row['nama'] ?>" class="form-control" id="inputNamaPengadaan" name="inputNamaPengadaan">
                         </div>
                         <div class="form-group">
-                            <label for="inputKategori">Kategori</label>
-                            <input type="text" value="<?= $row['kategori'] ?>" class="form-control" id="inputKategori" name="inputKategori">
+                            <label for="inputTahun">Kategori</label>
+                            <select class="form-control" id="inputKategori" name="inputKategori">
+                                <?php foreach ($kategori as $kt) : ?>
+                                    <?php if ($kt == $row['kategori']) : ?>
+                                        <option value="<?= $kt; ?>" selected><?= $kt; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $kt; ?>"><?= $kt; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="inputTahun">Tahun</label>
                             <select class="form-control" id="inputTahun" name="inputTahun">
-                                <option>2019</option>
-                                <option>2020</option>
-                                <option selected>2021</option>
-                                <option>2022</option>
-                                <option>2023</option>
+                                <?php foreach ($tahun as $th) : ?>
+                                    <?php if ($th == $row['tahun']) : ?>
+                                        <option value="<?= $th; ?>" selected><?= $th; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $th; ?>"><?= $th; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
@@ -55,20 +65,33 @@
                             <input type="text" value="<?= $row['program'] ?>" class="form-control" id="inputProgramUtama" name="inputProgramUtama">
                         </div>
                         <div class="form-group">
-                            <label for="inputMataAnggaran">Mata Anggaran</label>
-                            <!-- Input Group "Rp." -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp</span>
-                                </div>
-                                <input type="text" value="<?= $row['mata_anggaran'] ?>" class="form-control" id="inputMataAnggaran" name="inputMataAnggaran">
-                            </div>
+                            <label for="inputTahun">Mata Anggaran</label>
+                            <select class="form-control" id="inputMataAnggaran" name="inputMataAnggaran">
+                                <?php foreach ($mataAnggaran as $ma) : ?>
+                                    <?php if ($ma == $row['mata_anggaran']) : ?>
+                                        <option value="<?= $ma; ?>" selected><?= $ma; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $ma; ?>"><?= $ma; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="inputJenisAnggaran">Jenis Anggaran</label>
-                            <input type="text" value="<?= $row['jenis_anggaran'] ?>" class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
+                            <label for="inputTahun">Tahun</label>
+                            <select class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
+                                <?php foreach ($jenisAnggaran as $ja) : ?>
+                                    <?php if ($ja == $row['jenis_anggaran']) : ?>
+                                        <option value="<?= $ja; ?>" selected><?= $ja; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $ja; ?>"><?= $ja; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
+                </div>
+                <div class="row mb-2">
+                    <h3>DRP dan SPPBJ</h3>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-6">

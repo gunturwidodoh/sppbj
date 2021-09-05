@@ -2,6 +2,41 @@
 
 class Tabel_model extends CI_model
 {
+    public function tahun()
+    {
+        return
+            [
+                '2019', '2020', '2021', '2022', '2023', '2024', '2025'
+            ];
+    }
+
+    public function kategori()
+    {
+        return
+            [
+                'Rutin', 'Project'
+            ];
+    }
+
+    public function mata_anggaran()
+    {
+        return
+            [
+                'Peralatan Teknologi Dan Komunikasi', 'Pemeliharaan Alat Teknologi Komunikasi', 'Pemeliharaan Instalasi Jaringan',
+                'Beban Koneksi Data', 'Jasa Sistem', 'Beban Tenaga Kerja', 'Perjalanan Dinas', 'Alat & Perlengkapan Kantor',
+                'Pelatihan Karyawan', 'Beban Jamuan Rapat'
+
+            ];
+    }
+
+    public function jenis_anggaran()
+    {
+        return
+            [
+                'Biaya', 'Investasi'
+            ];
+    }
+
     public function getAllData()
     {
         return $this->db->get('project')->result_array();
@@ -14,6 +49,12 @@ class Tabel_model extends CI_model
 
     public function moveDataById($id)
     {
+        //update modified_date
+        $this->db->where('id', $id);
+        $this->db->set('modified_date', 'NOW()', FALSE);
+        $this->db->update('project');
+
+        //move row db project ke db history
         $data = $this->db->get_where('project', ['id' => $id])->row_array();
         $this->db->insert('history', $data);
         $this->db->delete('project', ['id' => $id]);
@@ -38,6 +79,12 @@ class Tabel_model extends CI_model
 
     public function editData()
     {
+        $terminSatu = $this->input->post('inputTerminSatu', true);
+        $terminDua = $this->input->post('inputTerminDua', true);
+        $terminTiga = $this->input->post('inputTerminTiga', true);
+        $terminEmpat = $this->input->post('inputTerminEmpat', true);
+        $terminLima = $this->input->post('inputTerminLima', true);
+        $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $data = [
             'no_drp' => $this->input->post('inputNoDRP', true),
             'no_sppbj' => $this->input->post('inputNoSPPBJ', true),
@@ -86,6 +133,7 @@ class Tabel_model extends CI_model
             'ttd' => $this->input->post('inputTtd', true),
             'status' => $this->input->post('inputStatus', true),
         ];
+        $this->db->set('tot_pembayaran', $total_pembayaran);
         $this->db->where('id', $this->input->post('id'));
         $this->db->set('modified_date', 'NOW()', FALSE);
         //FALSE untuk mengubah 'NOW()' menjadi NOW()
@@ -122,6 +170,30 @@ class Tabel_model extends CI_model
         $this->db->or_like('code', $keyword);
         $this->db->or_like('tahun', $keyword);
         return $this->db->get('project')->result_array();
+    }
+
+    public function getDataHistory($limit, $start)
+    {
+        //return $this->db->get('project', $limit, $start)->result_array();
+        $this->db->select('*');
+        $this->db->from('history');
+        $this->db->order_by('modified_date', 'desc');
+        $this->db->limit($limit, $start);
+        return $this->db->get()->result_array();
+    }
+
+    public function countAllDataHistory()
+    {
+        return $this->db->get('history')->num_rows();
+    }
+
+    public function cariDataHistory()
+    {
+        $keyword = $this->input->post('keyword');
+        $this->db->like('nama', $keyword);
+        $this->db->or_like('code', $keyword);
+        $this->db->or_like('tahun', $keyword);
+        return $this->db->get('history')->result_array();
     }
 }
 

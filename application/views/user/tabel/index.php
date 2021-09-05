@@ -9,34 +9,38 @@
             </div>
             <div class="row mb-2">
                 <div class="col-sm-2">
-                    <a href="<?php echo site_url(); ?>/tabel/tambah_awal" type="submit" class="btn btn-primary btn-block btn-sm mb-5">Tambah Project Baru</a>
+                    <a href="<?php echo site_url(); ?>/tabel/tambah_awal" type="submit" class="btn btn-primary btn-sm mb-2 btn-block">Tambah Project Baru</a>
                 </div>
             </div>
-            <div>
-                <?php if ($this->session->flashdata('message')) : ?>
-                    <div style="color:green;"><?= $this->session->flashdata('message'); ?></div>
-                    <?php unset($_SESSION['message']); ?>
-                <?php endif; ?>
-            </div>
+            <?php if ($this->session->flashdata('message')) : ?>
+                <div style="color:green;"><?= $this->session->flashdata('message'); ?></div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
+
             <div class="row">
                 <div class="card">
                     <div class="card-body" style="overflow-x:auto">
                         <!-- navs -->
-                        <nav class="nav nav-pills">
-                            <a class="nav-link active" href="#" id="navAwal">Awal</a>
-                            <a class="nav-link" href="#" id="navDRP">DRP & SPPBJ</a>
-                            <a class="nav-link" href="#" id="navKontrak">Kontrak</a>
-                        </nav>
-
-                        <!-- Tabel Awal -->
-                        <form action="" method="post">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="keyword" class="form-control float-right" placeholder="Cari data">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-primary">Cari</button>
-                                </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <nav class="nav nav-pills">
+                                    <a class="nav-link active" href="#" id="navAwal">Awal</a>
+                                    <a class="nav-link" href="#" id="navDRP">DRP & SPPBJ</a>
+                                    <a class="nav-link" href="#" id="navKontrak">Kontrak</a>
+                                </nav>
                             </div>
-                        </form>
+                            <div class="col-sm-6 float-right">
+                                <form action="" method="post">
+                                    <div class="input-group input-group-sm float-right mb-2 mr-2" style="width: 150px;">
+                                        <input type="text" name="keyword" class="form-control float-right" placeholder="Cari data">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-primary">Cari</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Tabel Awal -->
                         <div class="table-responsive">
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>
@@ -111,7 +115,7 @@
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <!-- Action -->
                                                     <td>
-                                                        <a href="<?= site_url() ?>/tabel/edit/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
+                                                        <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
@@ -195,7 +199,7 @@
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                                     <!-- Action -->
                                                     <td>
-                                                        <a href="<?= site_url() ?>/tabel/edit/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
+                                                        <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
                                                         <a href="<?= site_url() ?>/tabel/moveData/<?= $tb['id']; ?>" class="badge badge-primary">Selesai</a>
                                                         <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
@@ -229,12 +233,8 @@
                     <p>SPPBJ Telah di Tanda Tangani Oleh : </p>
                     <p>Status Keseluruhan : </p>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

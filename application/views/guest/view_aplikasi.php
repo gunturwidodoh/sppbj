@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-body" style="overflow-x:auto">
                         <form action="" method="post">
-                            <div class="input-group input-group-sm" style="width: 150px;">
+                            <div class="input-group input-group-sm float-right mb-2" style="width: 150px;">
                                 <input type="text" name="keyword" class="form-control float-right" placeholder="Cari data">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary">Cari</button>

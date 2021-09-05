@@ -47,6 +47,7 @@
                                         <th>Mata Anggaran</th>
                                         <th>Jenis Anggaran</th>
                                         <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,6 +65,9 @@
                                             <td><?= $tb['jenis_anggaran']; ?></td>
                                             <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
                                             <!-- Action -->
+                                            <td>
+                                                <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
+                                            </td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -83,6 +87,7 @@
                                                 <th>Nilai SPPBJ (Include PPN 10%)</th>
                                                 <th>Tgl. Terbit SPPBJ</th>
                                                 <th>Status</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -97,7 +102,9 @@
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
-
+                                                    <td>
+                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -141,6 +148,7 @@
                                                 <th>Q4</th>
                                                 <th>Opex (Biaya)</th>
                                                 <th>Capex (Investasi)</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -175,6 +183,9 @@
                                                     <td><?= $tb['capex']; ?></td>
                                                     <td><?= $tb['perbandingan']; ?></td>
                                                     <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
+                                                    <td>
+                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
