@@ -8,6 +8,12 @@ class Admin_model extends CI_model
         return $this->db->get('login')->result_array();
     }
 
+    public function jumlah_akun()
+    {
+        $query = $this->db->query('SELECT * FROM login');
+        return $query->num_rows();
+    }
+
     public function rules()
     {
         return

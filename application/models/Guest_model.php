@@ -2,6 +2,24 @@
 
 class Guest_model extends CI_model
 {
+    public function jumlah_project()
+    {
+        $query = $this->db->query('SELECT * FROM project');
+        return $query->num_rows();
+    }
+
+    public function jumlah_history_project()
+    {
+        $query = $this->db->query('SELECT * FROM history');
+        return $query->num_rows();
+    }
+
+    public function jumlah_aplikasi_eksisting()
+    {
+        $query = $this->db->query('SELECT * FROM aplikasi_eksisting');
+        return $query->num_rows();
+    }
+
     public function getAllDataAplikasi()
     {
         return $this->db->get('aplikasi_eksisting')->result_array();

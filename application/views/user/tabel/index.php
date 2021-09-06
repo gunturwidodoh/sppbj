@@ -88,7 +88,6 @@
                                             <!-- Action -->
                                             <td>
                                                 <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
-                                                <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -128,14 +127,17 @@
                                                     <td><?= $tb['no_sppbj']; ?></td>
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
-                                                    <td>Telah ditanda tangani oleh <span><?= $tb['ttd']; ?></span></td>
+                                                    <td>
+                                                        <?php if ($tb['ttd'] != NULL) : ?>
+                                                            Telah ditanda tangani oleh <span><?= $tb['ttd']; ?></span>
+                                                        <?php endif; ?>
+                                                    </td>
                                                     <td><?= $tb['keterangan']; ?></td>
                                                     <td><span><?= $tb['status']; ?></span>%</td>
                                                     <!-- <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td> -->
                                                     <!-- Action -->
                                                     <td>
                                                         <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
-                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -218,7 +220,11 @@
                                                     <td><?= $tb['opex']; ?></td>
                                                     <td><?= $tb['capex']; ?></td>
                                                     <td><?= $tb['perbandingan']; ?></td>
-                                                    <td>Telah ditanda tangani oleh <span><?= $tb['ttd']; ?></span></td>
+                                                    <td>
+                                                        <?php if ($tb['ttd'] != NULL) : ?>
+                                                            Telah ditanda tangani oleh <span><?= $tb['ttd']; ?></span>
+                                                        <?php endif; ?>
+                                                    </td>
                                                     <td><?= $tb['keterangan']; ?></td>
                                                     <td><span><?= $tb['status']; ?></span>%</td>
                                                     <!-- <td><button class="btn btn-primary btn-sm status" id="detail" data-toggle="modal" data-target="#modalStatus"></td> -->
@@ -226,7 +232,6 @@
                                                     <td>
                                                         <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-success">Edit</a>
                                                         <a href="<?= site_url() ?>/tabel/moveData/<?= $tb['id']; ?>" class="badge badge-primary">Selesai</a>
-                                                        <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -255,12 +260,12 @@
             </div>
             <div class="modal-body">
                 <div class="modal-body">
-                    <p>SPPBJ Telah di Tanda Tangani Oleh : <span name="ttd" id="ttd"></span></p>
-                    <p>Status Keseluruhan : <span name="status" id="status"></span></p>
+                    <p>Apakah anda yakin ?</p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="<?= site_url() ?>/tabel/delete/<?= $tb['id']; ?>" type="button" class="btn btn-secondary" data-dismiss="modal">Yakin</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
             </div>
         </div>
     </div>

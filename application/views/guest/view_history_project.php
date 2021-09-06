@@ -46,6 +46,7 @@
                                         <th>Program Utama</th>
                                         <th>Mata Anggaran</th>
                                         <th>Jenis Anggaran</th>
+                                        <th>Waktu Project Selesai</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,6 +62,7 @@
                                             <td><?= $tb['program']; ?></td>
                                             <td><?= $tb['mata_anggaran']; ?></td>
                                             <td><?= $tb['jenis_anggaran']; ?></td>
+                                            <td><?= $tb['modified_date']; ?></td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -79,6 +81,7 @@
                                                 <th>No. SPPBJ</th>
                                                 <th>Nilai SPPBJ (Include PPN 10%)</th>
                                                 <th>Tgl. Terbit SPPBJ</th>
+                                                <th>Waktu Project Selesai</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -92,6 +95,7 @@
                                                     <td><?= $tb['no_sppbj']; ?></td>
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
+                                                    <td><?= $tb['modified_date']; ?></td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -119,6 +123,7 @@
                                                 <th colspan="7">Termin</th>
                                                 <th colspan="6">Realisasi</th>
                                                 <th rowspan="2">Perbandingan Nilai Kontrak dan Pembayaran</th>
+                                                <th rowspan="2">Waktu Project Selesai</th>
                                             </tr>
                                             <tr>
                                                 <th>Termin 1</th>
@@ -167,6 +172,7 @@
                                                     <td><?= $tb['opex']; ?></td>
                                                     <td><?= $tb['capex']; ?></td>
                                                     <td><?= $tb['perbandingan']; ?></td>
+                                                    <td><?= $tb['modified_date']; ?></td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>

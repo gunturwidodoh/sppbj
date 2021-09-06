@@ -4,7 +4,7 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col">
                     <h1><?= $judul;
                         echo ' ';
                         echo $row['nama']; ?></h1>
@@ -91,9 +91,28 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <h3>DRP dan SPPBJ</h3>
+                    <div class="col-sm-6">
+                        <h3>SPPBJ</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>DRP</h3>
+                    </div>
                 </div>
                 <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="inputNomorSPPBJ">Nomor SPPBJ</label>
+                            <input type="text" value="<?= $row['no_sppbj'] ?>" class="form-control" id="inputNomorSPPBJ" name="inputNomorSPPBJ">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNilaiSPPBJ">Nilai SPPBJ (+PPN 10%)</label>
+                            <input type="text" value="<?= $row['nilai_sppbj'] ?>" class="form-control" id="inputNilaiSPPBJ" name="inputNilaiSPPBJ">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTanggalTerbit">Tanggal Terbit SPPBJ</label>
+                            <input type="date" value="<?= $row['tanggal'] ?>" class="form-control" id="inputTanggalTerbit" name="inputTanggalTerbit">
+                        </div>
+                    </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="inputNoDRP">No. DRP</label>
@@ -103,18 +122,6 @@
                             <label for="inputAnggaranDRP">Anggaran DRP</label>
                             <input type="text" value="<?= $row['anggaran_edrp'] ?>" class="form-control" id="inputAnggaranDRP" name="inputAnggaranDRP">
                         </div>
-                        <div class="form-group">
-                            <label for="inputNomorSPPBJ">Nomor SPPBJ</label>
-                            <input type="text" value="<?= $row['no_sppbj'] ?>" class="form-control" id="inputNomorSPPBJ" name="inputNomorSPPBJ">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputNilaiSPPBJ">Nilai SPPBJ (+PPN 10%)</label>
-                            <input type="text" value="<?= $row['nilai_sppbj'] ?>" class="form-control" id="inputNilaiSPPBJ" name="inputNilaiSPPBJ">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputTanggalTerbit">Tanggal Terbit SPPBJ</label>
-                        <input type="date" value="<?= $row['tanggal'] ?>" class="form-control" id="inputTanggalTerbit" name="inputTanggalTerbit">
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -247,10 +254,12 @@
                             <input type="text" value="<?= $row['opex'] ?>" class="form-control" id="inputCapex" name="inputCapex">
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPerbandinganNilai">Perbandingan Nilai Kontrak dan Pembayaran</label>
-                    <input type="text" value="<?= $row['perbandingan'] ?>" class="form-control" id="inputPerbandinganNilai" name="inputPerbandinganNilai">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="inputPerbandinganNilai">Perbandingan Nilai Kontrak dan Pembayaran</label>
+                            <input type="text" value="<?= $row['perbandingan'] ?>" class="form-control" id="inputPerbandinganNilai" name="inputPerbandinganNilai">
+                        </div>
+                    </div>
                 </div>
                 <div class="row mb-2">
                     <div>
@@ -258,11 +267,17 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col sm-6">
-                        <div class="form-group">
-                            <label for="inputTtd">SPPBJ telah ditandatangani oleh</label>
-                            <input type="text" value="<?= $row['ttd'] ?>" class="form-control" id="inputTtd" name="inputTtd">
-                        </div>
+                    <div class="form-group">
+                        <label for="inputTtd">SPPBJ Telah Ditandatangani Oleh</label>
+                        <select class="form-control" id="inputTtd" name="inputTtd">
+                            <?php foreach ($tandaTangan as $tt) : ?>
+                                <?php if ($tt == $row['ttd']) : ?>
+                                    <option value="<?= $tt; ?>" selected><?= $tt; ?></option>
+                                <?php else : ?>
+                                    <option value="<?= $tt; ?>"><?= $tt; ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="col sm-6">
                         <div class="form-group">
@@ -282,14 +297,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-sm-2">
-                        <input class="btn btn-primary" type="submit" value="Simpan">
-                        <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
-                            Kembali</button>
-                    </div>
-                </div>
             </form>
+            <div class="row mb-2">
+                <form action="" method="post"></form>
+                <div class="col-sm-2">
+                    <input class="btn btn-primary" type="submit" value="Simpan">
+                    <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
+                        Kembali</button>
+                </div>
+                </form>
+                <div class="col">
+                    <button class="btn btn-danger float-right" data-toggle="modal" data-target="#modalStatus"><span class="glyphicon glyphicon-home"></span>
+                        Hapus Data</button>
+                </div>
+            </div>
         </div><!-- /.container-fluid -->
     </section>
+</div>
+
+<div class="modal" id="modalStatus" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+                    <p>Apakah anda yakin akan menghapus data project ini ?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="<?= site_url(); ?>/tabel/delete/<?= $row['id']; ?>" type="button" class="btn btn-danger">Yakin</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+            </div>
+        </div>
+    </div>
 </div>

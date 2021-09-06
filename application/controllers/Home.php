@@ -3,9 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Tabel_model');
+    }
+
     public function index()
     {
         $data['judul'] = 'Halaman Utama';
+        $data['jumlah'] = $this->Tabel_model->jumlah_project();
+        $data['jumlahHistory'] = $this->Tabel_model->jumlah_history_project();
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);

@@ -93,8 +93,34 @@
                     </div>
                 </div>
                 <div class="row mb-2">
+                    <div>
+                        <h3>Status</h3>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col sm-6">
+                        <div class="form-group">
+                            <label for="inputKeterangan">Keterangan</label>
+                            <input type="text" value="" class="form-control" id="inputKeterangan" name="inputKeterangan">
+                        </div>
+                    </div>
+                    <div class="col sm-6">
+                        <div class="form-group">
+                            <label for="inputProgress">Progress</label>
+                            <input type="text" value="" class="form-control" id="inputProgress" name="inputProgress">
+                            <?php if (form_error('inputProgress')) : ?>
+                                <div id="progressError" class="form-text text-danger">
+                                    <?= form_error('inputProgress'); ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
                     <div class="col-sm-2">
                         <input class="btn btn-primary" type="submit" value="Simpan">
+                        <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
+                            Kembali</button>
                     </div>
                 </div>
             </form>

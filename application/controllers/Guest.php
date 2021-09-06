@@ -12,6 +12,9 @@ class Guest extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Halaman Utama';
+        $data['jumlah'] = $this->Guest_model->jumlah_project();
+        $data['jumlahHistory'] = $this->Guest_model->jumlah_history_project();
+        $data['jumlahAplikasi'] = $this->Guest_model->jumlah_aplikasi_eksisting();
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] != NULL) {
             $this->load->view('templates/header', $data);

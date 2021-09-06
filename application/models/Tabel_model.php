@@ -2,6 +2,18 @@
 
 class Tabel_model extends CI_model
 {
+    public function jumlah_project()
+    {
+        $query = $this->db->query('SELECT * FROM project');
+        return $query->num_rows();
+    }
+
+    public function jumlah_history_project()
+    {
+        $query = $this->db->query('SELECT * FROM history');
+        return $query->num_rows();
+    }
+
     public function rulesTambahAwal()
     {
         return
@@ -36,7 +48,7 @@ class Tabel_model extends CI_model
     {
         return
             [
-                '2019', '2020', '2021', '2022', '2023', '2024', '2025'
+                NULL, '2019', '2020', '2021', '2022', '2023', '2024', '2025'
             ];
     }
 
@@ -44,7 +56,7 @@ class Tabel_model extends CI_model
     {
         return
             [
-                'Rutin', 'Project'
+                NULL, 'Rutin', 'Project'
             ];
     }
 
@@ -52,7 +64,7 @@ class Tabel_model extends CI_model
     {
         return
             [
-                ' ',
+                NULL,
                 'Peralatan Teknologi Dan Komunikasi', 'Pemeliharaan Alat Teknologi Komunikasi', 'Pemeliharaan Instalasi Jaringan',
                 'Beban Koneksi Data', 'Jasa Sistem', 'Beban Tenaga Kerja', 'Perjalanan Dinas', 'Alat & Perlengkapan Kantor',
                 'Pelatihan Karyawan', 'Beban Jamuan Rapat'
@@ -64,7 +76,15 @@ class Tabel_model extends CI_model
     {
         return
             [
-                'Biaya', 'Investasi'
+                NULL, 'Biaya', 'Investasi'
+            ];
+    }
+
+    public function tanda_tangan()
+    {
+        return
+            [
+                NULL, 'Manager Operasional TI', 'Manager Pelayanan TI', 'Manager Pengembangan TI', 'Vice President TI', 'Direktur Keuangan, TI, dan Management Resiko', 'Vice President Perencanaan dan Pengendalian Keuangan', 'Vice Supply Chain Management'
             ];
     }
 
@@ -104,6 +124,8 @@ class Tabel_model extends CI_model
             'program' => $this->input->post('inputProgramUtama', true),
             'mata_anggaran' => $this->input->post('inputMataAnggaran', true),
             'jenis_anggaran' => $this->input->post('inputJenisAnggaran', true),
+            'status' => $this->input->post('inputProgress', true),
+            'keterangan' => $this->input->post('inputKeterangan', true)
         ];
         $this->db->insert('project', $data);
     }

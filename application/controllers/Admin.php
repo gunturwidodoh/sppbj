@@ -13,6 +13,7 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Administration Page';
+        $data['jumlah'] = $this->Admin_model->jumlah_akun();
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
