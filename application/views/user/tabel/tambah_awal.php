@@ -78,18 +78,6 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="inputJenisAnggaran">Jenis Anggaran</label>
-                            <select class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
-                                <?php foreach ($jenisAnggaran as $ja) : ?>
-                                    <?php if ($ja == $row['jenis_anggaran']) : ?>
-                                        <option value="<?= $ja; ?>" selected><?= $ja; ?></option>
-                                    <?php else : ?>
-                                        <option value="<?= $ja; ?>"><?= $ja; ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -119,8 +107,8 @@
                 <div class="row mb-2">
                     <div class="col-sm-2">
                         <input class="btn btn-primary" type="submit" value="Simpan">
-                        <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
-                            Kembali</button>
+                        <a href="<?= site_url(); ?>/tabel/index" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
+                            Kembali</a>
                     </div>
                 </div>
             </form>

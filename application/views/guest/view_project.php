@@ -11,35 +11,44 @@
                 <div class="card">
                     <div class="card-body" style="overflow-x:auto">
                         <!-- navs -->
-                        <nav class="nav nav-pills">
-                            <a class="nav-link active" href="#" id="navAwal">Awal</a>
-                            <a class="nav-link" href="#" id="navDRP">DRP & SPPBJ</a>
-                            <a class="nav-link" href="#" id="navKontrak">Kontrak</a>
-                        </nav>
-
-                        <!-- Tabel Awal -->
-                        <form action="" method="post">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="keyword" class="form-control float-right" placeholder="Cari data">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-primary">Cari</button>
-                                </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <nav class="nav nav-pills">
+                                    <a class="nav-link active" href="#" id="navAwal">Awal</a>
+                                    <a class="nav-link" href="#" id="navDRP">DRP & SPPBJ</a>
+                                    <a class="nav-link" href="#" id="navKontrak">Kontrak</a>
+                                </nav>
                             </div>
-                        </form>
+                            <div class="col-sm-6 float-right">
+                                <form action="" method="post">
+                                    <div class="input-group input-group-sm float-right mb-2 mr-2" style="width: 150px;">
+                                        <input type="text" name="keyword" class="form-control float-right" placeholder="Cari data">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-primary">Cari</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Tabel Awal -->
                         <div class="table-responsive">
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>
                                     <tr role="row" style="white-space: nowrap">
-                                        <th>ID</th>
-                                        <th>Nama Pengadaan</th>
-                                        <th>Kategori</th>
-                                        <th>Tahun</th>
-                                        <th>Deskripsi</th>
-                                        <th>PIC</th>
-                                        <th>Program Utama</th>
-                                        <th>Mata Anggaran</th>
-                                        <th>Jenis Anggaran</th>
-                                        <th>Status</th>
+                                        <th rowspan="2">ID</th>
+                                        <th rowspan="2">Nama Pengadaan</th>
+                                        <th rowspan="2">Kategori</th>
+                                        <th rowspan="2">Tahun</th>
+                                        <th rowspan="2">Deskripsi</th>
+                                        <th rowspan="2">PIC</th>
+                                        <th rowspan="2">Target Selesai</th>
+                                        <th rowspan="2">Program Utama</th>
+                                        <th rowspan="2">Mata Anggaran</th>
+                                        <th colspan="2">Status</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Keterangan</th>
+                                        <th>Progress</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,10 +60,11 @@
                                             <td><?= $tb['tahun']; ?></td>
                                             <td><?= $tb['deskripsi']; ?></td>
                                             <td><?= $tb['pic']; ?></td>
+                                            <td><?= $tb['target']; ?></td>
                                             <td><?= $tb['program']; ?></td>
                                             <td><?= $tb['mata_anggaran']; ?></td>
-                                            <td><?= $tb['jenis_anggaran']; ?></td>
-                                            <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
+                                            <td><?= $tb['keterangan']; ?></td>
+                                            <td class="text-center font-weight-bold"><span><?= $tb['status']; ?></span>%</td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -66,14 +76,19 @@
                                     <table id="tableDRP" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr role="row" style="white-space: nowrap">
-                                                <th>ID</th>
-                                                <th>Nama Pengadaan</th>
-                                                <th>No. DRP</th>
-                                                <th>Anggaran DRP</th>
-                                                <th>No. SPPBJ</th>
-                                                <th>Nilai SPPBJ (Include PPN 10%)</th>
-                                                <th>Tgl. Terbit SPPBJ</th>
-                                                <th>Status</th>
+                                                <th rowspan="2">ID</th>
+                                                <th rowspan="2">Nama Pengadaan</th>
+                                                <th rowspan="2">No. DRP</th>
+                                                <th rowspan="2">No. SPPBJ</th>
+                                                <th rowspan="2">Anggaran DRP</th>
+                                                <th rowspan="2">Anggaran SPPBJ</th>
+                                                <th rowspan="2">Jenis Anggaran</th>
+                                                <th rowspan="2">Tgl. Terbit SPPBJ</th>
+                                                <th colspan="2">Status</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Keterangan</th>
+                                                <th>Progress</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -82,11 +97,13 @@
                                                     <td><?= $tb['code']; ?></td>
                                                     <td><?= $tb['nama']; ?></td>
                                                     <td><?= $tb['no_drp']; ?></td>
-                                                    <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
+                                                    <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
+                                                    <td><?= $tb['jenis_anggaran']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
-                                                    <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
+                                                    <td><?= $tb['keterangan']; ?></td>
+                                                    <td class="text-center font-weight-bold"><span><?= $tb['status']; ?></span>%</td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -114,7 +131,7 @@
                                                 <th colspan="7">Termin</th>
                                                 <th colspan="6">Realisasi</th>
                                                 <th rowspan="2">Perbandingan Nilai Kontrak dan Pembayaran</th>
-                                                <th rowspan="2">Status</th>
+                                                <th colspan="2">Status</th>
                                             </tr>
                                             <tr>
                                                 <th>Termin 1</th>
@@ -130,6 +147,8 @@
                                                 <th>Q4</th>
                                                 <th>Opex (Biaya)</th>
                                                 <th>Capex (Investasi)</th>
+                                                <th>Keterangan</th>
+                                                <th>Progress</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -162,7 +181,8 @@
                                                     <td><?= $tb['opex']; ?></td>
                                                     <td><?= $tb['capex']; ?></td>
                                                     <td><?= $tb['perbandingan']; ?></td>
-                                                    <td><a href="" data-toggle="modal" data-target="#modalStatus">Lihat Status</a></td>
+                                                    <td><?= $tb['keterangan']; ?></td>
+                                                    <td class="text-center font-weight-bold"><span><?= $tb['status']; ?></span>%</td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>

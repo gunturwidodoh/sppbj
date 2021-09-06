@@ -40,18 +40,22 @@
                             <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>
                                     <tr role="row" style="white-space: nowrap">
-                                        <th>ID</th>
-                                        <th>Nama Pengadaan</th>
-                                        <th>Kategori</th>
-                                        <th>Tahun</th>
-                                        <th>Deskripsi</th>
-                                        <th>PIC</th>
-                                        <th>Target Selesai</th>
-                                        <th>Program Utama</th>
-                                        <th>Mata Anggaran</th>
-                                        <th>Jenis Anggaran</th>
-                                        <th>Waktu Project Selesai</th>
-                                        <th>Action</th>
+                                        <th rowspan="2">ID</th>
+                                        <th rowspan="2">Nama Pengadaan</th>
+                                        <th rowspan="2">Kategori</th>
+                                        <th rowspan="2">Tahun</th>
+                                        <th rowspan="2">Deskripsi</th>
+                                        <th rowspan="2">PIC</th>
+                                        <th rowspan="2">Target Selesai</th>
+                                        <th rowspan="2">Program Utama</th>
+                                        <th rowspan="2">Mata Anggaran</th>
+                                        <th colspan="2">Status</th>
+                                        <th rowspan="2">Waktu Project Selesai</th>
+                                        <th rowspan="2"> Action</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Keterangan</th>
+                                        <th>Progress</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,7 +70,8 @@
                                             <td><?= $tb['target']; ?></td>
                                             <td><?= $tb['program']; ?></td>
                                             <td><?= $tb['mata_anggaran']; ?></td>
-                                            <td><?= $tb['jenis_anggaran']; ?></td>
+                                            <td><?= $tb['keterangan']; ?></td>
+                                            <td class="text-center font-weight-bold"><span><?= $tb['status']; ?></span>%</td>
                                             <td><?= $tb['modified_date']; ?></td>
                                             <!-- Action -->
                                             <td>
@@ -83,15 +88,20 @@
                                     <table id="tableDRP" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr role="row" style="white-space: nowrap">
-                                                <th>ID</th>
-                                                <th>Nama Pengadaan</th>
-                                                <th>No. DRP</th>
-                                                <th>Anggaran DRP</th>
-                                                <th>No. SPPBJ</th>
-                                                <th>Nilai SPPBJ (Include PPN 10%)</th>
-                                                <th>Tgl. Terbit SPPBJ</th>
-                                                <th>Waktu Project Selesai</th>
-                                                <th>Action</th>
+                                                <th rowspan="2">ID</th>
+                                                <th rowspan="2">Nama Pengadaan</th>
+                                                <th rowspan="2">No. DRP</th>
+                                                <th rowspan="2">No. SPPBJ</th>
+                                                <th rowspan="2">Anggaran DRP</th>
+                                                <th rowspan="2">Nilai SPPBJ</th>
+                                                <th rowspan="2">Tgl. Terbit SPPBJ</th>
+                                                <th colspan="2">Status</th>
+                                                <th rowspan="2">Waktu Project Selesai</th>
+                                                <th rowspan="2">Action</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Keterangan</th>
+                                                <th>Progress</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -101,10 +111,13 @@
                                                     <td><?= $tb['code']; ?></td>
                                                     <td><?= $tb['nama']; ?></td>
                                                     <td><?= $tb['no_drp']; ?></td>
-                                                    <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
+                                                    <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
+                                                    <td><?= $tb['jenis_anggaran']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
+                                                    <td><?= $tb['keterangan']; ?></td>
+                                                    <td class="text-center font-weight-bold"><span><?= $tb['status']; ?></span>%</td>
                                                     <td><?= $tb['modified_date']; ?></td>
                                                     <td>
                                                         <a href="<?= site_url() ?>/tabel/deleteHistory/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>
@@ -136,6 +149,7 @@
                                                 <th colspan="7">Termin</th>
                                                 <th colspan="6">Realisasi</th>
                                                 <th rowspan="2">Perbandingan Nilai Kontrak dan Pembayaran</th>
+                                                <th colspan="2">Realisasi</th>
                                                 <th rowspan="2">Waktu Project Selesai</th>
                                                 <th rowspan="2">Action</th>
                                             </tr>
@@ -153,7 +167,8 @@
                                                 <th>Q4</th>
                                                 <th>Opex (Biaya)</th>
                                                 <th>Capex (Investasi)</th>
-
+                                                <th>Keterangan</th>
+                                                <th>Progress</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -187,6 +202,8 @@
                                                     <td><?= $tb['opex']; ?></td>
                                                     <td><?= $tb['capex']; ?></td>
                                                     <td><?= $tb['perbandingan']; ?></td>
+                                                    <td><?= $tb['keterangan']; ?></td>
+                                                    <td class="text-center font-weight-bold"><span><?= $tb['status']; ?></span>%</td>
                                                     <td><?= $tb['modified_date']; ?></td>
                                                     <td>
                                                         <a href="<?= site_url() ?>/tabel/deleteHistory/<?= $tb['id']; ?>" class="badge badge-danger">Delete</a>

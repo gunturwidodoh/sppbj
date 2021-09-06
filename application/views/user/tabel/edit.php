@@ -76,18 +76,6 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="inputJenisAnggaran">Jenis Anggaran</label>
-                            <select class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
-                                <?php foreach ($jenisAnggaran as $ja) : ?>
-                                    <?php if ($ja == $row['jenis_anggaran']) : ?>
-                                        <option value="<?= $ja; ?>" selected><?= $ja; ?></option>
-                                    <?php else : ?>
-                                        <option value="<?= $ja; ?>"><?= $ja; ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -101,11 +89,11 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="inputNomorSPPBJ">Nomor SPPBJ</label>
+                            <label for="inputNomorSPPBJ">No. SPPBJ</label>
                             <input type="text" value="<?= $row['no_sppbj'] ?>" class="form-control" id="inputNomorSPPBJ" name="inputNomorSPPBJ">
                         </div>
                         <div class="form-group">
-                            <label for="inputNilaiSPPBJ">Nilai SPPBJ (+PPN 10%)</label>
+                            <label for="inputNilaiSPPBJ">Nilai SPPBJ</label>
                             <input type="text" value="<?= $row['nilai_sppbj'] ?>" class="form-control" id="inputNilaiSPPBJ" name="inputNilaiSPPBJ">
                         </div>
                         <div class="form-group">
@@ -121,6 +109,18 @@
                         <div class="form-group">
                             <label for="inputAnggaranDRP">Anggaran DRP</label>
                             <input type="text" value="<?= $row['anggaran_edrp'] ?>" class="form-control" id="inputAnggaranDRP" name="inputAnggaranDRP">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputJenisAnggaran">Jenis Anggaran</label>
+                            <select class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
+                                <?php foreach ($jenisAnggaran as $ja) : ?>
+                                    <?php if ($ja == $row['jenis_anggaran']) : ?>
+                                        <option value="<?= $ja; ?>" selected><?= $ja; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $ja; ?>"><?= $ja; ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -267,18 +267,6 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="form-group">
-                        <label for="inputTtd">SPPBJ Telah Ditandatangani Oleh</label>
-                        <select class="form-control" id="inputTtd" name="inputTtd">
-                            <?php foreach ($tandaTangan as $tt) : ?>
-                                <?php if ($tt == $row['ttd']) : ?>
-                                    <option value="<?= $tt; ?>" selected><?= $tt; ?></option>
-                                <?php else : ?>
-                                    <option value="<?= $tt; ?>"><?= $tt; ?></option>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
                     <div class="col sm-6">
                         <div class="form-group">
                             <label for="inputKeterangan">Keterangan</label>
@@ -297,22 +285,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <input class="btn btn-primary" type="submit" value="Simpan">
+                        <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
+                            Kembali</button>
+                    </div>
             </form>
-            <div class="row mb-2">
-                <form action="" method="post"></form>
-                <div class="col-sm-2">
-                    <input class="btn btn-primary" type="submit" value="Simpan">
-                    <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
-                        Kembali</button>
-                </div>
-                </form>
-                <div class="col">
-                    <button class="btn btn-danger float-right" data-toggle="modal" data-target="#modalStatus"><span class="glyphicon glyphicon-home"></span>
-                        Hapus Data</button>
-                </div>
+            <div class="col">
+                <button class="btn btn-danger float-right" data-toggle="modal" data-target="#modalStatus"><span class="glyphicon glyphicon-home"></span>
+                    Hapus Data</button>
             </div>
-        </div><!-- /.container-fluid -->
-    </section>
+        </div>
+</div><!-- /.container-fluid -->
+</section>
 </div>
 
 <div class="modal" id="modalStatus" tabindex="-1" role="dialog">

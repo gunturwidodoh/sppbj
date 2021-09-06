@@ -48,7 +48,7 @@ class Tabel_model extends CI_model
     {
         return
             [
-                NULL, '2019', '2020', '2021', '2022', '2023', '2024', '2025'
+                NULL, '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'
             ];
     }
 
@@ -76,7 +76,7 @@ class Tabel_model extends CI_model
     {
         return
             [
-                NULL, 'Biaya', 'Investasi'
+                NULL, 'Investasi', 'Biaya'
             ];
     }
 
