@@ -4,10 +4,14 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col">
+                <div class="col-8">
                     <h1><?= $judul;
                         echo ' ';
                         echo $row['nama']; ?></h1>
+                </div>
+                <div class="col">
+                    <button class="btn btn-danger float-right" data-toggle="modal" data-target="#modalStatus"><span class="glyphicon glyphicon-home"></span>
+                        Hapus Data</button>
                 </div>
             </div>
             <form action="" method="post">
@@ -285,17 +289,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col">
-                        <input class="btn btn-primary" type="submit" value="Simpan">
-                        <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
-                            Kembali</button>
-                    </div>
+                <div class="col">
+                    <input class="btn btn-primary" type="submit" value="Simpan">
+                    <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
+                        Kembali</button>
             </form>
-            <div class="col">
-                <button class="btn btn-danger float-right" data-toggle="modal" data-target="#modalStatus"><span class="glyphicon glyphicon-home"></span>
-                    Hapus Data</button>
-            </div>
+        </div>
+        <div class="col">
         </div>
 </div><!-- /.container-fluid -->
 </section>

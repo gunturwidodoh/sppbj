@@ -123,7 +123,6 @@ class Tabel_model extends CI_model
             'target' => $this->input->post('inputTarget', true),
             'program' => $this->input->post('inputProgramUtama', true),
             'mata_anggaran' => $this->input->post('inputMataAnggaran', true),
-            'jenis_anggaran' => $this->input->post('inputJenisAnggaran', true),
             'status' => $this->input->post('inputProgress', true),
             'keterangan' => $this->input->post('inputKeterangan', true)
         ];
