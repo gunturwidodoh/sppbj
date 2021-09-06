@@ -162,7 +162,8 @@ class Tabel_model extends CI_model
             'capex' => $this->input->post('inputCapex', true),
             'perbandingan' => $this->input->post('inputPerbandinganNilai', true),
             'ttd' => $this->input->post('inputTtd', true),
-            'status' => $this->input->post('inputStatus', true),
+            'status' => $this->input->post('inputProgress', true),
+            'keterangan' => $this->input->post('inputKeterangan', true)
         ];
         $this->db->set('tot_pembayaran', $total_pembayaran);
         $this->db->where('id', $this->input->post('id'));
