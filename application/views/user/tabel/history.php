@@ -146,7 +146,7 @@
                                                 <th rowspan="2">NPWP Rekanan</th>
                                                 <th rowspan="2">Nama AM</th>
                                                 <th rowspan="2">Alamat Rekanan</th>
-                                                <th colspan="7">Termin</th>
+                                                <th colspan="7">Rencana Realisasi Pembayaran</th>
                                                 <th colspan="6">Realisasi</th>
                                                 <th rowspan="2">Perbandingan Nilai Kontrak dan Pembayaran</th>
                                                 <th colspan="2">Realisasi</th>

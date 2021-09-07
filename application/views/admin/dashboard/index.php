@@ -26,7 +26,7 @@
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="<?= site_url() ?>/admin/register/index" class="small-box-footer">Daftar Akun Baru <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= site_url() ?>/admin/register" class="small-box-footer">Daftar Akun Baru <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
