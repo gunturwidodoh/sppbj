@@ -38,7 +38,7 @@ class Tabel_model extends CI_model
                 [
                     'field' => 'inputProgress',
                     'label' => 'Progress',
-                    'rules' => 'trim|required|numeric|max_length[3]'
+                    'rules' => 'trim|required|numeric|less_than_equal_to[100]'
                 ],
 
             ];

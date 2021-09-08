@@ -98,10 +98,10 @@
                                                 <th rowspan="2">Nama Pengadaan</th>
                                                 <th rowspan="2">No. DRP</th>
                                                 <th rowspan="2">No. SPPBJ</th>
+                                                <th rowspan="2">Tgl. Terbit SPPBJ</th>
                                                 <th rowspan="2">Anggaran DRP</th>
                                                 <th rowspan="2">Anggaran SPPBJ</th>
                                                 <th rowspan="2">Jenis Anggaran</th>
-                                                <th rowspan="2">Tgl. Terbit SPPBJ</th>
                                                 <th colspan="2">Status</th>
                                                 <th rowspan="2">Terakhir Diupdate</th>
                                                 <th rowspan="2">Action</th>
@@ -119,10 +119,10 @@
                                                     <td><?= $tb['nama']; ?></td>
                                                     <td><?= $tb['no_drp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
-                                                    <td><?= $tb['anggaran_edrp']; ?></td>
-                                                    <td><?= $tb['nilai_sppbj']; ?></td>
-                                                    <td><?= $tb['jenis_anggaran']; ?></td>
                                                     <td><?= $tb['tanggal']; ?></td>
+                                                    <td>Rp.<?= $tb['anggaran_edrp']; ?></td>
+                                                    <td>Rp.<?= $tb['nilai_sppbj']; ?></td>
+                                                    <td><?= $tb['jenis_anggaran']; ?></td>
                                                     <td><?= $tb['keterangan']; ?></td>
                                                     <td class="text-center font-weight-bold"><span><?= $tb['status']; ?></span>%</td>
                                                     <td><?= $tb['modified_date']; ?></td>

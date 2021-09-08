@@ -8,6 +8,15 @@
 <script src="<?php echo base_url('assets/dist'); ?>/js/demo.js"></script>
 <!-- Custom Javascript -->
 <script src="<?php echo base_url('assets/dist'); ?>/js/custom.js"></script>
+<!-- Data Tables -->
+<script src="<?php echo base_url('assets/plugins'); ?>/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url('assets/plugins'); ?>/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#table1').DataTable()
+    })
+</script>
 </body>
 
 </html>

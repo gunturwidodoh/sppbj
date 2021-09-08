@@ -37,7 +37,7 @@
                         </div>
                         <!-- Tabel Awal -->
                         <div class="table-responsive">
-                            <table id="tableAwal" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
+                            <table id="tableAwal" class="table table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                 <thead>
                                     <tr role="row" style="white-space: nowrap">
                                         <th rowspan="2">ID</th>
@@ -85,16 +85,17 @@
 
                                 <!-- Tabel DRP & SAPPBJ -->
                                 <div class="table-responsive">
-                                    <table id="tableDRP" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
+                                    <table id="tableDRP" class="table table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr role="row" style="white-space: nowrap">
                                                 <th rowspan="2">ID</th>
                                                 <th rowspan="2">Nama Pengadaan</th>
                                                 <th rowspan="2">No. DRP</th>
                                                 <th rowspan="2">No. SPPBJ</th>
+                                                <th rowspan="2">Tgl. Terbit SPPBJ</th>
                                                 <th rowspan="2">Anggaran DRP</th>
                                                 <th rowspan="2">Nilai SPPBJ</th>
-                                                <th rowspan="2">Tgl. Terbit SPPBJ</th>
+                                                <th rowspan="2">Jenis Anggaran</th>
                                                 <th colspan="2">Status</th>
                                                 <th rowspan="2">Waktu Project Selesai</th>
                                                 <th rowspan="2">Action</th>
@@ -112,10 +113,10 @@
                                                     <td><?= $tb['nama']; ?></td>
                                                     <td><?= $tb['no_drp']; ?></td>
                                                     <td><?= $tb['no_sppbj']; ?></td>
+                                                    <td><?= $tb['tanggal']; ?></td>
                                                     <td><?= $tb['anggaran_edrp']; ?></td>
                                                     <td><?= $tb['nilai_sppbj']; ?></td>
                                                     <td><?= $tb['jenis_anggaran']; ?></td>
-                                                    <td><?= $tb['tanggal']; ?></td>
                                                     <td><?= $tb['keterangan']; ?></td>
                                                     <td class="text-center font-weight-bold"><span><?= $tb['status']; ?></span>%</td>
                                                     <td><?= $tb['modified_date']; ?></td>
@@ -130,7 +131,7 @@
 
                                 <!-- Tabel Kontrak -->
                                 <div class="table-responsive">
-                                    <table id="tableKontrak" class="table table-sm table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
+                                    <table id="tableKontrak" class="table table-striped table-bordered table-hover" role="grid" style="width: 100%" width="100%" cellspacing="0">
                                         <thead>
                                             <tr class="justify-content-center" role="row" style="white-space: nowrap">
                                                 <th rowspan="2">ID</th>

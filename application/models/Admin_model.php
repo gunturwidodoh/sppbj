@@ -21,7 +21,7 @@ class Admin_model extends CI_model
                 [
                     'field' => 'username',
                     'label' => 'Username',
-                    'rules' => 'trim|required'
+                    'rules' => 'trim|required|is_unique[login.username]'
                 ],
 
                 [
