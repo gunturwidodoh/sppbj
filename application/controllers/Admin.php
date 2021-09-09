@@ -14,6 +14,7 @@ class Admin extends CI_Controller
     {
         $data['judul'] = 'Administration Page';
         $data['jumlah'] = $this->Admin_model->jumlah_akun();
+        $data['jumlahAplikasi'] = $this->Admin_model->jumlah_aplikasi();
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
@@ -49,6 +50,31 @@ class Admin extends CI_Controller
             }
         } else {
             $this->Admin_model->addDataRegistrasi();
+            $this->session->set_flashdata('message', 'Data telah ditambahkan');
+            redirect('admin');
+        }
+    }
+
+    public function tambahAplikasi()
+    {
+        $data['judul'] = 'Tambah Aplikasi Eksisting';
+        $data['role'] = $this->session->userdata('role');
+        $this->form_validation->set_rules($this->Admin_model->rulesApp());
+
+        if ($this->form_validation->run() == FALSE) {
+            if ($data["role"] == '1') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('admin/aplikasi', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->load->view('templates/header', $data);
+                $this->load->view('errors/html/error_session');
+                $this->load->view('templates/footer');
+            }
+        } else {
+            $this->Admin_model->addDataAplikasi();
             $this->session->set_flashdata('message', 'Data telah ditambahkan');
             redirect('admin');
         }

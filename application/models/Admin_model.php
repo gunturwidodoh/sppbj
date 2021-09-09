@@ -14,6 +14,12 @@ class Admin_model extends CI_model
         return $query->num_rows();
     }
 
+    public function jumlah_aplikasi()
+    {
+        $query = $this->db->query('SELECT * FROM aplikasi_eksisting');
+        return $query->num_rows();
+    }
+
     public function rules()
     {
         return
@@ -38,6 +44,18 @@ class Admin_model extends CI_model
             ];
     }
 
+    public function rulesApp()
+    {
+        return
+            [
+                [
+                    'field' => 'inputNamaApp',
+                    'label' => 'Nama Aplikasi',
+                    'rules' => 'trim|required'
+                ],
+            ];
+    }
+
     public function addDataRegistrasi()
     {
         $data = [
@@ -47,6 +65,19 @@ class Admin_model extends CI_model
         ];
 
         $this->db->insert('login', $data);
+    }
+
+    public function addDataAplikasi()
+    {
+        $data = [
+            "nama_aplikasi" => $this->input->post('inputNamaApp', true),
+            "business_owner" => $this->input->post('inputBusinessOwner', true),
+            "domain_aplikasi" => $this->input->post('inputDomain', true),
+            "ip_local" => $this->input->post('inputIpLocal', true),
+            "ip_public" => $this->input->post('inputIpPublic', true)
+        ];
+
+        $this->db->insert('aplikasi_eksisting', $data);
     }
 
     public function deleteData($id)

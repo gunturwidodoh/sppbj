@@ -29,6 +29,20 @@
                         <a href="<?= site_url() ?>/admin/register" class="small-box-footer">Daftar Akun Baru <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3><?= $jumlahAplikasi; ?></h3>
+
+                            <p>Aplikasi Eksisting</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-android-desktop"></i>
+                        </div>
+                        <a href="<?= site_url() ?>/admin/tambahAplikasi" class="small-box-footer">Tambah Aplikasi Baru <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
