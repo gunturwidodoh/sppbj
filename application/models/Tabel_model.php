@@ -38,7 +38,7 @@ class Tabel_model extends CI_model
                 [
                     'field' => 'inputProgress',
                     'label' => 'Progress',
-                    'rules' => 'trim|required|numeric|less_than_equal_to[100]'
+                    'rules' => 'trim|required|numeric|less_than_equal_to[100]|greater_than[0]'
                 ],
 
             ];
@@ -93,6 +93,11 @@ class Tabel_model extends CI_model
         return $this->db->get('project')->result_array();
     }
 
+    public function getAllDataHistory()
+    {
+        return $this->db->get('history')->result_array();
+    }
+
     public function getDataById($id)
     {
         return $this->db->get_where('project', ['id' => $id])->row_array();
@@ -113,6 +118,12 @@ class Tabel_model extends CI_model
 
     public function addDataTambahAwal()
     {
+        $terminSatu = $this->input->post('inputTerminSatu', true);
+        $terminDua = $this->input->post('inputTerminDua', true);
+        $terminTiga = $this->input->post('inputTerminTiga', true);
+        $terminEmpat = $this->input->post('inputTerminEmpat', true);
+        $terminLima = $this->input->post('inputTerminLima', true);
+        $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $data = [
             'code' => $this->input->post('inputKode', true),
             'nama' => $this->input->post('inputNamaPengadaan', true),
@@ -123,24 +134,9 @@ class Tabel_model extends CI_model
             'target' => $this->input->post('inputTarget', true),
             'program' => $this->input->post('inputProgramUtama', true),
             'mata_anggaran' => $this->input->post('inputMataAnggaran', true),
-            'status' => $this->input->post('inputProgress', true),
-            'keterangan' => $this->input->post('inputKeterangan', true)
-        ];
-        $this->db->insert('project', $data);
-    }
-
-    public function editData()
-    {
-        $terminSatu = $this->input->post('inputTerminSatu', true);
-        $terminDua = $this->input->post('inputTerminDua', true);
-        $terminTiga = $this->input->post('inputTerminTiga', true);
-        $terminEmpat = $this->input->post('inputTerminEmpat', true);
-        $terminLima = $this->input->post('inputTerminLima', true);
-        $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
-        $data = [
             'no_drp' => $this->input->post('inputNoDRP', true),
             'no_sppbj' => $this->input->post('inputNoSPPBJ', true),
-            'tanggal' => $this->input->post('inputTanggal', true),
+            'tanggal' => $this->input->post('inputTanggalTerbit', true),
             'code' => $this->input->post('inputKode', true),
             'nama' => $this->input->post('inputNamaPengadaan', true),
             'kategori' => $this->input->post('inputKategori', true),
@@ -151,8 +147,6 @@ class Tabel_model extends CI_model
             'target' => $this->input->post('inputTarget', true),
             'mata_anggaran' => $this->input->post('inputMataAnggaran', true),
             'jenis_anggaran' => $this->input->post('inputJenisAnggaran', true),
-            'ttd' => $this->input->post('inputTtd', true),
-            'status' => $this->input->post('inputStatus', true),
             'no_drp' => $this->input->post('inputNoDRP', true),
             'anggaran_edrp' => $this->input->post('inputAnggaranDRP', true),
             'no_sppbj' => $this->input->post('inputNomorSPPBJ', true),
@@ -182,7 +176,64 @@ class Tabel_model extends CI_model
             'opex' => $this->input->post('inputOpex', true),
             'capex' => $this->input->post('inputCapex', true),
             'perbandingan' => $this->input->post('inputPerbandinganNilai', true),
-            'ttd' => $this->input->post('inputTtd', true),
+            'status' => $this->input->post('inputProgress', true),
+            'keterangan' => $this->input->post('inputKeterangan', true)
+        ];
+        $this->db->set('tot_pembayaran', $total_pembayaran);
+        $this->db->insert('project', $data);
+    }
+
+    public function editData()
+    {
+        $terminSatu = $this->input->post('inputTerminSatu', true);
+        $terminDua = $this->input->post('inputTerminDua', true);
+        $terminTiga = $this->input->post('inputTerminTiga', true);
+        $terminEmpat = $this->input->post('inputTerminEmpat', true);
+        $terminLima = $this->input->post('inputTerminLima', true);
+        $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
+        $data = [
+            'no_drp' => $this->input->post('inputNoDRP', true),
+            'no_sppbj' => $this->input->post('inputNoSPPBJ', true),
+            'tanggal' => $this->input->post('inputTanggalTerbit', true),
+            'code' => $this->input->post('inputKode', true),
+            'nama' => $this->input->post('inputNamaPengadaan', true),
+            'kategori' => $this->input->post('inputKategori', true),
+            'tahun' => $this->input->post('inputTahun', true),
+            'deskripsi' => $this->input->post('inputDeskripsi', true),
+            'program' => $this->input->post('inputProgramUtama', true),
+            'pic' => $this->input->post('inputPIC', true),
+            'target' => $this->input->post('inputTarget', true),
+            'mata_anggaran' => $this->input->post('inputMataAnggaran', true),
+            'jenis_anggaran' => $this->input->post('inputJenisAnggaran', true),
+            'no_drp' => $this->input->post('inputNoDRP', true),
+            'anggaran_edrp' => $this->input->post('inputAnggaranDRP', true),
+            'no_sppbj' => $this->input->post('inputNomorSPPBJ', true),
+            'nilai_sppbj' => $this->input->post('inputNilaiSPPBJ', true),
+            'status' => $this->input->post('inputStatus', true),
+            'nomor_kontrak' => $this->input->post('inputNoKontrak', true),
+            'nilai_kontrak' => $this->input->post('inputNilaiKontrak', true),
+            'nomor_po' => $this->input->post('inputNoPo', true),
+            'tanggal_kontrak' => $this->input->post('inputTanggalKontrak', true),
+            'jangka_waktu' => $this->input->post('inputWaktuPengerjaan', true),
+            'tanggal_berakhir' => $this->input->post('inputTanggalBerakhir', true),
+            'jaminan_pelaksanaan' => $this->input->post('inputJaminanPelaksanaan', true),
+            'rekanan' => $this->input->post('inputNamaRekanan', true),
+            'npwp_rekanan' => $this->input->post('inputNPWPRekanan', true),
+            'nama_am' => $this->input->post('inputNamaAM', true),
+            'alamat_rekanan' => $this->input->post('inputAlamatRekanan', true),
+            'termin_1' => $this->input->post('inputTerminSatu', true),
+            'termin_2' => $this->input->post('inputTerminDua', true),
+            'termin_3' => $this->input->post('inputTerminTiga', true),
+            'termin_4' => $this->input->post('inputTerminEmpat', true),
+            'termin_5' => $this->input->post('inputTerminLima', true),
+            'selisih' => $this->input->post('inputSelisihTermin', true),
+            'q1' => $this->input->post('inputQSatu', true),
+            'q2' => $this->input->post('inputQDua', true),
+            'q3' => $this->input->post('inputQTiga', true),
+            'q4' => $this->input->post('inputQEmpat', true),
+            'opex' => $this->input->post('inputOpex', true),
+            'capex' => $this->input->post('inputCapex', true),
+            'perbandingan' => $this->input->post('inputPerbandinganNilai', true),
             'status' => $this->input->post('inputProgress', true),
             'keterangan' => $this->input->post('inputKeterangan', true)
         ];

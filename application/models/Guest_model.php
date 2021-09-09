@@ -25,6 +25,11 @@ class Guest_model extends CI_model
         return $this->db->get('aplikasi_eksisting')->result_array();
     }
 
+    public function getAllDataHistory()
+    {
+        return $this->db->get('history')->result_array();
+    }
+
     public function getAllData()
     {
         return $this->db->get('project')->result_array();

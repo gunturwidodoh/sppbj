@@ -14,7 +14,27 @@
 
 <script>
     $(document).ready(function() {
-        $('#table1').DataTable()
+        $('#table1').DataTable({
+            "scrollX": true,
+            "order": [
+                [11, "desc"]
+            ]
+        })
+        $('#table2').DataTable({
+            "scrollX": true,
+            "order": [
+                [10, "desc"]
+            ]
+        })
+        $('#table3').DataTable({
+            "scrollX": true,
+            "order": [
+                [29, "desc"]
+            ]
+        })
+        $('#table4').DataTable({
+            "scrollX": true
+        })
     })
 </script>
 </body>

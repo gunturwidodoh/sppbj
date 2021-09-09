@@ -35,7 +35,7 @@ $username = $this->session->userdata('username');
                         <div class="icon">
                             <i class="ion ion-android-checkmark-circle"></i>
                         </div>
-                        <a href="<?= site_url() ?>/tabel/history" class="small-box-footer">Lihat Project Selesai <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= site_url() ?>/tabel/history_awal" class="small-box-footer">Lihat Project Selesai <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

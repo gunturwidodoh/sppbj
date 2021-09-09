@@ -10,127 +10,6 @@ class Tabel extends CI_Controller
         $this->load->model('Tabel_model');
     }
 
-    public function index()
-    {
-        // view
-        $data['judul'] = 'Tabel';
-
-        //pagination
-        //config
-        $config['base_url'] = 'http://localhost:8080/sppbj/index.php/tabel/index';
-        $config['total_rows'] = $this->Tabel_model->countAllData();
-        $config['per_page'] = 10;
-
-        //style
-        $config['full_tag_open'] = '<nav aria-label="Page navigation example"><ul class="pagination">';
-        $config['full_tag_close'] = '</ul></nav>';
-
-        $config['first_link'] = 'First';
-        $config['first_tag_open'] = '<li class="page-item">';
-        $config['first_tag_close'] = '</li>';
-
-        $config['last_link'] = 'Last';
-        $config['last_tag_open'] = '<li class="page-item">';
-        $config['last_tag_close'] = '</li>';
-
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li class="page-item">';
-        $config['next_tag_close'] = '</li>';
-
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="page-item">';
-        $config['prev_tag_close'] = '</li>';
-
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-
-        $config['num_tag_open'] = '<li class="page-item">';
-        $config['num_tag_close'] = '</li>';
-
-        $config['attributes'] = array('class' => 'page-link');
-
-        //inisialisasi
-        $this->pagination->initialize($config);
-
-        //get data
-        $data['start'] = $this->uri->segment(3);
-        $data['tabel'] = $this->Tabel_model->getData($config['per_page'], $data['start']);
-        if ($this->input->post('keyword')) {
-            $data['tabel'] = $this->Tabel_model->cariDataProject();
-        }
-
-        //cek role yang sedang login
-        $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/index', $data);
-            $this->load->view('templates/footer');
-        } else if ($data["role"] == '2') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/index', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('templates/header', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-    }
-
-    public function tambah()
-    {
-        // view
-        $data['judul'] = 'Tambah Data';
-        $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tambah', $data);
-            $this->load->view('templates/footer');
-        } else if ($data["role"] == '2') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tambah', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('templates/header', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-
-        // fungsi add
-        if ($this->input->post()) {
-            $this->Tabel_model->addData();
-            redirect('tabel');
-        }
-    }
-
-    // public function update($id)
-    // {
-    //     // get data pada row yg di-update
-    //     $data['row'] = $this->Tabel_model->getDataById($id);
-    //     $data['role'] = $this->session->userdata('role');
-
-    //     // view
-    //     $data['judul'] = 'Update Data';
-    //     $this->load->view('templates/header', $data);
-    //     $this->load->view('templates/navbar');
-    //     $this->load->view('templates/sidebar');
-    //     $this->load->view('user/tabel/update', $data);
-    //     $this->load->view('templates/footer');
-
-    //     // fungsi update
-    //     if ($this->input->post()) {
-    //         $this->Tabel_model->updateData($id);
-    //         redirect('tabel');
-    //     }
-    // }
-
     public function delete($id)
     {
         $this->Tabel_model->deleteData($id);
@@ -142,7 +21,7 @@ class Tabel extends CI_Controller
     {
         $this->Tabel_model->deleteDataHistory($id);
         $this->session->set_flashdata('message', 'Data Telah Dihapus !');
-        redirect('tabel/history');
+        redirect('tabel/history_awal');
     }
 
     public function moveData($id)
@@ -150,6 +29,87 @@ class Tabel extends CI_Controller
         $this->Tabel_model->moveDataById($id);
         $this->session->set_flashdata('message', 'Project Telah Selesai !');
         redirect('tabel');
+    }
+
+    public function index()
+    {
+        // view
+        $data['judul'] = 'Tabel Awal';
+        $data['tabel'] = $this->Tabel_model->getAllData();
+
+        //cek role yang sedang login
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tables/index', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tables/index', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function tabel_drp()
+    {
+        // view
+        $data['judul'] = 'Tabel DRP dan SPPBJ';
+        $data['tabel'] = $this->Tabel_model->getAllData();
+
+        //cek role yang sedang login
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tables/table_drp', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tables/table_drp', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function tabel_kontrak()
+    {
+        // view
+        $data['judul'] = 'Tabel Kontrak';
+        $data['tabel'] = $this->Tabel_model->getAllData();
+
+        //cek role yang sedang login
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tables/table_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tables/table_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
     }
 
     public function tambah_awal()
@@ -191,7 +151,6 @@ class Tabel extends CI_Controller
         }
     }
 
-
     public function edit_data($id)
     {
         // view
@@ -232,66 +191,73 @@ class Tabel extends CI_Controller
         }
     }
 
-    public function history()
+    public function history_awal()
     {
         $data['judul'] = 'Tabel History Aplikasi';
 
-        //pagination
-        //config
-        $config['base_url'] = 'http://localhost:8080/sppbj/index.php/tabel/history';
-        $config['total_rows'] = $this->Tabel_model->countAllDataHistory();
-        $config['per_page'] = 10;
-
-        //style
-        $config['full_tag_open'] = '<nav aria-label="Page navigation example"><ul class="pagination">';
-        $config['full_tag_close'] = '</ul></nav>';
-
-        $config['first_link'] = 'First';
-        $config['first_tag_open'] = '<li class="page-item">';
-        $config['first_tag_close'] = '</li>';
-
-        $config['last_link'] = 'Last';
-        $config['last_tag_open'] = '<li class="page-item">';
-        $config['last_tag_close'] = '</li>';
-
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li class="page-item">';
-        $config['next_tag_close'] = '</li>';
-
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="page-item">';
-        $config['prev_tag_close'] = '</li>';
-
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-
-        $config['num_tag_open'] = '<li class="page-item">';
-        $config['num_tag_close'] = '</li>';
-
-        $config['attributes'] = array('class' => 'page-link');
-
-        //inisialisasi
-        $this->pagination->initialize($config);
-
-        //get data
-        $data['start'] = $this->uri->segment(3);
-        $data['tabel'] = $this->Tabel_model->getDataHistory($config['per_page'], $data['start']);
-        if ($this->input->post('keyword')) {
-            $data['tabel'] = $this->Tabel_model->cariDataHistory();
-        }
-
+        $data['tabel'] = $this->Tabel_model->getAllDataHistory();
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/history', $data);
+            $this->load->view('user/tabel/history/index', $data);
             $this->load->view('templates/footer');
         } else if ($data["role"] == '2') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/history', $data);
+            $this->load->view('user/tabel/history/index', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function history_drp()
+    {
+        $data['judul'] = 'Tabel History Aplikasi';
+
+        $data['tabel'] = $this->Tabel_model->getAllDataHistory();
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/history/history_drp', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/history/history_drp', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function history_kontrak()
+    {
+        $data['judul'] = 'Tabel History Aplikasi';
+
+        $data['tabel'] = $this->Tabel_model->getAllDataHistory();
+        $data['role'] = $this->session->userdata('role');
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/history/history_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/history/history_kontrak', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/header', $data);
@@ -300,6 +266,57 @@ class Tabel extends CI_Controller
         }
     }
 }
+
+// public function tambah()
+    // {
+    //     // view
+    //     $data['judul'] = 'Tambah Data';
+    //     $data['role'] = $this->session->userdata('role');
+    //     if ($data["role"] == '1') {
+    //         $this->load->view('templates/header', $data);
+    //         $this->load->view('templates/navbar');
+    //         $this->load->view('templates/sidebar');
+    //         $this->load->view('user/tabel/tambah', $data);
+    //         $this->load->view('templates/footer');
+    //     } else if ($data["role"] == '2') {
+    //         $this->load->view('templates/header', $data);
+    //         $this->load->view('templates/navbar');
+    //         $this->load->view('templates/sidebar');
+    //         $this->load->view('user/tabel/tambah', $data);
+    //         $this->load->view('templates/footer');
+    //     } else {
+    //         $this->load->view('templates/header', $data);
+    //         $this->load->view('errors/html/error_session');
+    //         $this->load->view('templates/footer');
+    //     }
+
+    //     // fungsi add
+    //     if ($this->input->post()) {
+    //         $this->Tabel_model->addData();
+    //         redirect('tabel');
+    //     }
+    // }
+
+ // public function update($id)
+    // {
+    //     // get data pada row yg di-update
+    //     $data['row'] = $this->Tabel_model->getDataById($id);
+    //     $data['role'] = $this->session->userdata('role');
+
+    //     // view
+    //     $data['judul'] = 'Update Data';
+    //     $this->load->view('templates/header', $data);
+    //     $this->load->view('templates/navbar');
+    //     $this->load->view('templates/sidebar');
+    //     $this->load->view('user/tabel/update', $data);
+    //     $this->load->view('templates/footer');
+
+    //     // fungsi update
+    //     if ($this->input->post()) {
+    //         $this->Tabel_model->updateData($id);
+    //         redirect('tabel');
+    //     }
+    // }
 
 // public function edit_awal($id)
 //     {
