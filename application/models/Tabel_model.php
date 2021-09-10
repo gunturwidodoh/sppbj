@@ -24,11 +24,60 @@ class Tabel_model extends CI_model
                     'rules' => 'trim|required'
                 ],
                 [
+                    'field' => 'inputNilaiSPPBJ',
+                    'label' => 'Nilai SPPBJ',
+                    'rules' => 'trim|integer'
+                ],
+                [
+                    'field' => 'inputAnggaranDRP',
+                    'label' => 'Anggaran DRP',
+                    'rules' => 'trim|integer'
+                ],
+                [
+                    'field' => 'inputTerminSatu',
+                    'label' => 'Termin 1',
+                    'rules' => 'trim|integer'
+                ],
+                [
+                    'field' => 'inputTerminDua',
+                    'label' => 'Termin 2',
+                    'rules' => 'trim|integer'
+                ],
+                [
+                    'field' => 'inputTerminTiga',
+                    'label' => 'Termin 3',
+                    'rules' => 'trim|integer'
+                ],
+                [
+                    'field' => 'inputTerminEmpat',
+                    'label' => 'Termin 4',
+                    'rules' => 'trim|integer'
+                ],
+                [
+                    'field' => 'inputTerminLima',
+                    'label' => 'Termin 5',
+                    'rules' => 'trim|integer'
+                ],
+                [
+                    'field' => 'inputNoPo',
+                    'label' => 'No. PO',
+                    'rules' => 'trim|integer'
+                ],
+                [
+                    'field' => 'inputOpex',
+                    'label' => 'Opex (Biaya)',
+                    'rules' => 'trim|integer'
+                ],
+                [
+                    'field' => 'inputCapex',
+                    'label' => 'Capex (Investasi)',
+                    'rules' => 'trim|integer'
+                ],
+                [
                     'field' => 'inputProgress',
                     'label' => 'Progress',
                     'rules' => 'trim|required|numeric|less_than_equal_to[100]|greater_than[0]'
-                ],
-
+                ]
             ];
     }
 
