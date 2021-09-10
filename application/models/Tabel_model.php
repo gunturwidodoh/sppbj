@@ -14,19 +14,7 @@ class Tabel_model extends CI_model
         return $query->num_rows();
     }
 
-    public function rulesTambahAwal()
-    {
-        return
-            [
-                [
-                    'field' => 'inputKode',
-                    'label' => 'ID',
-                    'rules' => 'trim|required'
-                ],
-            ];
-    }
-
-    public function rulesEdit()
+    public function rulesValidation()
     {
         return
             [
@@ -84,7 +72,8 @@ class Tabel_model extends CI_model
     {
         return
             [
-                NULL, 'Manager Operasional TI', 'Manager Pelayanan TI', 'Manager Pengembangan TI', 'Vice President TI', 'Direktur Keuangan, TI, dan Management Resiko', 'Vice President Perencanaan dan Pengendalian Keuangan', 'Vice Supply Chain Management'
+                NULL, 'Manager Operasional TI', 'Manager Pelayanan TI', 'Manager Pengembangan TI', 'Vice President TI', 'Direktur Keuangan, TI, dan Management Resiko', 
+                'Vice President Perencanaan dan Pengendalian Keuangan', 'Vice Supply Chain Management'
             ];
     }
 
@@ -244,8 +233,7 @@ class Tabel_model extends CI_model
         $this->db->set('tot_pembayaran', $total_pembayaran);
         $this->db->where('id', $this->input->post('id'));
 
-        $this->db->set('modified_date', 'NOW()', FALSE);
-        //FALSE untuk mengubah 'NOW()' menjadi NOW()
+        $this->db->set('modified_date', 'NOW()', FALSE); //FALSE untuk mengubah 'NOW()' menjadi NOW()
         $this->db->update('project', $data);
     }
 

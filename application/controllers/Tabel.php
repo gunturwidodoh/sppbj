@@ -121,7 +121,7 @@ class Tabel extends CI_Controller
         $data['jenisAnggaran'] = $this->Tabel_model->jenis_anggaran();
         $data['judul'] = 'Tambah Data';
         $data['role'] = $this->session->userdata('role');
-        $this->form_validation->set_rules($this->Tabel_model->rulesTambahAwal());
+        $this->form_validation->set_rules($this->Tabel_model->rulesValidation());
         if ($this->form_validation->run() == FALSE) {
             if ($data["role"] == '1') {
                 $this->load->view('templates/header', $data);
@@ -164,7 +164,7 @@ class Tabel extends CI_Controller
         $data['role'] = $this->session->userdata('role');
 
         // form validation
-        $this->form_validation->set_rules($this->Tabel_model->rulesEdit());
+        $this->form_validation->set_rules($this->Tabel_model->rulesValidation());
         if ($this->form_validation->run() == FALSE) {
             if ($data["role"] == '1') {
                 $this->load->view('templates/header', $data);
@@ -184,7 +184,7 @@ class Tabel extends CI_Controller
                 $this->load->view('templates/footer');
             }
         } else {
-            // fungsi add
+            // fungsi edit
             if ($this->input->post()) {
                 $this->Tabel_model->editData();
                 $this->session->set_flashdata('message', 'Data Telah Diedit !');
