@@ -25,7 +25,7 @@
                 </div>
                 <?php if (form_error('username')) : ?>
                     <div id="usernameError" class="form-text text-danger">
-                        <?= form_error('username'); ?>
+                        <small><?= form_error('username'); ?></small>
                     </div>
                 <?php endif; ?>
                 <div class="input-group mb-3">
@@ -38,7 +38,7 @@
                 </div>
                 <?php if (form_error('password')) : ?>
                     <div id="passwordError" class="form-text text-danger">
-                        <?= form_error('password'); ?>
+                        <small><?= form_error('password'); ?></small>
                     </div>
                 <?php endif; ?>
                 <div class="row">

@@ -16,7 +16,7 @@
                             <input type="text" value="" class="form-control" id="inputNamaApp" name="inputNamaApp">
                             <?php if (form_error('inputNamaApp')) : ?>
                                 <div id="passError" class="form-text text-danger">
-                                    <?= form_error('inputNamaApp'); ?>
+                                    <small><?= form_error('inputNamaApp'); ?></small>
                                 </div>
                             <?php endif; ?>
                         </div>

@@ -16,7 +16,7 @@
                             <input type="text" value="" class="form-control" id="username" name="username">
                             <?php if (form_error('username')) : ?>
                                 <div id="usernameError" class="form-text text-danger">
-                                    <?= form_error('username'); ?>
+                                    <small><?= form_error('username'); ?></small>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -26,7 +26,7 @@
                                 <input type="password" value="" class="form-control" id="password" name="password">
                                 <?php if (form_error('password')) : ?>
                                     <div id="passwordError" class="form-text text-danger">
-                                        <?= form_error('password'); ?>
+                                        <small><?= form_error('password'); ?></small>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -35,7 +35,7 @@
                                 <input type="password" value="" class="form-control" id="pass" name="pass">
                                 <?php if (form_error('pass')) : ?>
                                     <div id="passError" class="form-text text-danger">
-                                        <?= form_error('pass'); ?>
+                                        <small><?= form_error('pass'); ?></small>
                                     </div>
                                 <?php endif; ?>
                             </div>

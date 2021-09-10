@@ -317,17 +317,16 @@
                                 </div>
                             </div>
                             <?php if (form_error('inputProgress')) : ?>
-                                <div id="progressError" class="form-text text-danger">
+                                <small class="form-text text-danger" id="progressError">
                                     <?= form_error('inputProgress'); ?>
-                                </div>
+                                </small>
                             <?php endif; ?>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <input class="btn btn-primary" type="submit" value="Simpan">
-                    <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>
-                        Kembali</button>
+                    <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>Kembali</button>
             </form>
         </div>
         <div class="col">

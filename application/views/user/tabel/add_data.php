@@ -16,7 +16,7 @@
                             <input type="text" value="" class="form-control" id="inputKode" name="inputKode">
                             <?php if (form_error('inputKode')) : ?>
                                 <div id="idError" class="form-text text-danger">
-                                    <?= form_error('inputKode'); ?>
+                                    <small><?= form_error('inputKode'); ?></small>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -312,9 +312,9 @@
                                 </div>
                             </div>
                             <?php if (form_error('inputProgress')) : ?>
-                                <div id="progressError" class="form-text text-danger">
+                                <small id="progressError" class="invalid-feedback">
                                     <?= form_error('inputProgress'); ?>
-                                </div>
+                                </small>
                             <?php endif; ?>
                         </div>
                     </div>
