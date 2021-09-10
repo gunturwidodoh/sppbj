@@ -105,7 +105,7 @@ class Tabel_model extends CI_model
         $this->db->delete('project', ['id' => $id]);
     }
 
-    public function addDataTambahAwal()
+    public function addData()
     {
         $data = [
             'code' => $this->input->post('inputKode', true),

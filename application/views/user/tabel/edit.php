@@ -22,7 +22,7 @@
                             <input type="text" value="<?= $row['code'] ?>" class="form-control" id="inputKode" name="inputKode">
                         </div>
                         <div class="form-group">
-                            <label for="inputNamaPengadaa n">Nama Pengadaan</label>
+                            <label for="inputNamaPengadaan">Nama Pengadaan</label>
                             <input type="text" value="<?= $row['nama'] ?>" class="form-control" id="inputNamaPengadaan" name="inputNamaPengadaan">
                         </div>
                         <div class="form-group">

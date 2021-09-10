@@ -112,7 +112,7 @@ class Tabel extends CI_Controller
         }
     }
 
-    public function tambah_awal()
+    public function add_data()
     {
         // view
         $data['tahun'] = $this->Tabel_model->tahun();
@@ -127,13 +127,13 @@ class Tabel extends CI_Controller
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/navbar');
                 $this->load->view('templates/sidebar');
-                $this->load->view('user/tabel/tambah_awal', $data);
+                $this->load->view('user/tabel/add_data', $data);
                 $this->load->view('templates/footer');
             } else if ($data["role"] == '2') {
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/navbar');
                 $this->load->view('templates/sidebar');
-                $this->load->view('user/tabel/tambah_awal', $data);
+                $this->load->view('user/tabel/add_data', $data);
                 $this->load->view('templates/footer');
             } else {
                 $this->load->view('templates/headererror', $data);
@@ -144,8 +144,8 @@ class Tabel extends CI_Controller
 
             // fungsi add
             if ($this->input->post()) {
-                $this->Tabel_model->addDataTambahAwal();
-                $this->session->set_flashdata('message', 'Data Telah Ditambahkan !');
+                $this->Tabel_model->addData();
+                $this->session->set_flashdata('message', 'Data Telah Ditambahkan!');
                 redirect('tabel');
             }
         }
