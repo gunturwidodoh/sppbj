@@ -121,7 +121,7 @@ class Tabel_model extends CI_model
     {
         return
             [
-                NULL, 'Manager Operasional TI', 'Manager Pelayanan TI', 'Manager Pengembangan TI', 'Vice President TI', 'Direktur Keuangan, TI, dan Management Resiko', 
+                NULL, 'Manager Operasional TI', 'Manager Pelayanan TI', 'Manager Pengembangan TI', 'Vice President TI', 'Direktur Keuangan, TI, dan Management Resiko',
                 'Vice President Perencanaan dan Pengendalian Keuangan', 'Vice Supply Chain Management'
             ];
     }
@@ -299,13 +299,13 @@ class Tabel_model extends CI_model
     }
 
     //pagination
-    public function getData($limit, $start)
+    public function getData($limit)
     {
         //return $this->db->get('project', $limit, $start)->result_array();
         $this->db->select('*');
         $this->db->from('project');
         $this->db->order_by('modified_date', 'desc');
-        $this->db->limit($limit, $start);
+        $this->db->limit($limit);
         return $this->db->get()->result_array();
     }
 

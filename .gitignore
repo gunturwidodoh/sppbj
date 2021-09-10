@@ -32,3 +32,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 .vscode/settings.json
 application/config/config.php
 application/config/config.php
+application/config/config.php

@@ -8,7 +8,7 @@ $username = $this->session->userdata('username');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Selamat Datang <?= $username; ?> di Project Tracker</h1>
+                    <h1>Selamat Datang <span style="text-transform: uppercase"><?= $username; ?></span> di Project Tracker</h1>
                 </div>
             </div>
             <div class="row mb-2">
@@ -39,7 +39,52 @@ $username = $this->session->userdata('username');
                     </div>
                 </div>
             </div>
+            <div class="row m-auto">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="card">
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title">Data Project yang Terakhir Diedit</h3>
 
-        </div><!-- /.container-fluid -->
-    </section>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered m-0">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">ID</th>
+                                        <th rowspan="2">Nama Project</th>
+                                        <th rowspan="2">Terakhir Diedit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($dataBaru as $db) : ?>
+                                        <tr>
+                                            <td><?= $db['code']; ?></td>
+                                            <td><?= $db['nama']; ?></td>
+                                            <td><?= $db['modified_date']; ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <a href="<?= site_url() ?>/tabel" class="btn btn-sm btn-primary float-right">Lihat Tabel</a>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+</div><!-- /.container-fluid -->
+</section>
 </div>

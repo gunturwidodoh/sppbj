@@ -14,6 +14,7 @@ class Home extends CI_Controller
         $data['judul'] = 'Halaman Utama';
         $data['jumlah'] = $this->Tabel_model->jumlah_project();
         $data['jumlahHistory'] = $this->Tabel_model->jumlah_history_project();
+        $data['dataBaru'] = $this->Tabel_model->getData(4);
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);

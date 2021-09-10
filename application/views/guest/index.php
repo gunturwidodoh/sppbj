@@ -9,7 +9,7 @@ $username = $this->session->userdata('username');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-8">
-                    <h1>Selamat Datang <?= $username; ?> di Project Tracker</h1>
+                    <h1>Selamat Datang <span style="text-transform: uppercase"><?= $username; ?></span> di Project Tracker</h1>
                 </div>
             </div>
             <div class="row mb-2">
