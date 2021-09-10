@@ -182,33 +182,63 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <h3>Termin</h3>
+                    <h3>Rencana Realisasi Pembayaran</h3>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="inputTerminSatu">Termin 1</label>
-                            <input type="text" class="form-control" id="inputTerminSatu" name="inputTerminSatu">
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputTerminSatu" name="inputTerminSatu">
+                            </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputTerminEmpat">Termin 4</label>
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputTerminEmpat" name="inputTerminEmpat">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
                             <label for="inputTerminDua">Termin 2</label>
-                            <input type="text" class="form-control" id="inputTerminDua" name="inputTerminDua">
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputTerminDua" name="inputTerminDua">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTerminLima">Termin 5</label>
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputTerminLima" name="inputTerminLima">
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="inputTerminTiga">Termin 3</label>
-                            <input type="text" class="form-control" id="inputTerminTiga" name="inputTerminTiga">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputTerminEmpat">Termin 4</label>
-                            <input type="text" class="form-control" id="inputTerminEmpat" name="inputTerminEmpat">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputTerminLima">Termin 5</label>
-                            <input type="text" class="form-control" id="inputTerminLima" name="inputTerminLima">
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputTerminTiga" name="inputTerminTiga">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="inputSelisihTermin">Selisih Termin</label>
@@ -217,7 +247,7 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <h3>Quarter Pembayaran</h3>
+                    <h3>Realisasi Pembayaran</h3>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -226,14 +256,14 @@
                             <input type="text" class="form-control" id="inputQSatu" name="inputQSatu">
                         </div>
                         <div class="form-group">
-                            <label for="inputQDua">Q2</label>
-                            <input type="text" class="form-control" id="inputQDua" name="inputQDua">
+                            <label for="inputQTiga">Q3</label>
+                            <input type="text" class="form-control" id="inputQTiga" name="inputQTiga">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="inputQTiga">Q3</label>
-                            <input type="text" class="form-control" id="inputQTiga" name="inputQTiga">
+                            <label for="inputQDua">Q2</label>
+                            <input type="text" class="form-control" id="inputQDua" name="inputQDua">
                         </div>
                         <div class="form-group">
                             <label for="inputQEmpat">Q4</label>

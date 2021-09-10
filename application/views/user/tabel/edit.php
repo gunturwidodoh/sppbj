@@ -187,80 +187,110 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <h3>Termin</h3>
+                    <h3>Rencana Realisasi Pembayaran</h3>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="inputTerminSatu">Termin 1</label>
-                            <input type="text" value="<?= $row['termin_1'] ?>" class="form-control" id="inputTerminSatu" name="inputTerminSatu">
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?php echo $row['termin_1']; ?> id="inputTerminSatu" name="inputTerminSatu">
+                            </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputTerminEmpat">Termin 4</label>
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?php echo $row['termin_4']; ?> id="inputTerminEmpat" name="inputTerminEmpat">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
                             <label for="inputTerminDua">Termin 2</label>
-                            <input type="text" value="<?= $row['termin_2'] ?>" class="form-control" id="inputTerminDua" name="inputTerminDua">
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?php echo $row['termin_2']; ?> id="inputTerminDua" name="inputTerminDua">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTerminLima">Termin 5</label>
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?php echo $row['termin_5']; ?> id="inputTerminLima" name="inputTerminLima">
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="inputTerminTiga">Termin 3</label>
-                            <input type="text" value="<?= $row['termin_3'] ?>" class="form-control" id="inputTerminTiga" name="inputTerminTiga">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputTerminEmpat">Termin 4</label>
-                            <input type="text" value="<?= $row['termin_4'] ?>" class="form-control" id="inputTerminEmpat" name="inputTerminEmpat">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputTerminLima">Termin 5</label>
-                            <input type="text" value="<?= $row['termin_5'] ?>" class="form-control" id="inputTerminLima" name="inputTerminLima">
+                            <!-- Input Group Rp. -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" class="form-control" value="<?php echo $row['termin_3']; ?> id="inputTerminTiga" name="inputTerminTiga">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="inputSelisihTermin">Selisih Termin</label>
-                            <input type="text" value="<?= $row['selisih'] ?>" class="form-control" id="inputSelisihTermin" name="inputSelisihTermin">
+                            <input type="text" class="form-control" value="<?php echo $row['selisih']; ?> id="inputSelisihTermin" name="inputSelisihTermin">
                         </div>
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <h3>Quarter Pembayaran</h3>
+                    <h3>Realisasi Pembayaran</h3>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="inputQSatu">Q1</label>
-                            <input type="text" value="<?= $row['q1'] ?>" class="form-control" id="inputQSatu" name="inputQSatu">
+                            <input type="text" class="form-control" value="<?php echo $row['q1']; ?> id="inputQSatu" name="inputQSatu">
                         </div>
                         <div class="form-group">
-                            <label for="inputQDua">Q2</label>
-                            <input type="text" value="<?= $row['q2'] ?>" class="form-control" id="inputQDua" name="inputQDua">
+                            <label for="inputQTiga">Q3</label>
+                            <input type="text" class="form-control" value="<?php echo $row['q3']; ?> id="inputQTiga" name="inputQTiga">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="inputQTiga">Q3</label>
-                            <input type="text" value="<?= $row['q3'] ?>" class="form-control" id="inputQTiga" name="inputQTiga">
+                            <label for="inputQDua">Q2</label>
+                            <input type="text" class="form-control" value="<?php echo $row['q2']; ?> id="inputQDua" name="inputQDua">
                         </div>
                         <div class="form-group">
                             <label for="inputQEmpat">Q4</label>
-                            <input type="text" value="<?= $row['q4'] ?>" class="form-control" id="inputQEmpat" name="inputQEmpat">
+                            <input type="text" class="form-control" value="<?php echo $row['q4']; ?> id="inputQEmpat" name="inputQEmpat">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="inputOpex">Opex (Biaya)</label>
-                            <input type="text" value="<?= $row['capex'] ?>" class="form-control" id="inputOpex" name="inputOpex">
+                            <input type="text" class="form-control" value="<?php echo $row['opex']; ?> id="inputOpex" name="inputOpex">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="inputCapex">Capex (Investasi)</label>
-                            <input type="text" value="<?= $row['opex'] ?>" class="form-control" id="inputCapex" name="inputCapex">
+                            <input type="text" class="form-control" value="<?php echo $row['capex']; ?> id="inputCapex" name="inputCapex">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="inputPerbandinganNilai">Perbandingan Nilai Kontrak dan Pembayaran</label>
-                            <input type="text" value="<?= $row['perbandingan'] ?>" class="form-control" id="inputPerbandinganNilai" name="inputPerbandinganNilai">
+                            <input type="text" class="form-control" value="<?php echo $row['perbandingan']; ?>" id="inputPerbandinganNilai" name="inputPerbandinganNilai">
                         </div>
                     </div>
                 </div>
