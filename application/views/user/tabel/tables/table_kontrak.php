@@ -9,7 +9,7 @@
             </div>
             <div class="row mb-2">
                 <div class="col-sm-2">
-                    <a href="<?php echo site_url(); ?>/tabel/tambah_awal" type="submit" class="btn btn-primary btn-sm mb-2 btn-block">Tambah Project Baru</a>
+                    <a href="<?php echo site_url(); ?>/tabel/add_data" type="submit" class="btn btn-primary btn-sm mb-2 btn-block">Tambah Project Baru</a>
                 </div>
             </div>
             <?php if ($this->session->flashdata('message')) : ?>

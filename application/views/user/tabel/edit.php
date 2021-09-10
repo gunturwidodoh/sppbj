@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-8">
-                    <h1><?= $judul. ' ' . $row['nama']; ?></h1>
+                    <h1><?= $judul . ' '; ?><b><?= $row['nama']; ?></b></h1>
                 </div>
                 <div class="col">
                     <button class="btn btn-danger float-right" data-toggle="modal" data-target="#modalStatus"><span class="glyphicon glyphicon-home"></span>
