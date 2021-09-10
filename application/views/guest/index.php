@@ -23,7 +23,7 @@ $username = $this->session->userdata('username');
                         <div class="icon">
                             <i class="ion ion-android-clipboard"></i>
                         </div>
-                        <a href="<?= site_url() ?>/guest/view_project" class="small-box-footer">Lihat Tabel Project Eksisting <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= site_url() ?>/guest/view_project_awal" class="small-box-footer">Lihat Tabel Project Eksisting <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
@@ -36,7 +36,7 @@ $username = $this->session->userdata('username');
                         <div class="icon">
                             <i class="ion ion-android-checkmark-circle"></i>
                         </div>
-                        <a href="<?= site_url() ?>/guest/view_history_project" class="small-box-footer">Lihat Project Selesai <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= site_url() ?>/guest/view_history_awal" class="small-box-footer">Lihat Project Selesai <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">

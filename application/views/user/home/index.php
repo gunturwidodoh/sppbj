@@ -22,7 +22,7 @@ $username = $this->session->userdata('username');
                         <div class="icon">
                             <i class="ion ion-android-clipboard"></i>
                         </div>
-                        <a href="<?= site_url() ?>/tabel/tambah_awal" class="small-box-footer">Tambah Project Baru <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= site_url() ?>/tabel/add_data" class="small-box-footer">Tambah Project Baru <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
