@@ -13,6 +13,7 @@
                         <table id="table4" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
                             <thead>
                                 <tr class="text-center" role="row" style="white-space: nowrap">
+                                    <th>No.</th>
                                     <th>Nama Aplikasi</th>
                                     <th>Business Owner</th>
                                     <th>Domain Aplikasi</th>
@@ -21,8 +22,10 @@
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
+                                <?php $i = 1; ?>
                                 <?php foreach ($tabel as $tb) : ?>
                                     <tr>
+                                        <td><?= $i++; ?></td>
                                         <td class="text-left"><?= $tb['nama_aplikasi']; ?></td>
                                         <td><?= $tb['business_owner']; ?></td>
                                         <td><?= $tb['domain_aplikasi']; ?></td>

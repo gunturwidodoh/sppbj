@@ -52,7 +52,7 @@ class Tabel extends CI_Controller
             $this->load->view('user/tabel/tables/index', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->view('templates/header', $data);
+            $this->load->view('templates/headererror', $data);
             $this->load->view('errors/html/error_session');
             $this->load->view('templates/footer');
         }
@@ -79,7 +79,7 @@ class Tabel extends CI_Controller
             $this->load->view('user/tabel/tables/table_drp', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->view('templates/header', $data);
+            $this->load->view('templates/headererror', $data);
             $this->load->view('errors/html/error_session');
             $this->load->view('templates/footer');
         }
@@ -106,7 +106,7 @@ class Tabel extends CI_Controller
             $this->load->view('user/tabel/tables/table_kontrak', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->view('templates/header', $data);
+            $this->load->view('templates/headererror', $data);
             $this->load->view('errors/html/error_session');
             $this->load->view('templates/footer');
         }
@@ -136,7 +136,7 @@ class Tabel extends CI_Controller
                 $this->load->view('user/tabel/tambah_awal', $data);
                 $this->load->view('templates/footer');
             } else {
-                $this->load->view('templates/header', $data);
+                $this->load->view('templates/headererror', $data);
                 $this->load->view('errors/html/error_session');
                 $this->load->view('templates/footer');
             }
@@ -179,7 +179,7 @@ class Tabel extends CI_Controller
                 $this->load->view('user/tabel/edit', $data);
                 $this->load->view('templates/footer');
             } else {
-                $this->load->view('templates/header', $data);
+                $this->load->view('templates/headererror', $data);
                 $this->load->view('errors/html/error_session');
                 $this->load->view('templates/footer');
             }
@@ -212,7 +212,7 @@ class Tabel extends CI_Controller
             $this->load->view('user/tabel/history/index', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->view('templates/header', $data);
+            $this->load->view('templates/headererror', $data);
             $this->load->view('errors/html/error_session');
             $this->load->view('templates/footer');
         }
@@ -237,7 +237,7 @@ class Tabel extends CI_Controller
             $this->load->view('user/tabel/history/history_drp', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->view('templates/header', $data);
+            $this->load->view('templates/headererror', $data);
             $this->load->view('errors/html/error_session');
             $this->load->view('templates/footer');
         }
@@ -262,7 +262,7 @@ class Tabel extends CI_Controller
             $this->load->view('user/tabel/history/history_kontrak', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->view('templates/header', $data);
+            $this->load->view('templates/headererror', $data);
             $this->load->view('errors/html/error_session');
             $this->load->view('templates/footer');
         }

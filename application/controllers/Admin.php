@@ -23,7 +23,7 @@ class Admin extends CI_Controller
             $this->load->view('admin/dashboard/index', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->load->view('templates/header', $data);
+            $this->load->view('templates/headererror', $data);
             $this->load->view('errors/html/error_session');
             $this->load->view('templates/footer');
         }
@@ -44,7 +44,7 @@ class Admin extends CI_Controller
                 $this->load->view('admin/register/index', $data);
                 $this->load->view('templates/footer');
             } else {
-                $this->load->view('templates/header', $data);
+                $this->load->view('templates/headererror', $data);
                 $this->load->view('errors/html/error_session');
                 $this->load->view('templates/footer');
             }
@@ -69,7 +69,7 @@ class Admin extends CI_Controller
                 $this->load->view('admin/aplikasi', $data);
                 $this->load->view('templates/footer');
             } else {
-                $this->load->view('templates/header', $data);
+                $this->load->view('templates/headererror', $data);
                 $this->load->view('errors/html/error_session');
                 $this->load->view('templates/footer');
             }
