@@ -34,7 +34,7 @@ class Tabel extends CI_Controller
     public function index()
     {
         // view
-        $data['judul'] = 'Data Pengisian Awal';
+        $data['judul'] = 'Data Awal';
         $data['tabel'] = $this->Tabel_model->getAllData();
 
         //cek role yang sedang login
@@ -61,7 +61,7 @@ class Tabel extends CI_Controller
     public function tabel_drp()
     {
         // view
-        $data['judul'] = 'Data Pengisian DRP dan SPPBJ';
+        $data['judul'] = 'Data DRP dan SPPBJ';
         $data['tabel'] = $this->Tabel_model->getAllData();
 
         //cek role yang sedang login
@@ -88,7 +88,7 @@ class Tabel extends CI_Controller
     public function tabel_kontrak()
     {
         // view
-        $data['judul'] = 'Data Pengisian Kontrak';
+        $data['judul'] = 'Data Kontrak';
         $data['tabel'] = $this->Tabel_model->getAllData();
 
         //cek role yang sedang login
