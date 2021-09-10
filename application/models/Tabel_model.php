@@ -19,6 +19,11 @@ class Tabel_model extends CI_model
         return
             [
                 [
+                    'field' => 'inputNamaPengadaan',
+                    'label' => 'Nama Pengadaan',
+                    'rules' => 'trim|required'
+                ],
+                [
                     'field' => 'inputKode',
                     'label' => 'ID',
                     'rules' => 'trim|required'

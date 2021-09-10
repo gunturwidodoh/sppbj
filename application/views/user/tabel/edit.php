@@ -312,15 +312,15 @@
                             <!-- Input Group % -->
                             <div class="input-group mb-3">
                                 <input type="text" value="<?= $row['status'] ?>" class="form-control" id="inputProgress" name="inputProgress">
-                                <?php if (form_error('inputProgress')) : ?>
-                                    <div id="progressError" class="form-text text-danger">
-                                        <?= form_error('inputProgress'); ?>
-                                    </div>
-                                <?php endif; ?>
                                 <div class="input-group-append">
                                     <span class="input-group-text">%</span>
                                 </div>
                             </div>
+                            <?php if (form_error('inputProgress')) : ?>
+                                <div id="progressError" class="form-text text-danger">
+                                    <?= form_error('inputProgress'); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
