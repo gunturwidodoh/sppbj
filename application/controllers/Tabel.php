@@ -119,7 +119,7 @@ class Tabel extends CI_Controller
         $data['kategori'] = $this->Tabel_model->kategori();
         $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
         $data['jenisAnggaran'] = $this->Tabel_model->jenis_anggaran();
-        $data['judul'] = 'Tambah Data Awal';
+        $data['judul'] = 'Tambah Data';
         $data['role'] = $this->session->userdata('role');
         $this->form_validation->set_rules($this->Tabel_model->rulesTambahAwal());
         if ($this->form_validation->run() == FALSE) {
@@ -162,6 +162,8 @@ class Tabel extends CI_Controller
         $data['row'] = $this->Tabel_model->getDataById($id);
         $data['judul'] = 'Edit Data';
         $data['role'] = $this->session->userdata('role');
+
+        // form validation
         $this->form_validation->set_rules($this->Tabel_model->rulesEdit());
         if ($this->form_validation->run() == FALSE) {
             if ($data["role"] == '1') {

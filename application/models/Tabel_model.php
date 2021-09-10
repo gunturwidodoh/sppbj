@@ -118,12 +118,6 @@ class Tabel_model extends CI_model
 
     public function addDataTambahAwal()
     {
-        $terminSatu = $this->input->post('inputTerminSatu', true);
-        $terminDua = $this->input->post('inputTerminDua', true);
-        $terminTiga = $this->input->post('inputTerminTiga', true);
-        $terminEmpat = $this->input->post('inputTerminEmpat', true);
-        $terminLima = $this->input->post('inputTerminLima', true);
-        $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $data = [
             'code' => $this->input->post('inputKode', true),
             'nama' => $this->input->post('inputNamaPengadaan', true),
@@ -179,18 +173,20 @@ class Tabel_model extends CI_model
             'status' => $this->input->post('inputProgress', true),
             'keterangan' => $this->input->post('inputKeterangan', true)
         ];
+
+        // total pembayaran = SUM termin 1 - 5
+        $terminSatu = $this->input->post('inputTerminSatu', true);
+        $terminDua = $this->input->post('inputTerminDua', true);
+        $terminTiga = $this->input->post('inputTerminTiga', true);
+        $terminEmpat = $this->input->post('inputTerminEmpat', true);
+        $terminLima = $this->input->post('inputTerminLima', true);
+        $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $this->db->set('tot_pembayaran', $total_pembayaran);
         $this->db->insert('project', $data);
     }
 
     public function editData()
     {
-        $terminSatu = $this->input->post('inputTerminSatu', true);
-        $terminDua = $this->input->post('inputTerminDua', true);
-        $terminTiga = $this->input->post('inputTerminTiga', true);
-        $terminEmpat = $this->input->post('inputTerminEmpat', true);
-        $terminLima = $this->input->post('inputTerminLima', true);
-        $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $data = [
             'no_drp' => $this->input->post('inputNoDRP', true),
             'no_sppbj' => $this->input->post('inputNoSPPBJ', true),
@@ -237,8 +233,17 @@ class Tabel_model extends CI_model
             'status' => $this->input->post('inputProgress', true),
             'keterangan' => $this->input->post('inputKeterangan', true)
         ];
+
+        // total pembayaran = SUM termin 1 - 5
+        $terminSatu = $this->input->post('inputTerminSatu', true);
+        $terminDua = $this->input->post('inputTerminDua', true);
+        $terminTiga = $this->input->post('inputTerminTiga', true);
+        $terminEmpat = $this->input->post('inputTerminEmpat', true);
+        $terminLima = $this->input->post('inputTerminLima', true);
+        $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $this->db->set('tot_pembayaran', $total_pembayaran);
         $this->db->where('id', $this->input->post('id'));
+
         $this->db->set('modified_date', 'NOW()', FALSE);
         //FALSE untuk mengubah 'NOW()' menjadi NOW()
         $this->db->update('project', $data);
