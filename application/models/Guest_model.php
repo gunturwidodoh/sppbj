@@ -35,13 +35,13 @@ class Guest_model extends CI_model
         return $this->db->get('project')->result_array();
     }
 
-    public function getData($limit, $start)
+    public function getData($limit)
     {
         //return $this->db->get('project', $limit, $start)->result_array();
         $this->db->select('*');
         $this->db->from('project');
         $this->db->order_by('modified_date', 'desc');
-        $this->db->limit($limit, $start);
+        $this->db->limit($limit);
         return $this->db->get()->result_array();
     }
 

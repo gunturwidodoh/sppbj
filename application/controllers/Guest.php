@@ -15,6 +15,7 @@ class Guest extends CI_Controller
         $data['jumlah'] = $this->Guest_model->jumlah_project();
         $data['jumlahHistory'] = $this->Guest_model->jumlah_history_project();
         $data['jumlahAplikasi'] = $this->Guest_model->jumlah_aplikasi_eksisting();
+        $data['tabel'] = $this->Guest_model->getData(5);
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] != NULL) {
             $this->load->view('templates/header', $data);
@@ -154,6 +155,24 @@ class Guest extends CI_Controller
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
             $this->load->view('guest/viewhistory/view_history_kontrak', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/headererror', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function ticket()
+    {
+        $data['judul'] = 'Request Tiket';
+        $data['role'] = $this->session->userdata('role');
+        $data['tabel'] = $this->Guest_model->getAllData();
+        if ($data["role"] != NULL) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('guest/ticket/index', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/headererror', $data);
