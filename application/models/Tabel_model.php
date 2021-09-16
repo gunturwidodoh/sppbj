@@ -131,6 +131,11 @@ class Tabel_model extends CI_model
             ];
     }
 
+    public function getDataGuest()
+    {
+        return $this->db->get('guest')->result_array();
+    }
+
     public function getAllData()
     {
         return $this->db->get('project')->result_array();
@@ -174,7 +179,6 @@ class Tabel_model extends CI_model
             'no_drp' => $this->input->post('inputNoDRP', true),
             'no_sppbj' => $this->input->post('inputNoSPPBJ', true),
             'tanggal' => $this->input->post('inputTanggalTerbit', true),
-            'code' => $this->input->post('inputKode', true),
             'nama' => $this->input->post('inputNamaPengadaan', true),
             'kategori' => $this->input->post('inputKategori', true),
             'tahun' => $this->input->post('inputTahun', true),
@@ -217,6 +221,8 @@ class Tabel_model extends CI_model
             'keterangan' => $this->input->post('inputKeterangan', true)
         ];
 
+        $dataGuest = ['code' => $this->input->post('inputKode', true)];
+
         // total pembayaran = SUM termin 1 - 5
         $terminSatu = $this->input->post('inputTerminSatu', true);
         $terminDua = $this->input->post('inputTerminDua', true);
@@ -226,6 +232,7 @@ class Tabel_model extends CI_model
         $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $this->db->set('tot_pembayaran', $total_pembayaran);
         $this->db->insert('project', $data);
+        $this->db->insert('guest', $dataGuest);
     }
 
     public function editData($id)

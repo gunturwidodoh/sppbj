@@ -43,7 +43,7 @@ $username = $this->session->userdata('username');
                 <!-- TABLE: LATEST ORDERS -->
                 <div class="card">
                     <div class="card-header border-transparent">
-                        <h3 class="card-title">Data Project yang Terakhir Diedit</h3>
+                        <h3 class="card-title">Request Pengadaan Project</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -57,17 +57,30 @@ $username = $this->session->userdata('username');
                             <table class="table table-bordered m-0">
                                 <thead>
                                     <tr>
-                                        <th rowspan="2">ID</th>
                                         <th rowspan="2">Nama Project</th>
-                                        <th rowspan="2">Terakhir Diedit</th>
+                                        <th rowspan="2">Nama Person in Charge</th>
+                                        <th rowspan="2">Action</th>
+                                        <th rowspan="2">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($dataBaru as $db) : ?>
+                                    <?php foreach ($tabel as $tb) : ?>
                                         <tr>
-                                            <td><?= $db['code']; ?></td>
-                                            <td><?= $db['nama']; ?></td>
-                                            <td><?= $db['modified_date']; ?></td>
+                                            <td><?= $tb['project_name']; ?></td>
+                                            <td><?= $tb['nama_pic']; ?></td>
+                                            <td>
+                                                <?php if ($tb['project_id'] == NULL) : ?>
+                                                    <a href="<?= site_url() ?>/tabel/edit/<?= $tb['id']; ?>" class="badge badge-primary">Tambah</a>
+                                                <?php else : ?>
+                                                    <a href="<?= site_url() ?>/tabel" class="badge badge-success">Lihat tabel</a>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td><?php if ($tb['project_id'] == NULL) : ?>
+                                                    <span class="badge badge-danger">Belum ditambahkan</span>
+                                                <?php else : ?>
+                                                    <span class="badge badge-success">Sudah ditambahkan</span>
+                                                <?php endif; ?>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

@@ -1,6 +1,8 @@
 <?php
+$nama = $this->session->userdata('nama_user');
 $username = $this->session->userdata('username');
 ?>
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -9,11 +11,8 @@ $username = $this->session->userdata('username');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-8">
-                    <h1>Selamat Datang <span style="text-transform: uppercase"><?= $username; ?></span> di Project Tracker</h1>
+                    <h1>Selamat Datang <span style="text-transform: uppercase"><?= $nama; ?></span> di Project Tracker</h1>
                 </div>
-            </div>
-            <div class="col-sm-2">
-                <a href="<?php echo site_url(); ?>/guest/ticket" type="submit" class="btn btn-primary btn-sm mb-2 btn-block">Request Ticket</a>
             </div>
             <div class="row mb-2">
                 <div class="col-lg-3 col-6">
@@ -56,50 +55,80 @@ $username = $this->session->userdata('username');
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
-            <div class="row m-auto">
-                <!-- TABLE: LATEST ORDERS -->
-                <div class="card">
-                    <div class="card-header border-transparent">
-                        <h3 class="card-title">Progress Project</h3>
+        </div>
+        <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#demo">Request Tiket</button>
+        <?php if (form_error('inputNamaProject')) : ?>
+            <small class="form-text text-danger" id="progressError">
+                <?= form_error('inputNamaProject'); ?>
+            </small>
+        <?php endif; ?>
+        <div class="collapse" id="demo">
+            <form action="" method="post">
+                <div class="row">
+                    <input hidden type="text" value="<?= $username; ?>" class="form-control" id="inputUsername" name="inputUsername"></input>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="inputNamaProject">Nama Project</label>
+                            <textarea type="text" value="" class="form-control" id="inputNamaProject" name="inputNamaProject"></textarea>
+                        </div>
 
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="inputNamaPic">Nama PIC</label>
+                            <input Disabled type="text" value="<?= $nama; ?>" class="form-control"></input>
+                            <input hidden type="text" value="<?= $nama; ?>" class="form-control" id="inputNamaPic" name="inputNamaPic"></input>
                         </div>
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-bordered m-0">
-                                <thead>
-                                    <tr>
-                                        <th rowspan="2">ID</th>
-                                        <th rowspan="2">Nama Project</th>
-                                        <th rowspan="2">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($tabel as $tb) : ?>
-                                        <tr>
-                                            <td><?= $tb['code']; ?></td>
-                                            <td><?= $tb['nama']; ?></td>
-                                            <td><?= $tb['status']; ?>%</td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer clearfix">
-                        <a href="<?= site_url() ?>/tabel" class="btn btn-sm btn-primary float-right">Lihat Tabel</a>
-                    </div>
-                    <!-- /.card-footer -->
                 </div>
-                <!-- /.card -->
+                <button class="btn btn-primary mb-4" type="submit">Request</button>
+            </form>
+        </div>
+        <div class="row m-auto">
+            <!-- TABLE: LATEST ORDERS -->
+            <div class="card">
+                <div class="card-header border-transparent">
+                    <h3 class="card-title">Progress Project</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered m-0">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Nama Project</th>
+                                    <th rowspan="2">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($tabel as $tb) : ?>
+                                    <tr>
+                                        <td><?= $tb['project_name']; ?></td>
+                                        <td>
+                                            <?php if ($tb['project_id'] != NULL) : ?>
+                                                <span class="badge badge-warning">Sedang di proses</span>
+                                            <?php else : ?>
+                                                <span class="badge badge-danger">Belum di proses</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.card-body -->
+                <!-- /.card-footer -->
             </div>
-            <!-- /.col -->
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
     </section>
 </div>
