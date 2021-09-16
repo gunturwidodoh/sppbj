@@ -126,8 +126,9 @@ class Guest_model extends CI_model
         $data = [
             'guest_username' => $this->input->post('inputUsername', true),
             'nama_pic' => $this->input->post('inputNamaPic', true),
-            'project_name' => $this->input->post('inputNamaProject', true)
+            'project_name' => $this->input->post('inputNamaProject', true),
         ];
+
         $this->db->set('created_date', 'NOW()', FALSE);
         $this->db->insert('guest', $data);
     }
@@ -147,6 +148,11 @@ class Guest_model extends CI_model
                         ";
         $this->db->order_by('created_date', 'desc');
         return $this->db->query($queryMenu)->result_array();
+    }
+
+    public function getAllGuest()
+    {
+        return $this->db->get('guest')->result_array();
     }
 
     // public function getProgress($username)

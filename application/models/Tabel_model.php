@@ -290,6 +290,7 @@ class Tabel_model extends CI_model
 
         // where id="id"
         $this->db->where('id', $id);
+        $this->db->set('stat', 1);
         $this->db->update('guest', $dataTicket);
 
         // total pembayaran = SUM termin 1 - 5

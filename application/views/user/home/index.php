@@ -39,6 +39,10 @@ $username = $this->session->userdata('username');
                     </div>
                 </div>
             </div>
+            <?php if ($this->session->flashdata('message')) : ?>
+                <div style="color:green;"><?= $this->session->flashdata('message'); ?></div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
             <div class="row m-auto">
                 <!-- TABLE: LATEST ORDERS -->
                 <div class="card">
@@ -69,13 +73,13 @@ $username = $this->session->userdata('username');
                                             <td><?= $tb['project_name']; ?></td>
                                             <td><?= $tb['nama_pic']; ?></td>
                                             <td>
-                                                <?php if ($tb['project_id'] == NULL) : ?>
+                                                <?php if ($tb['stat'] == 0) : ?>
                                                     <a href="<?= site_url() ?>/tabel/edit_data_ticket/<?= $tb['id'] ?>" class="badge badge-primary">Tambah</a>
                                                 <?php else : ?>
                                                     <a href="<?= site_url() ?>/tabel" class="badge badge-success">Lihat tabel</a>
                                                 <?php endif; ?>
                                             </td>
-                                            <td><?php if ($tb['project_id'] == NULL) : ?>
+                                            <td><?php if ($tb['stat'] == 0) : ?>
                                                     <span class="badge badge-danger">Belum ditambahkan</span>
                                                 <?php else : ?>
                                                     <span class="badge badge-success">Sudah ditambahkan</span>

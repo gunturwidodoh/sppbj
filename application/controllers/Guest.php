@@ -11,12 +11,14 @@ class Guest extends CI_Controller
 
     public function index()
     {
+        $this->load->helper('string');
         $data['judul'] = 'Halaman Utama';
         $data['jumlah'] = $this->Guest_model->jumlah_project();
         $data['jumlahHistory'] = $this->Guest_model->jumlah_history_project();
         $data['jumlahAplikasi'] = $this->Guest_model->jumlah_aplikasi_eksisting();
         $data['username'] = $this->session->userdata('username');
         $data['tabel'] = $this->Guest_model->getGuest($data['username']);
+        $data['guest'] = $this->Guest_model->getAllGuest();
         $data['role'] = $this->session->userdata('role');
 
         $this->form_validation->set_rules($this->Guest_model->rules());

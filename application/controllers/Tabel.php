@@ -230,8 +230,8 @@ class Tabel extends CI_Controller
             // fungsi edit
             if ($this->input->post()) {
                 $this->Tabel_model->addDataTicket($id);
-                $this->session->set_flashdata('message', 'Data Telah Diedit !');
-                redirect('tabel');
+                $this->session->set_flashdata('message', 'Data Request Ticket Telah Ditambahkan');
+                redirect('home');
             }
         }
     }
