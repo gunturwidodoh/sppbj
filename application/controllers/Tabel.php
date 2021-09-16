@@ -115,25 +115,27 @@ class Tabel extends CI_Controller
     public function add_data()
     {
         // view
+        $data['judul'] = 'Tambah Data Baru';
         $data['tahun'] = $this->Tabel_model->tahun();
         $data['kategori'] = $this->Tabel_model->kategori();
         $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
         $data['jenisAnggaran'] = $this->Tabel_model->jenis_anggaran();
-        $data['judul'] = 'Tambah Data';
         $data['role'] = $this->session->userdata('role');
+
+        // form validation
         $this->form_validation->set_rules($this->Tabel_model->rulesValidation());
         if ($this->form_validation->run() == FALSE) {
             if ($data["role"] == '1') {
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/navbar');
                 $this->load->view('templates/sidebar');
-                $this->load->view('user/tabel/add_data', $data);
+                $this->load->view('user/tabel/form', $data);
                 $this->load->view('templates/footer');
             } else if ($data["role"] == '2') {
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/navbar');
                 $this->load->view('templates/sidebar');
-                $this->load->view('user/tabel/add_data', $data);
+                $this->load->view('user/tabel/form', $data);
                 $this->load->view('templates/footer');
             } else {
                 $this->load->view('templates/headererror', $data);
@@ -141,7 +143,6 @@ class Tabel extends CI_Controller
                 $this->load->view('templates/footer');
             }
         } else {
-
             // fungsi add
             if ($this->input->post()) {
                 $this->Tabel_model->addData();
@@ -154,13 +155,13 @@ class Tabel extends CI_Controller
     public function edit_data($id)
     {
         // view
+        $data['judul'] = 'Edit Data';
         $data['tahun'] = $this->Tabel_model->tahun();
         $data['kategori'] = $this->Tabel_model->kategori();
         $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
         $data['jenisAnggaran'] = $this->Tabel_model->jenis_anggaran();
         $data['tandaTangan'] = $this->Tabel_model->tanda_tangan();
         $data['row'] = $this->Tabel_model->getDataById($id);
-        $data['judul'] = 'Edit Data';
         $data['role'] = $this->session->userdata('role');
 
         // form validation
@@ -170,13 +171,13 @@ class Tabel extends CI_Controller
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/navbar');
                 $this->load->view('templates/sidebar');
-                $this->load->view('user/tabel/edit', $data);
+                $this->load->view('user/tabel/form', $data);
                 $this->load->view('templates/footer');
             } else if ($data["role"] == '2') {
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/navbar');
                 $this->load->view('templates/sidebar');
-                $this->load->view('user/tabel/edit', $data);
+                $this->load->view('user/tabel/form', $data);
                 $this->load->view('templates/footer');
             } else {
                 $this->load->view('templates/headererror', $data);
@@ -186,7 +187,7 @@ class Tabel extends CI_Controller
         } else {
             // fungsi edit
             if ($this->input->post()) {
-                $this->Tabel_model->editData();
+                $this->Tabel_model->editData($id);
                 $this->session->set_flashdata('message', 'Data Telah Diedit !');
                 redirect('tabel');
             }

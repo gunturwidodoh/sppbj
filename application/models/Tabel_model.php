@@ -228,7 +228,7 @@ class Tabel_model extends CI_model
         $this->db->insert('project', $data);
     }
 
-    public function editData()
+    public function editData($id)
     {
         $data = [
             'no_drp' => $this->input->post('inputNoDRP', true),
@@ -285,13 +285,14 @@ class Tabel_model extends CI_model
         $terminLima = $this->input->post('inputTerminLima', true);
         $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $this->db->set('tot_pembayaran', $total_pembayaran);
-        $this->db->where('id', $this->input->post('id'));
-
+        
+        // get current time
         $this->db->set('modified_date', 'NOW()', FALSE); //FALSE untuk mengubah 'NOW()' menjadi NOW()
+
+        // where id="id"
+        $this->db->where('id', $id);
         $this->db->update('project', $data);
     }
-
-
 
     public function deleteData($id)
     {
