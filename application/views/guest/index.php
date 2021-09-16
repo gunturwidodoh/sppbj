@@ -99,11 +99,13 @@ $username = $this->session->userdata('username');
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                     <div class="table-responsive">
-                        <table class="table table-bordered m-0">
+                        <table id="table1" class="table table-bordered m-0">
                             <thead>
                                 <tr>
                                     <th rowspan="2">Nama Project</th>
                                     <th rowspan="2">Status</th>
+                                    <th rowspan="2">Keterangan</th>
+                                    <th rowspan="2">Progress</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -117,6 +119,8 @@ $username = $this->session->userdata('username');
                                                 <span class="badge badge-danger">Belum di proses</span>
                                             <?php endif; ?>
                                         </td>
+                                        <td><?= $tb['keterangan']; ?></td>
+                                        <td><?= $tb['status']; ?>%</td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

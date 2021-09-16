@@ -194,6 +194,48 @@ class Tabel extends CI_Controller
         }
     }
 
+    public function edit_data_ticket($id)
+    {
+        // view
+        $data['judul'] = 'Edit Data';
+        $data['tahun'] = $this->Tabel_model->tahun();
+        $data['kategori'] = $this->Tabel_model->kategori();
+        $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
+        $data['jenisAnggaran'] = $this->Tabel_model->jenis_anggaran();
+        $data['tandaTangan'] = $this->Tabel_model->tanda_tangan();
+        $data['row'] = $this->Tabel_model->getDataTicketById($id);
+        $data['role'] = $this->session->userdata('role');
+
+        // form validation
+        $this->form_validation->set_rules($this->Tabel_model->rulesValidation());
+        if ($this->form_validation->run() == FALSE) {
+            if ($data["role"] == '1') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('user/tabel/form_ticket', $data);
+                $this->load->view('templates/footer');
+            } else if ($data["role"] == '2') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('user/tabel/form_ticket', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->load->view('templates/headererror', $data);
+                $this->load->view('errors/html/error_session');
+                $this->load->view('templates/footer');
+            }
+        } else {
+            // fungsi edit
+            if ($this->input->post()) {
+                $this->Tabel_model->addDataTicket($id);
+                $this->session->set_flashdata('message', 'Data Telah Diedit !');
+                redirect('tabel');
+            }
+        }
+    }
+
     public function history_awal()
     {
         $data['judul'] = 'Tabel History Aplikasi';

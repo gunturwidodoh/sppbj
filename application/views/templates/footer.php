@@ -35,6 +35,9 @@
         $('#table4').DataTable({
             "scrollX": true
         })
+        $('#table5').DataTable({
+            "scrollX": true
+        })
     })
 </script>
 </body>

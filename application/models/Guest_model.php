@@ -139,11 +139,19 @@ class Guest_model extends CI_model
 
     public function getGuest($username)
     {
-        //return $this->db->get('project', $limit, $start)->result_array();
-        $this->db->select('*');
-        $this->db->from('guest');
-        $this->db->where('guest_username', $username);
+        $queryMenu =   "SELECT *
+                        FROM `project` 
+                        JOIN `guest`
+                        ON `code` = `project_id`
+                        WHERE `guest_username` = '$username'                   
+                        ";
         $this->db->order_by('created_date', 'desc');
-        return $this->db->get()->result_array();
+        return $this->db->query($queryMenu)->result_array();
     }
+
+    // public function getProgress($username)
+    // {
+
+    //     return $this->db->query($queryMenu)->result_array();
+    // }
 }

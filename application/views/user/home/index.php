@@ -54,7 +54,7 @@ $username = $this->session->userdata('username');
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table table-bordered m-0">
+                            <table id="table5" class="table table-bordered m-0">
                                 <thead>
                                     <tr>
                                         <th rowspan="2">Nama Project</th>
@@ -70,7 +70,7 @@ $username = $this->session->userdata('username');
                                             <td><?= $tb['nama_pic']; ?></td>
                                             <td>
                                                 <?php if ($tb['project_id'] == NULL) : ?>
-                                                    <a href="<?= site_url() ?>/tabel/edit/<?= $tb['id']; ?>" class="badge badge-primary">Tambah</a>
+                                                    <a href="<?= site_url() ?>/tabel/edit_data_ticket/<?= $tb['id'] ?>" class="badge badge-primary">Tambah</a>
                                                 <?php else : ?>
                                                     <a href="<?= site_url() ?>/tabel" class="badge badge-success">Lihat tabel</a>
                                                 <?php endif; ?>
