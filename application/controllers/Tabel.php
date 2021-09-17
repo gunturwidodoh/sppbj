@@ -120,6 +120,7 @@ class Tabel extends CI_Controller
         $data['kategori'] = $this->Tabel_model->kategori();
         $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
         $data['jenisAnggaran'] = $this->Tabel_model->jenis_anggaran();
+        $data['quartal'] = $this->Tabel_model->quartal();
         $data['role'] = $this->session->userdata('role');
 
         // form validation
@@ -160,6 +161,7 @@ class Tabel extends CI_Controller
         $data['kategori'] = $this->Tabel_model->kategori();
         $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
         $data['jenisAnggaran'] = $this->Tabel_model->jenis_anggaran();
+        $data['quartal'] = $this->Tabel_model->quartal();
         $data['tandaTangan'] = $this->Tabel_model->tanda_tangan();
         $data['row'] = $this->Tabel_model->getDataById($id);
         $data['role'] = $this->session->userdata('role');

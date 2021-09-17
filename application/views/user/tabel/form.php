@@ -12,7 +12,8 @@
             <!-- Form -->
             <form action="" method="post">
                 <!-- Hidden ID Form -->
-                <input type="hidden" value="<?= isset($_POST["id"]) ? $_POST["id"] : ''; ?>" class="form-control" id="id" name="id">
+                <?php $value = isset($_POST['id']) ? $_POST['id'] : (isset($row['id']) ? $row['id'] : ''); ?>
+                <input type="hidden" value="<?= $value ?>" class="form-control" id="id" name="id">
                 <!-- Card Umum -->
                 <div class="card mb-4">
                     <h6 class="card-header bg-primary"><b>Informasi Umum</b></h5>
@@ -23,7 +24,8 @@
                                     <!-- Form Group: ID -->
                                     <div class="form-group">
                                         <label for="inputKode">ID</label>
-                                        <input type="text" value="<?= isset($_POST["inputKode"]) ? $_POST["inputKode"] : ''; ?>" class="form-control" id="inputKode" name="inputKode">
+                                        <?php $value = isset($_POST['inputKode']) ? $_POST['inputKode'] : (isset($row['code']) ? $row['code'] : ''); ?>
+                                        <input type="text" value="<?= $value ?>" class="form-control" id="inputKode" name="inputKode">
                                         <?php if (form_error('inputKode')) : ?>
                                             <div id="idError" class="form-text text-danger">
                                                 <small><?= form_error('inputKode'); ?></small>
@@ -33,15 +35,26 @@
                                     <!-- Form Group: Nama Pengadaan -->
                                     <div class="form-group">
                                         <label for="inputNamaPengadaan">Nama Pengadaan</label>
-                                        <input type="text" value="" class="form-control" id="inputNamaPengadaan" name="inputNamaPengadaan">
+                                        <?php $value = isset($_POST['inputNamaPengadaan']) ? $_POST['inputNamaPengadaan'] : (isset($row['nama']) ? $row['nama'] : ''); ?>
+                                        <textarea class="form-control" id="inputNamaPengadaan" name="inputNamaPengadaan"><?= $value ?></textarea>
                                     </div>
                                     <!-- Form Group: Kategori -->
                                     <div class="form-group">
                                         <label for="inputKategori">Kategori</label>
                                         <select class="form-control" id="inputKategori" name="inputKategori">
                                             <?php foreach ($kategori as $kt) : ?>
-                                                <?php if ($kt == $row['kategori']) : ?>
-                                                    <option value="<?= $kt; ?>" selected><?= $kt; ?></option>
+                                                <?php if (isset($_POST['inputKategori'])) : ?>
+                                                    <?php if ($kt == $_POST['inputKategori']) : ?>
+                                                        <option value="<?= $kt; ?>" selected><?= $kt; ?></option>
+                                                    <?php else : ?>
+                                                        <option value="<?= $kt; ?>"><?= $kt; ?></option>
+                                                    <?php endif; ?>
+                                                <?php elseif (isset($row['kategori'])) : ?>
+                                                    <?php if ($kt == $row['kategori']) : ?>
+                                                        <option value="<?= $kt; ?>" selected><?= $kt; ?></option>
+                                                    <?php else : ?>
+                                                        <option value="<?= $kt; ?>"><?= $kt; ?></option>
+                                                    <?php endif; ?>
                                                 <?php else : ?>
                                                     <option value="<?= $kt; ?>"><?= $kt; ?></option>
                                                 <?php endif; ?>
@@ -53,8 +66,18 @@
                                         <label for="inputTahun">Tahun</label>
                                         <select class="form-control" id="inputTahun" name="inputTahun">
                                             <?php foreach ($tahun as $th) : ?>
-                                                <?php if ($th == $row['tahun']) : ?>
-                                                    <option value="<?= $th; ?>" selected><?= $th; ?></option>
+                                                <?php if (isset($_POST['inputTahun'])) : ?>
+                                                    <?php if ($th == $_POST['inputTahun']) : ?>
+                                                        <option value="<?= $th; ?>" selected><?= $th; ?></option>
+                                                    <?php else : ?>
+                                                        <option value="<?= $th; ?>"><?= $th; ?></option>
+                                                    <?php endif; ?>
+                                                <?php elseif (isset($row['tahun'])) : ?>
+                                                    <?php if ($th == $row['tahun']) : ?>
+                                                        <option value="<?= $th; ?>" selected><?= $th; ?></option>
+                                                    <?php else : ?>
+                                                        <option value="<?= $th; ?>"><?= $th; ?></option>
+                                                    <?php endif; ?>
                                                 <?php else : ?>
                                                     <option value="<?= $th; ?>"><?= $th; ?></option>
                                                 <?php endif; ?>
@@ -64,7 +87,8 @@
                                     <!-- Form: Group Deskripsi -->
                                     <div class="form-group">
                                         <label for="inputDeskripsi">Deskripsi</label>
-                                        <textarea class="form-control" id="inputDeskripsi" name="inputDeskripsi"></textarea>
+                                        <?php $value = isset($_POST['inputDeskripsi']) ? $_POST['inputDeskripsi'] : (isset($row['deskripsi']) ? $row['deskripsi'] : ''); ?>
+                                        <textarea class="form-control" id="inputDeskripsi" name="inputDeskripsi"><?= $value ?></textarea>
                                     </div>
                                 </div>
 
@@ -73,25 +97,38 @@
                                     <!-- Form Group: PIC -->
                                     <div class="form-group">
                                         <label for="inputPIC">Person In Charge</label>
-                                        <input type="text" value="" class="form-control" id="inputPIC" name="inputPIC">
+                                        <?php $value = isset($_POST['inputPIC']) ? $_POST['inputPIC'] : (isset($row['pic']) ? $row['pic'] : ''); ?>
+                                        <input type="text" value="<?= $value ?>" class="form-control" id="inputPIC" name="inputPIC">
                                     </div>
                                     <!-- Form Group: Target Selesai -->
                                     <div class="form-group">
                                         <label for="inputTarget">Target Selesai</label>
-                                        <input type="date" value="" class="form-control" id="inputTarget" name="inputTarget">
+                                        <?php $value = isset($_POST['inputTarget']) ? $_POST['inputTarget'] : (isset($row['target']) ? $row['target'] : ''); ?>
+                                        <input type="date" value="<?= $value ?>" class="form-control" id="inputTarget" name="inputTarget">
                                     </div>
                                     <!-- Form Group: Program Utama -->
                                     <div class="form-group">
                                         <label for="inputProgramUtama">Program Utama</label>
-                                        <input type="text" value="" class="form-control" id="inputProgramUtama" name="inputProgramUtama">
+                                        <?php $value = isset($_POST['inputProgramUtama']) ? $_POST['inputProgramUtama'] : (isset($row['program']) ? $row['program'] : ''); ?>
+                                        <input type="text" value="<?= $value ?>" class="form-control" id="inputProgramUtama" name="inputProgramUtama">
                                     </div>
                                     <!-- Form Group: Mata Anggaran -->
                                     <div class="form-group">
                                         <label for="inputMataAnggaran">Mata Anggaran</label>
                                         <select class="form-control" id="inputMataAnggaran" name="inputMataAnggaran">
                                             <?php foreach ($mataAnggaran as $ma) : ?>
-                                                <?php if ($ma == $row['mata_anggaran']) : ?>
-                                                    <option value="<?= $ma; ?>" selected><?= $ma; ?></option>
+                                                <?php if (isset($_POST['inputMataAnggaran'])) : ?>
+                                                    <?php if ($ma == $_POST['inputMataAnggaran']) : ?>
+                                                        <option value="<?= $ma; ?>" selected><?= $ma; ?></option>
+                                                    <?php else : ?>
+                                                        <option value="<?= $ma; ?>"><?= $ma; ?></option>
+                                                    <?php endif; ?>
+                                                <?php elseif (isset($row['mata_anggaran'])) : ?>
+                                                    <?php if ($ma == $row['mata_anggaran']) : ?>
+                                                        <option value="<?= $ma; ?>" selected><?= $ma; ?></option>
+                                                    <?php else : ?>
+                                                        <option value="<?= $ma; ?>"><?= $ma; ?></option>
+                                                    <?php endif; ?>
                                                 <?php else : ?>
                                                     <option value="<?= $ma; ?>"><?= $ma; ?></option>
                                                 <?php endif; ?>
@@ -113,19 +150,35 @@
                                     <!-- Form Group: No. DRP -->
                                     <div class="form-group">
                                         <label for="inputNoDRP">No. DRP</label>
-                                        <input type="text" class="form-control" id="inputNoDRP" name="inputNoDRP">
+                                        <?php $value = isset($_POST['inputNoDRP']) ? $_POST['inputNoDRP'] : (isset($row['no_drp']) ? $row['no_drp'] : ''); ?>
+                                        <input type="text" value="<?= $value; ?>" class="form-control" id="inputNoDRP" name="inputNoDRP">
                                     </div>
                                     <!-- Form Group: Anggaran DRP -->
                                     <div class="form-group">
                                         <label for="inputAnggaranDRP">Anggaran DRP</label>
-                                        <input type="text" class="form-control" id="inputAnggaranDRP" name="inputAnggaranDRP">
+                                        <?php $value = isset($_POST['inputAnggaranDRP']) ? $_POST['inputAnggaranDRP'] : (isset($row['anggaran_edrp']) ? $row['anggaran_edrp'] : ''); ?>
+                                        <input type="text" value="<?= $value; ?>" class="form-control" id="inputAnggaranDRP" name="inputAnggaranDRP">
                                     </div>
                                     <!-- Form Group: Jenis DRP -->
                                     <div class="form-group">
                                         <label for="inputJenisAnggaran">Jenis Anggaran</label>
                                         <select class="form-control" id="inputJenisAnggaran" name="inputJenisAnggaran">
                                             <?php foreach ($jenisAnggaran as $ja) : ?>
-                                                <option value="<?= $ja; ?>"><?= $ja; ?></option>
+                                                <?php if (isset($_POST['inputJenisAnggaran'])) : ?>
+                                                    <?php if ($ja == $_POST['inputJenisAnggaran']) : ?>
+                                                        <option value="<?= $ja; ?>" selected><?= $ja; ?></option>
+                                                    <?php else : ?>
+                                                        <option value="<?= $ja; ?>"><?= $ja; ?></option>
+                                                    <?php endif; ?>
+                                                <?php elseif (isset($row['jenis_anggaran'])) : ?>
+                                                    <?php if ($ja == $row['jenis_anggaran']) : ?>
+                                                        <option value="<?= $ja; ?>" selected><?= $ja; ?></option>
+                                                    <?php else : ?>
+                                                        <option value="<?= $ja; ?>"><?= $ja; ?></option>
+                                                    <?php endif; ?>
+                                                <?php else : ?>
+                                                    <option value="<?= $ja; ?>"><?= $ja; ?></option>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -135,18 +188,21 @@
                                 <div class="col-6">
                                     <!-- Form Group: No. SPPBJ -->
                                     <div class="form-group">
-                                        <label for="inputNomorSPPBJ">No. SPPBJ</label>
-                                        <input type="text" class="form-control" id="inputNomorSPPBJ" name="inputNomorSPPBJ">
+                                        <label for="inputNoSPPBJ">No. SPPBJ</label>
+                                        <?php $value = isset($_POST['inputNoSPPBJ']) ? $_POST['inputNoSPPBJ'] : (isset($row['no_sppbj']) ? $row['no_sppbj'] : ''); ?>
+                                        <input type="text" value="<?= $value; ?>" class="form-control" id="inputNoSPPBJ" name="inputNoSPPBJ">
                                     </div>
                                     <!-- Form Group: Input Nilai SPPBJ -->
                                     <div class="form-group">
                                         <label for="inputNilaiSPPBJ">Nilai SPPBJ</label>
-                                        <input type="text" class="form-control" id="inputNilaiSPPBJ" name="inputNilaiSPPBJ">
+                                        <?php $value = isset($_POST['inputNilaiSPPBJ']) ? $_POST['inputNilaiSPPBJ'] : (isset($row['nilai_sppbj']) ? $row['nilai_sppbj'] : ''); ?>
+                                        <input type="text" value="<?= $value; ?>" class="form-control" id="inputNilaiSPPBJ" name="inputNilaiSPPBJ">
                                     </div>
                                     <!-- Form Group: Input Tanggal Terbit -->
                                     <div class="form-group">
                                         <label for="inputTanggalTerbit">Tanggal Terbit SPPBJ</label>
-                                        <input type="date" class="form-control" id="inputTanggalTerbit" name="inputTanggalTerbit">
+                                        <?php $value = isset($_POST['inputTanggalTerbit']) ? $_POST['inputTanggalTerbit'] : (isset($row['tanggal']) ? $row['tanggal'] : ''); ?>
+                                        <input type="date" value="<?= $value; ?>" class="form-control" id="inputTanggalTerbit" name="inputTanggalTerbit">
                                     </div>
                                 </div>
                             </div>
@@ -166,22 +222,26 @@
                                             <!-- Form Group: No. Kontrak -->
                                             <div class="form-group">
                                                 <label for="inputNoKontrak">No. Kontrak</label>
-                                                <input type="text" class="form-control" id="inputNoKontrak" name="inputNoKontrak">
+                                                <?php $value = isset($_POST['inputNoKontrak']) ? $_POST['inputNoKontrak'] : (isset($row['nomor_kontrak']) ? $row['nomor_kontrak'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputNoKontrak" name="inputNoKontrak">
                                             </div>
                                             <!-- Form Group: Nilai Kontrak -->
                                             <div class="form-group">
                                                 <label for="inputNilaiKontrak">Nilai Kontrak (+PPN 10%)</label>
-                                                <input type="text" class="form-control" id="inputNilaiKontrak" name="inputNilaiKontrak">
+                                                <?php $value = isset($_POST['inputNilaiKontrak']) ? $_POST['inputNilaiKontrak'] : (isset($row['nilai_kontrak']) ? $row['nilai_kontrak'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputNilaiKontrak" name="inputNilaiKontrak">
                                             </div>
                                             <!-- Form Group: No. PO -->
                                             <div class="form-group">
                                                 <label for="inputNoPo">No. PO</label>
-                                                <input type="text" class="form-control" id="inputNoPo" name="inputNoPo">
+                                                <?php $value = isset($_POST['inputNoPo']) ? $_POST['inputNoPo'] : (isset($row['nomor_po']) ? $row['nomor_po'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputNoPo" name="inputNoPo">
                                             </div>
                                             <!-- Form Group: Tanggal Kontrak -->
                                             <div class="form-group">
                                                 <label for="inputTanggalKontrak">Tanggal Kontrak</label>
-                                                <input type="date" class="form-control" id="inputTanggalKontrak" name="inputTanggalKontrak">
+                                                <?php $value = isset($_POST['inputTanggalKontrak']) ? $_POST['inputTanggalKontrak'] : (isset($row['tanggal_kontrak']) ? $row['tanggal_kontrak'] : ''); ?>
+                                                <input type="date" value="<?= $value; ?>" class="form-control" id="inputTanggalKontrak" name="inputTanggalKontrak">
                                             </div>
                                         </div>
                                         <!-- Form Column 2 -->
@@ -189,17 +249,20 @@
                                             <!-- Form Group: Waktu Pengerjaan -->
                                             <div class="form-group">
                                                 <label for="inputWaktuPengerjaan">Jangka Waktu Pengerjaan</label>
-                                                <input type="text" class="form-control" id="inputWaktuPengerjaan" name="inputWaktuPengerjaan">
+                                                <?php $value = isset($_POST['inputWaktuPengerjaan']) ? $_POST['inputWaktuPengerjaan'] : (isset($row['jangka_waktu']) ? $row['jangka_waktu'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputWaktuPengerjaan" name="inputWaktuPengerjaan">
                                             </div>
                                             <!-- Form Group: Tanggal Berakhir -->
                                             <div class="form-group">
                                                 <label for="inputTanggalBerakhir">Tanggal Berakhir Kontrak</label>
-                                                <input type="date" class="form-control" id="inputTanggalBerakhir" name="inputTanggalBerakhir">
+                                                <?php $value = isset($_POST['inputTanggalBerakhir']) ? $_POST['inputTanggalBerakhir'] : (isset($row['tanggal_berakhir']) ? $row['tanggal_berakhir'] : ''); ?>
+                                                <input type="date" value="<?= $value; ?>" class="form-control" id="inputTanggalBerakhir" name="inputTanggalBerakhir">
                                             </div>
                                             <!-- Form Group: Jaminan Pelaksanaan -->
                                             <div class="form-group">
                                                 <label for="inputJaminanPelaksanaan">Jaminan Pelaksanaan</label>
-                                                <input type="text" class="form-control" id="inputJaminanPelaksanaan" name="inputJaminanPelaksanaan">
+                                                <?php $value = isset($_POST['inputJaminanPelaksanaan']) ? $_POST['inputJaminanPelaksanaan'] : (isset($row['jaminan_pelaksanaan']) ? $row['jaminan_pelaksanaan'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputJaminanPelaksanaan" name="inputJaminanPelaksanaan">
                                             </div>
                                         </div>
                                     </div>
@@ -214,12 +277,14 @@
                                             <!-- Form Group: Rekanan Pelaksanaan -->
                                             <div class="form-group">
                                                 <label for="inputNamaRekanan">Nama Rekanan Pelaksanaan</label>
-                                                <input type="text" class="form-control" id="inputNamaRekanan" name="inputNamaRekanan">
+                                                <?php $value = isset($_POST['inputNamaRekanan']) ? $_POST['inputNamaRekanan'] : (isset($row['rekanan']) ? $row['rekanan'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputNamaRekanan" name="inputNamaRekanan">
                                             </div>
                                             <!-- Form Group: NPWP Rekanan -->
                                             <div class="form-group">
                                                 <label for="inputNPWPRekanan">NPWP Rekanan</label>
-                                                <input type="text" class="form-control" id="inputNPWPRekanan" name="inputNPWPRekanan">
+                                                <?php $value = isset($_POST['inputNPWPRekanan']) ? $_POST['inputNPWPRekanan'] : (isset($row['npwp_rekanan']) ? $row['npwp_rekanan'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputNPWPRekanan" name="inputNPWPRekanan">
                                             </div>
 
                                         </div>
@@ -228,12 +293,14 @@
                                             <!-- Form Group: Nama AM -->
                                             <div class="form-group">
                                                 <label for="inputNamaAM">Nama AM</label>
-                                                <input type="text" class="form-control" id="inputNamaAM" name="inputNamaAM">
+                                                <?php $value = isset($_POST['inputNamaAM']) ? $_POST['inputNamaAM'] : (isset($row['nama_am']) ? $row['nama_am'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputNamaAM" name="inputNamaAM">
                                             </div>
                                             <!-- Form Group: Alamat Rekanan -->
                                             <div class="form-group">
                                                 <label for="inputAlamatRekanan">Alamat Rekanan</label>
-                                                <input type="text" class="form-control" id="inputAlamatRekanan" name="inputAlamatRekanan">
+                                                <?php $value = isset($_POST['inputAlamatRekanan']) ? $_POST['inputAlamatRekanan'] : (isset($row['alamat_rekanan']) ? $row['alamat_rekanan'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputAlamatRekanan" name="inputAlamatRekanan">
                                             </div>
                                         </div>
                                     </div>
@@ -248,21 +315,23 @@
                                             <!-- Form Group: Termin 1 -->
                                             <div class="form-group">
                                                 <label for="inputTerminSatu">Termin 1</label>
+                                                <?php $value = isset($_POST['inputTerminSatu']) ? $_POST['inputTerminSatu'] : (isset($row['termin_1']) ? $row['termin_1'] : ''); ?>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">Rp</span>
                                                     </div>
-                                                    <input type="text" class="form-control" id="inputTerminSatu" name="inputTerminSatu">
+                                                    <input type="text" value="<?= $value; ?>" class="form-control" id="inputTerminSatu" name="inputTerminSatu">
                                                 </div>
                                             </div>
                                             <!-- Form Group: Termin 4 -->
                                             <div class="form-group">
                                                 <label for="inputTerminEmpat">Termin 4</label>
+                                                <?php $value = isset($_POST['inputTerminEmpat']) ? $_POST['inputTerminEmpat'] : (isset($row['termin_4']) ? $row['termin_4'] : ''); ?>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">Rp</span>
                                                     </div>
-                                                    <input type="text" class="form-control" id="inputTerminEmpat" name="inputTerminEmpat">
+                                                    <input type="text" value="<?= $value; ?>" class="form-control" id="inputTerminEmpat" name="inputTerminEmpat">
                                                 </div>
                                             </div>
                                         </div>
@@ -271,21 +340,23 @@
                                             <!-- Form Group: Termin 2 -->
                                             <div class="form-group">
                                                 <label for="inputTerminDua">Termin 2</label>
+                                                <?php $value = isset($_POST['inputTerminDua']) ? $_POST['inputTerminDua'] : (isset($row['termin_2']) ? $row['termin_2'] : ''); ?>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">Rp</span>
                                                     </div>
-                                                    <input type="text" class="form-control" id="inputTerminDua" name="inputTerminDua">
+                                                    <input type="text" value="<?= $value; ?>" class="form-control" id="inputTerminDua" name="inputTerminDua">
                                                 </div>
                                             </div>
                                             <!-- Form Group: Termin 5 -->
                                             <div class="form-group">
                                                 <label for="inputTerminLima">Termin 5</label>
+                                                <?php $value = isset($_POST['inputTerminLima']) ? $_POST['inputTerminLima'] : (isset($row['termin_5']) ? $row['termin_5'] : ''); ?>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">Rp</span>
                                                     </div>
-                                                    <input type="text" class="form-control" id="inputTerminLima" name="inputTerminLima">
+                                                    <input type="text" value="<?= $value; ?>" class="form-control" id="inputTerminLima" name="inputTerminLima">
                                                 </div>
                                             </div>
                                         </div>
@@ -294,17 +365,19 @@
                                             <div class="form-group">
                                                 <!-- Form Group: Termin 3 -->
                                                 <label for="inputTerminTiga">Termin 3</label>
+                                                <?php $value = isset($_POST['inputTerminTiga']) ? $_POST['inputTerminTiga'] : (isset($row['termin_3']) ? $row['termin_3'] : ''); ?>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">Rp</span>
                                                     </div>
-                                                    <input type="text" class="form-control" id="inputTerminTiga" name="inputTerminTiga">
+                                                    <input type="text" value="<?= $value; ?>" class="form-control" id="inputTerminTiga" name="inputTerminTiga">
                                                 </div>
                                             </div>
                                             <!-- Form Group: Selisih Termin -->
                                             <div class="form-group">
                                                 <label for="inputSelisihTermin">Selisih Termin</label>
-                                                <input type="text" class="form-control" id="inputSelisihTermin" name="inputSelisihTermin">
+                                                <?php $value = isset($_POST['inputSelisihTermin']) ? $_POST['inputSelisihTermin'] : (isset($row['selisih']) ? $row['selisih'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputSelisihTermin" name="inputSelisihTermin">
                                             </div>
                                         </div>
                                     </div>
@@ -312,29 +385,67 @@
 
                             <!-- List Group Item 4 -->
                             <div class="list-group-item py-4">
-                                <h6 class="mb-3 text-muted"><i>BULAN PEMBAYARAN TERREALISASI</i></h5>
+                                <h6 class="mb-3 text-muted"><i>REALISASI PEMBAYARAN</i></h5>
                                     <div class="row">
                                         <!-- Form Column 1 -->
                                         <div class="col-6">
                                             <!-- Form Group: Q1 -->
                                             <div class="form-group">
                                                 <label for="inputQSatu">Q1</label>
-                                                <input type="text" class="form-control" id="inputQSatu" name="inputQSatu">
+                                                <select class="form-control" id="inputQSatu" name="inputQSatu">
+                                                    <?php foreach ($quartal['q1'] as $q1) : ?>
+                                                        <?php if (isset($_POST['inputQSatu'])) : ?>
+                                                            <?php if ($q1 == $_POST['inputQSatu']) : ?>
+                                                                <option value="<?= $q1; ?>" selected><?= $q1; ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?= $q1; ?>"><?= $q1; ?></option>
+                                                            <?php endif; ?>
+                                                        <?php elseif (isset($row['q1'])) : ?>
+                                                            <?php if ($q1 == $row['q1']) : ?>
+                                                                <option value="<?= $q1; ?>" selected><?= $q1; ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?= $q1; ?>"><?= $q1; ?></option>
+                                                            <?php endif; ?>
+                                                        <?php else : ?>
+                                                            <option value="<?= $q1; ?>"><?= $q1; ?></option>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </select>            
                                             </div>
                                             <!-- Form Group: Q3 -->
                                             <div class="form-group">
                                                 <label for="inputQTiga">Q3</label>
-                                                <input type="text" class="form-control" id="inputQTiga" name="inputQTiga">
+                                                <select class="form-control" id="inputQTiga" name="inputQTiga">
+                                                    <?php foreach ($quartal['q3'] as $q3) : ?>
+                                                        <?php if (isset($_POST['inputQTiga'])) : ?>
+                                                            <?php if ($q3 == $_POST['inputQTiga']) : ?>
+                                                                <option value="<?= $q3; ?>" selected><?= $q3; ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?= $q3; ?>"><?= $q3; ?></option>
+                                                            <?php endif; ?>
+                                                        <?php elseif (isset($row['q3'])) : ?>
+                                                            <?php if ($q3 == $row['q3']) : ?>
+                                                                <option value="<?= $q3; ?>" selected><?= $q3; ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?= $q3; ?>"><?= $q3; ?></option>
+                                                            <?php endif; ?>
+                                                        <?php else : ?>
+                                                            <option value="<?= $q3; ?>"><?= $q3; ?></option>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </select>           
                                             </div>
                                             <!-- Form Group: Opex -->
                                             <div class="form-group">
                                                 <label for="inputOpex">Opex (Biaya)</label>
-                                                <input type="text" class="form-control" id="inputOpex" name="inputOpex">
+                                                <?php $value = isset($_POST['inputOpex']) ? $_POST['inputOpex'] : (isset($row['opex']) ? $row['opex'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputOpex" name="inputOpex">
                                             </div>
                                             <!-- Form Group: Perbandingan -->
                                             <div class="form-group">
                                                 <label for="inputPerbandinganNilai">Perbandingan Nilai Kontrak dan Pembayaran</label>
-                                                <input type="text" class="form-control" id="inputPerbandinganNilai" name="inputPerbandinganNilai">
+                                                <?php $value = isset($_POST['inputPerbandinganNilai']) ? $_POST['inputPerbandinganNilai'] : (isset($row['perbandingan']) ? $row['perbandingan'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputPerbandinganNilai" name="inputPerbandinganNilai">
                                             </div>
                                         </div>
                                         <!-- Form Column 2 -->
@@ -342,17 +453,54 @@
                                             <!-- Form Group: Q2 -->
                                             <div class="form-group">
                                                 <label for="inputQDua">Q2</label>
-                                                <input type="text" class="form-control" id="inputQDua" name="inputQDua">
+                                                <select class="form-control" id="inputQDua" name="inputQDua">
+                                                    <?php foreach ($quartal['q2'] as $q2) : ?>
+                                                        <?php if (isset($_POST['inputQDua'])) : ?>
+                                                            <?php if ($q2 == $_POST['inputQDua']) : ?>
+                                                                <option value="<?= $q2; ?>" selected><?= $q2; ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?= $q2; ?>"><?= $q2; ?></option>
+                                                            <?php endif; ?>
+                                                        <?php elseif (isset($row['q2'])) : ?>
+                                                            <?php if ($q2 == $row['q2']) : ?>
+                                                                <option value="<?= $q2; ?>" selected><?= $q2; ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?= $q2; ?>"><?= $q2; ?></option>
+                                                            <?php endif; ?>
+                                                        <?php else : ?>
+                                                            <option value="<?= $q2; ?>"><?= $q2; ?></option>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </select>     
                                             </div>
                                             <!-- Form Group: Q4 -->
                                             <div class="form-group">
                                                 <label for="inputQEmpat">Q4</label>
-                                                <input type="text" class="form-control" id="inputQEmpat" name="inputQEmpat">
+                                                <select class="form-control" id="inputQEmpat" name="inputQEmpat">
+                                                    <?php foreach ($quartal['q4'] as $q4) : ?>
+                                                        <?php if (isset($_POST['inputQEmpat'])) : ?>
+                                                            <?php if ($q4 == $_POST['inputQEmpat']) : ?>
+                                                                <option value="<?= $q4; ?>" selected><?= $q4; ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?= $q4; ?>"><?= $q4; ?></option>
+                                                            <?php endif; ?>
+                                                        <?php elseif (isset($row['q4'])) : ?>
+                                                            <?php if ($q4 == $row['q4']) : ?>
+                                                                <option value="<?= $q4; ?>" selected><?= $q4; ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?= $q4; ?>"><?= $q4; ?></option>
+                                                            <?php endif; ?>
+                                                        <?php else : ?>
+                                                            <option value="<?= $q4; ?>"><?= $q4; ?></option>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </select>     
                                             </div>
                                             <!-- Form Group: Capex -->
                                             <div class="form-group">
                                                 <label for="inputCapex">Capex (Investasi)</label>
-                                                <input type="text" class="form-control" id="inputCapex" name="inputCapex">
+                                                <?php $value = isset($_POST['inputCapex']) ? $_POST['inputCapex'] : (isset($row['capex']) ? $row['capex'] : ''); ?>
+                                                <input type="text" value="<?= $value; ?>" class="form-control" id="inputCapex" name="inputCapex">
                                             </div>
                                         </div>
                                     </div>
@@ -370,7 +518,8 @@
                                     <!-- Form Group Keterangan -->
                                     <div class="form-group">
                                         <label for="inputKeterangan">Keterangan</label>
-                                        <input type="text" value="" class="form-control" id="inputKeterangan" name="inputKeterangan">
+                                        <?php $value = isset($_POST['inputKeterangan']) ? $_POST['inputKeterangan'] : (isset($row['keterangan']) ? $row['keterangan'] : ''); ?>
+                                        <input type="text" value="<?= $value; ?>" class="form-control" id="inputKeterangan" name="inputKeterangan">
                                     </div>
                                 </div>
 
@@ -379,8 +528,9 @@
                                     <!-- Form Group Status -->
                                     <div class="form-group">
                                         <label for="inputProgress">Progress</label>
+                                        <?php $value = isset($_POST['inputProgress']) ? $_POST['inputProgress'] : (isset($row['status']) ? $row['status'] : ''); ?>
                                         <div class="input-group">
-                                            <input type="text" value="" class="form-control" id="inputProgress" name="inputProgress">
+                                            <input type="text" value="<?= $value; ?>" class="form-control" id="inputProgress" name="inputProgress">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
