@@ -549,16 +549,16 @@
 
                 <!-- Tombol Submit -->
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-auto">
                         <button class="btn btn-primary w-100" type="submit" style="display: flex; justify-content: space-evenly; align-items: center;">
-                            <i class="fas fa-save"></i>
-                            <b>Tambah Baru</b>
+                            <i class="fas fa-check"></i>                           
+                            <b class="ml-2"><?= $judulSubmit; ?></b>
                         </button>
                     </div>
-                    <div class="col-2">
+                    <div class="col-auto">
                         <a href="<?= site_url(); ?>/tabel/index" class="btn btn-secondary w-100" style="display: flex; justify-content: space-evenly; align-items: center;">
-                            <i class="fas fa-arrow-left"></i>
-                            <b>Kembali</b>
+                            <i class="fas fa-times"></i>
+                            <b class="ml-2"><?= $judulBack; ?></b>
                         </a>
                     </div>
                 </div>

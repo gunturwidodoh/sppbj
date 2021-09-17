@@ -13,21 +13,21 @@ class Tabel extends CI_Controller
     public function delete($id)
     {
         $this->Tabel_model->deleteData($id);
-        $this->session->set_flashdata('message', 'Data Telah Dihapus !');
+        $this->session->set_flashdata('message', 'Data Telah Dihapus!');
         redirect('tabel');
     }
 
     public function deleteHistory($id)
     {
         $this->Tabel_model->deleteDataHistory($id);
-        $this->session->set_flashdata('message', 'Data Telah Dihapus !');
+        $this->session->set_flashdata('message', 'Data Telah Dihapus!');
         redirect('tabel/history_awal');
     }
 
     public function moveData($id)
     {
         $this->Tabel_model->moveDataById($id);
-        $this->session->set_flashdata('message', 'Project Telah Selesai !');
+        $this->session->set_flashdata('message', 'Project Telah Selesai!');
         redirect('tabel');
     }
 
@@ -116,6 +116,8 @@ class Tabel extends CI_Controller
     {
         // view
         $data['judul'] = 'Tambah Data Baru';
+        $data['judulSubmit'] = 'Simpan Data Baru';
+        $data['judulBack'] = 'Batal Tambah Data';
         $data['tahun'] = $this->Tabel_model->tahun();
         $data['kategori'] = $this->Tabel_model->kategori();
         $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
@@ -157,6 +159,8 @@ class Tabel extends CI_Controller
     {
         // view
         $data['judul'] = 'Edit Data';
+        $data['judulSubmit'] = 'Simpan Edit';
+        $data['judulBack'] = 'Batal Edit';
         $data['tahun'] = $this->Tabel_model->tahun();
         $data['kategori'] = $this->Tabel_model->kategori();
         $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
@@ -190,7 +194,7 @@ class Tabel extends CI_Controller
             // fungsi edit
             if ($this->input->post()) {
                 $this->Tabel_model->editData($id);
-                $this->session->set_flashdata('message', 'Data Telah Diedit !');
+                $this->session->set_flashdata('message', 'Data Telah Diedit!');
                 redirect('tabel');
             }
         }
@@ -350,7 +354,7 @@ class Tabel extends CI_Controller
 //         // fungsi add
 //         if ($this->input->post()) {
 //             $this->Tabel_model->editDataAwal();
-//             $this->session->set_flashdata('message', 'Data Awal Telah Diedit !');
+//             $this->session->set_flashdata('message', 'Data Awal Telah Diedit!');
 //             redirect('tabel');
 //         }
 //     }
@@ -384,7 +388,7 @@ class Tabel extends CI_Controller
 //         // fungsi add
 //         if ($this->input->post()) {
 //             $this->Tabel_model->updateDataSPPBJ($id);
-//             $this->session->set_flashdata('message', 'Data Awal Telah Diupdate !');
+//             $this->session->set_flashdata('message', 'Data Awal Telah Diupdate!');
 //             redirect('tabel');
 //         }
 //     }
@@ -416,7 +420,7 @@ class Tabel extends CI_Controller
 //         // fungsi add
 //         if ($this->input->post()) {
 //             $this->Tabel_model->updateDataKontrak($id);
-//             $this->session->set_flashdata('message', 'Data SPPBJ Telah Diedit !');
+//             $this->session->set_flashdata('message', 'Data SPPBJ Telah Diedit!');
 //             redirect('tabel');
 //         }
 //     }
@@ -448,7 +452,7 @@ class Tabel extends CI_Controller
 //         // fungsi add
 //         if ($this->input->post()) {
 //             $this->Tabel_model->editDataKontrak($id);
-//             $this->session->set_flashdata('message', 'Data Kontrak Telah Diedit !');
+//             $this->session->set_flashdata('message', 'Data Kontrak Telah Diedit!');
 //             redirect('tabel');
 //         }
 //     }
