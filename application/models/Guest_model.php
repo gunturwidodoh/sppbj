@@ -2,6 +2,18 @@
 
 class Guest_model extends CI_model
 {
+    public function rules()
+    {
+        return
+            [
+                [
+                    'field' => 'inputNamaProject',
+                    'label' => 'Nama Project',
+                    'rules' => 'trim|required'
+                ],
+            ];
+    }
+
     public function jumlah_project()
     {
         $query = $this->db->query('SELECT * FROM project');
@@ -107,4 +119,45 @@ class Guest_model extends CI_model
         $this->db->or_like('tahun', $keyword);
         return $this->db->get('history')->result_array();
     }
+
+    //insert data
+    public function addDataRequest()
+    {
+        $data = [
+            'guest_username' => $this->input->post('inputUsername', true),
+            'nama_pic' => $this->input->post('inputNamaPic', true),
+            'project_name' => $this->input->post('inputNamaProject', true),
+        ];
+
+        $this->db->set('created_date', 'NOW()', FALSE);
+        $this->db->insert('guest', $data);
+    }
+
+    public function getDataGuest($username)
+    {
+        return $this->db->get_where('guest', ['guest_username' => $username])->row_array();
+    }
+
+    public function getGuest($username)
+    {
+        $queryMenu =   "SELECT *
+                        FROM `project` 
+                        JOIN `guest`
+                        ON `code` = `project_id`
+                        WHERE `guest_username` = '$username'                   
+                        ";
+        $this->db->order_by('created_date', 'desc');
+        return $this->db->query($queryMenu)->result_array();
+    }
+
+    public function getAllGuest()
+    {
+        return $this->db->get('guest')->result_array();
+    }
+
+    // public function getProgress($username)
+    // {
+
+    //     return $this->db->query($queryMenu)->result_array();
+    // }
 }

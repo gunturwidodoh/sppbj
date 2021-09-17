@@ -142,6 +142,11 @@ class Tabel_model extends CI_model
             ];
     }
 
+    public function getDataGuest()
+    {
+        return $this->db->get('guest')->result_array();
+    }
+
     public function getAllData()
     {
         return $this->db->get('project')->result_array();
@@ -155,6 +160,11 @@ class Tabel_model extends CI_model
     public function getDataById($id)
     {
         return $this->db->get_where('project', ['id' => $id])->row_array();
+    }
+
+    public function getDataTicketById($id)
+    {
+        return $this->db->get_where('guest', ['id' => $id])->row_array();
     }
 
     public function moveDataById($id)
@@ -171,6 +181,65 @@ class Tabel_model extends CI_model
     }
 
     public function addData()
+    {
+        $data = [
+            'no_drp' => $this->input->post('inputNoDRP', true),
+            'no_sppbj' => $this->input->post('inputNoSPPBJ', true),
+            'tanggal' => $this->input->post('inputTanggalTerbit', true),
+            'nama' => $this->input->post('inputNamaPengadaan', true),
+            'kategori' => $this->input->post('inputKategori', true),
+            'tahun' => $this->input->post('inputTahun', true),
+            'deskripsi' => $this->input->post('inputDeskripsi', true),
+            'program' => $this->input->post('inputProgramUtama', true),
+            'pic' => $this->input->post('inputPIC', true),
+            'target' => $this->input->post('inputTarget', true),
+            'mata_anggaran' => $this->input->post('inputMataAnggaran', true),
+            'jenis_anggaran' => $this->input->post('inputJenisAnggaran', true),
+            'no_drp' => $this->input->post('inputNoDRP', true),
+            'anggaran_edrp' => $this->input->post('inputAnggaranDRP', true),
+            'no_sppbj' => $this->input->post('inputNomorSPPBJ', true),
+            'nilai_sppbj' => $this->input->post('inputNilaiSPPBJ', true),
+            'status' => $this->input->post('inputStatus', true),
+            'nomor_kontrak' => $this->input->post('inputNoKontrak', true),
+            'nilai_kontrak' => $this->input->post('inputNilaiKontrak', true),
+            'nomor_po' => $this->input->post('inputNoPo', true),
+            'tanggal_kontrak' => $this->input->post('inputTanggalKontrak', true),
+            'jangka_waktu' => $this->input->post('inputWaktuPengerjaan', true),
+            'tanggal_berakhir' => $this->input->post('inputTanggalBerakhir', true),
+            'jaminan_pelaksanaan' => $this->input->post('inputJaminanPelaksanaan', true),
+            'rekanan' => $this->input->post('inputNamaRekanan', true),
+            'npwp_rekanan' => $this->input->post('inputNPWPRekanan', true),
+            'nama_am' => $this->input->post('inputNamaAM', true),
+            'alamat_rekanan' => $this->input->post('inputAlamatRekanan', true),
+            'termin_1' => $this->input->post('inputTerminSatu', true),
+            'termin_2' => $this->input->post('inputTerminDua', true),
+            'termin_3' => $this->input->post('inputTerminTiga', true),
+            'termin_4' => $this->input->post('inputTerminEmpat', true),
+            'termin_5' => $this->input->post('inputTerminLima', true),
+            'selisih' => $this->input->post('inputSelisihTermin', true),
+            'q1' => $this->input->post('inputQSatu', true),
+            'q2' => $this->input->post('inputQDua', true),
+            'q3' => $this->input->post('inputQTiga', true),
+            'q4' => $this->input->post('inputQEmpat', true),
+            'opex' => $this->input->post('inputOpex', true),
+            'capex' => $this->input->post('inputCapex', true),
+            'perbandingan' => $this->input->post('inputPerbandinganNilai', true),
+            'status' => $this->input->post('inputProgress', true),
+            'keterangan' => $this->input->post('inputKeterangan', true)
+        ];
+
+        // total pembayaran = SUM termin 1 - 5
+        $terminSatu = $this->input->post('inputTerminSatu', true);
+        $terminDua = $this->input->post('inputTerminDua', true);
+        $terminTiga = $this->input->post('inputTerminTiga', true);
+        $terminEmpat = $this->input->post('inputTerminEmpat', true);
+        $terminLima = $this->input->post('inputTerminLima', true);
+        $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
+        $this->db->set('tot_pembayaran', $total_pembayaran);
+        $this->db->insert('project', $data);
+    }
+
+    public function addDataTicket($id)
     {
         $data = [
             'no_drp' => $this->input->post('inputNoDRP', true),
@@ -217,6 +286,13 @@ class Tabel_model extends CI_model
             'keterangan' => $this->input->post('inputKeterangan', true)
         ];
 
+        $dataTicket = ['project_id' => $this->input->post('inputKode', true),];
+
+        // where id="id"
+        $this->db->where('id', $id);
+        $this->db->set('stat', 1);
+        $this->db->update('guest', $dataTicket);
+
         // total pembayaran = SUM termin 1 - 5
         $terminSatu = $this->input->post('inputTerminSatu', true);
         $terminDua = $this->input->post('inputTerminDua', true);
@@ -225,6 +301,10 @@ class Tabel_model extends CI_model
         $terminLima = $this->input->post('inputTerminLima', true);
         $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $this->db->set('tot_pembayaran', $total_pembayaran);
+
+        // get current time
+        $this->db->set('modified_date', 'NOW()', FALSE); //FALSE untuk mengubah 'NOW()' menjadi NOW()
+
         $this->db->insert('project', $data);
     }
 
@@ -283,7 +363,7 @@ class Tabel_model extends CI_model
         $terminLima = $this->input->post('inputTerminLima', true);
         $total_pembayaran = (int)$terminSatu + (int)$terminDua + (int)$terminTiga + (int)$terminEmpat + (int)$terminLima;
         $this->db->set('tot_pembayaran', $total_pembayaran);
-        
+
         // get current time
         $this->db->set('modified_date', 'NOW()', FALSE); //FALSE untuk mengubah 'NOW()' menjadi NOW()
 

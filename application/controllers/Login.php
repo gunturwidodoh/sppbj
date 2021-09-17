@@ -40,7 +40,7 @@ class Login extends CI_Controller
         if ($user) {
             //cek password
             if (password_verify($password, $user['password'])) {
-                $data = ['role' => $user['role'], 'username' => $user['username']];
+                $data = ['role' => $user['role'], 'username' => $user['username'], 'nama_user' => $user['nama_user']];
                 $this->session->set_userdata($data);
                 if ($user['role'] == 1) {
                     redirect('admin');

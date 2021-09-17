@@ -11,22 +11,35 @@ class Guest extends CI_Controller
 
     public function index()
     {
+        $this->load->helper('string');
         $data['judul'] = 'Halaman Utama';
         $data['jumlah'] = $this->Guest_model->jumlah_project();
         $data['jumlahHistory'] = $this->Guest_model->jumlah_history_project();
         $data['jumlahAplikasi'] = $this->Guest_model->jumlah_aplikasi_eksisting();
-        $data['tabel'] = $this->Guest_model->getData(5);
+        $data['username'] = $this->session->userdata('username');
+        $data['tabel'] = $this->Guest_model->getGuest($data['username']);
+        $data['guest'] = $this->Guest_model->getAllGuest();
         $data['role'] = $this->session->userdata('role');
-        if ($data["role"] != NULL) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('guest/index', $data);
-            $this->load->view('templates/footer');
+
+        $this->form_validation->set_rules($this->Guest_model->rules());
+        if ($this->form_validation->run() == FALSE) {
+            if ($data["role"] != NULL) {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('guest/index', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->load->view('templates/header', $data);
+                $this->load->view('errors/html/error_session');
+                $this->load->view('templates/footer');
+            }
         } else {
-            $this->load->view('templates/header', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
+            if ($this->input->post()) {
+                $this->Guest_model->addDataRequest();
+                $this->session->set_flashdata('message', 'Data Telah Ditambahkan!');
+                redirect('guest');
+            }
         }
     }
 
