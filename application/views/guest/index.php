@@ -131,7 +131,7 @@ $username = $this->session->userdata('username');
                         <table id="table1" class="table table-bordered m-0">
                             <thead>
                                 <tr>
-                                    <th rowspan="2">Nama Project</th>
+                                    <th rowspan="2">Tiket yang sedang diproses</th>
                                     <th rowspan="2">Keterangan</th>
                                     <th rowspan="2">Status</th>
                                     <th rowspan="2">Progress</th>
