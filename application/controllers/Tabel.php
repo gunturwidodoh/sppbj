@@ -34,7 +34,7 @@ class Tabel extends CI_Controller
     public function index()
     {
         // view
-        $data['judul'] = 'Data Awal';
+        $data['judul'] = 'Data Pengadaan';
         $data['tabel'] = $this->Tabel_model->getAllData();
 
         //cek role yang sedang login
@@ -43,13 +43,13 @@ class Tabel extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tables/index', $data);
+            $this->load->view('user/tabel/tables/table', $data);
             $this->load->view('templates/footer');
         } else if ($data["role"] == '2') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tables/index', $data);
+            $this->load->view('user/tabel/tables/table', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/headererror', $data);
@@ -58,59 +58,59 @@ class Tabel extends CI_Controller
         }
     }
 
-    public function tabel_drp()
-    {
-        // view
-        $data['judul'] = 'Data DRP dan SPPBJ';
-        $data['tabel'] = $this->Tabel_model->getAllData();
+    // public function tabel_drp()
+    // {
+    //     // view
+    //     $data['judul'] = 'Data DRP dan SPPBJ';
+    //     $data['tabel'] = $this->Tabel_model->getAllData();
 
-        //cek role yang sedang login
-        $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tables/table_drp', $data);
-            $this->load->view('templates/footer');
-        } else if ($data["role"] == '2') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tables/table_drp', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('templates/headererror', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-    }
+    //     //cek role yang sedang login
+    //     $data['role'] = $this->session->userdata('role');
+    //     if ($data["role"] == '1') {
+    //         $this->load->view('templates/header', $data);
+    //         $this->load->view('templates/navbar');
+    //         $this->load->view('templates/sidebar');
+    //         $this->load->view('user/tabel/tables/table_drp', $data);
+    //         $this->load->view('templates/footer');
+    //     } else if ($data["role"] == '2') {
+    //         $this->load->view('templates/header', $data);
+    //         $this->load->view('templates/navbar');
+    //         $this->load->view('templates/sidebar');
+    //         $this->load->view('user/tabel/tables/table_drp', $data);
+    //         $this->load->view('templates/footer');
+    //     } else {
+    //         $this->load->view('templates/headererror', $data);
+    //         $this->load->view('errors/html/error_session');
+    //         $this->load->view('templates/footer');
+    //     }
+    // }
 
-    public function tabel_kontrak()
-    {
-        // view
-        $data['judul'] = 'Data Kontrak';
-        $data['tabel'] = $this->Tabel_model->getAllData();
+    // public function tabel_kontrak()
+    // {
+    //     // view
+    //     $data['judul'] = 'Data Kontrak';
+    //     $data['tabel'] = $this->Tabel_model->getAllData();
 
-        //cek role yang sedang login
-        $data['role'] = $this->session->userdata('role');
-        if ($data["role"] == '1') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tables/table_kontrak', $data);
-            $this->load->view('templates/footer');
-        } else if ($data["role"] == '2') {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('user/tabel/tables/table_kontrak', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('templates/headererror', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-    }
+    //     //cek role yang sedang login
+    //     $data['role'] = $this->session->userdata('role');
+    //     if ($data["role"] == '1') {
+    //         $this->load->view('templates/header', $data);
+    //         $this->load->view('templates/navbar');
+    //         $this->load->view('templates/sidebar');
+    //         $this->load->view('user/tabel/tables/table_kontrak', $data);
+    //         $this->load->view('templates/footer');
+    //     } else if ($data["role"] == '2') {
+    //         $this->load->view('templates/header', $data);
+    //         $this->load->view('templates/navbar');
+    //         $this->load->view('templates/sidebar');
+    //         $this->load->view('user/tabel/tables/table_kontrak', $data);
+    //         $this->load->view('templates/footer');
+    //     } else {
+    //         $this->load->view('templates/headererror', $data);
+    //         $this->load->view('errors/html/error_session');
+    //         $this->load->view('templates/footer');
+    //     }
+    // }
 
     public function add_data()
     {
@@ -123,6 +123,7 @@ class Tabel extends CI_Controller
         $data['mataAnggaran'] = $this->Tabel_model->mata_anggaran();
         $data['jenisAnggaran'] = $this->Tabel_model->jenis_anggaran();
         $data['quartal'] = $this->Tabel_model->quartal();
+        $data['colorCode'] = 'primary';
         $data['role'] = $this->session->userdata('role');
 
         // form validation
@@ -168,6 +169,7 @@ class Tabel extends CI_Controller
         $data['quartal'] = $this->Tabel_model->quartal();
         $data['tandaTangan'] = $this->Tabel_model->tanda_tangan();
         $data['row'] = $this->Tabel_model->getDataById($id);
+        $data['colorCode'] = 'info';
         $data['role'] = $this->session->userdata('role');
 
         // form validation
@@ -241,11 +243,35 @@ class Tabel extends CI_Controller
             }
         }
     }
+    
+    public function detail($id)
+    {
+        $data['judul'] = 'Detail Data';
+        $data['tabel'] = $this->Tabel_model->getDataById($id);
+        $data['role'] = $this->session->userdata('role');
+
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tables/detail', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('user/tabel/tables/detail', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/headererror', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
 
     public function history_awal()
     {
         $data['judul'] = 'Tabel History Aplikasi';
-
         $data['tabel'] = $this->Tabel_model->getAllDataHistory();
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
@@ -270,7 +296,6 @@ class Tabel extends CI_Controller
     public function history_drp()
     {
         $data['judul'] = 'Tabel History Aplikasi';
-
         $data['tabel'] = $this->Tabel_model->getAllDataHistory();
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
@@ -336,4 +361,5 @@ class Tabel extends CI_Controller
             redirect('home');
         }
     }
+
 }

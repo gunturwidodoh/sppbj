@@ -11,34 +11,46 @@
 <!-- Data Tables -->
 <script src="<?php echo base_url('assets/plugins'); ?>/datatables/jquery.dataTables.js"></script>
 <script src="<?php echo base_url('assets/plugins'); ?>/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-
 <script>
     $(document).ready(function() {
-        $('#table1').DataTable({
-            "scrollX": true,
+        $('#tableIndex').DataTable({
             "order": [
-                [11, "desc"]
-            ]
-        })
-        $('#table2').DataTable({
-            "scrollX": true,
-            "order": [
-                [10, "desc"]
-            ]
-        })
-        $('#table3').DataTable({
-            "scrollX": true,
-            "order": [
-                [29, "desc"]
-            ]
-        })
-        $('#table4').DataTable({
-            "scrollX": true
-        })
-        $('#table5').DataTable({
-            "scrollX": true
-        })
-    })
+                [4, "desc"]
+            ],
+            "columns": [{
+                    "searchable": false
+                },
+                null,
+                {
+                    "searchable": false
+                },
+                {
+                    "searchable": false
+                },
+                {
+                    "searchable": false
+                },
+                {
+                    "searchable": false
+                }
+            ],
+            "language": {
+                "searchPlaceholder": "ketik di sini untuk mencari",
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ data per halaman.",
+                "zeroRecords": "Tidak ada data.",
+                "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+                "infoEmpty": "Tidak ada data",
+                "infoFiltered": "(hasil pencarian dari _MAX_ data)",
+                "paginate": {
+                    "first": "Pertama",
+                    "last": "Terakhir",
+                    "next": "Selanjutnya",
+                    "previous": "Sebelumnya"
+                },
+            }
+        });
+    });
 </script>
 </body>
 
