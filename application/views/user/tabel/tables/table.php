@@ -8,8 +8,9 @@
                     <h1><b><?= $judul; ?></b></h1>
                 </div>
                 <div class="col-auto">
-                    <a href="<?php echo site_url(); ?>/tabel/form" type="submit" class="btn btn-primary">
-                        <b>+ Tambah Baru</b>
+                    <a href="<?php echo site_url(); ?>/tabel/add_data" type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        <b class="ml-2">Tambah Data Baru</b>
                     </a>
                 </div>
             </div>
@@ -18,27 +19,39 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="tableIndex" class="table table-striped table-bordered table-hover">
                             <thead>
-                                <tr role="row" style="white-space: nowrap">
-                                    <th rowspan="2">ID</th>
-                                    <th rowspan="2">Nama Pengadaan</th>
-                                    <th rowspan="2">Kategori</th>
-                                    <th rowspan="2">Tahun</th>
-                                    <th rowspan="2">Deskripsi</th>
-                                    <th rowspan="2">PIC</th>
-                                    <th rowspan="2">Target Selesai</th>
-                                    <th rowspan="2">Program Utama</th>
-                                    <th rowspan="2">Mata Anggaran</th>
-                                    <th colspan="2">Status</th>
-                                    <th rowspan="2">Terakhir Diupdate</th>
-                                    <th rowspan="2">Action</th>
-                                </tr>
                                 <tr>
-                                    <th>Keterangan</th>
+                                    <th>ID</th>
+                                    <th>Nama Pengadaan</th>
+                                    <th>PIC</th>
                                     <th>Progress</th>
+                                    <th>Terakhir Diupdate</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                <?php foreach ($tabel as $tb) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $tb['code']; ?></td>
+                                        <td style="max-width: 300px; white-space: normal;">
+                                            <?= $tb['nama']; ?><br>
+                                            <small><a href="<?= site_url() ?>/tabel/detail/<?= $tb['id']; ?>">Lihat Detail ></a></small>
+                                        </td>
+                                        <td class="text-center"><?= $tb['pic']; ?></td>
+                                        <td class="text-center"><?= $tb['status']; ?>%</td>
+                                        <td class="text-center"><?= $tb['modified_date']; ?></td>
+                                        <!-- Action -->
+                                        <td class="text-center">
+                                            <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-info">
+                                                <i class="fas fa-pen"></i>
+                                                <b class="ml-1">Edit Data</b>
+                                            </a>
+                                            
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -47,3 +60,4 @@
         </div>
     </section>
 </div>
+
