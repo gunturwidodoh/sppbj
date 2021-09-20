@@ -75,14 +75,18 @@ $username = $this->session->userdata('username');
                                             <td>
                                                 <?php if ($tb['stat'] == 0) : ?>
                                                     <a href="<?= site_url() ?>/tabel/edit_data_ticket/<?= $tb['id'] ?>" class="badge badge-primary">Tambah</a>
+                                                    <a href="<?= site_url() ?>/tabel/rejectTiket/<?= $tb['id'] ?>" class="badge badge-danger">Reject</a>
                                                 <?php else : ?>
                                                     <a href="<?= site_url() ?>/tabel" class="badge badge-success">Lihat tabel</a>
                                                 <?php endif; ?>
                                             </td>
-                                            <td><?php if ($tb['stat'] == 0) : ?>
-                                                    <span class="badge badge-danger">Belum ditambahkan</span>
+                                            <td>
+                                                <?php if ($tb['stat'] == 0) : ?>
+                                                    <span class="badge badge-warning">Belum ditambahkan</span>
+                                                <?php elseif ($tb['stat'] == 2) : ?>
+                                                    <span class="badge badge-danger">Tiket direject</span>
                                                 <?php else : ?>
-                                                    <span class="badge badge-success">Sudah ditambahkan</span>
+                                                    <span class="badge badge-success">Tiket telah ditambahkan</span>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -101,16 +105,6 @@ $username = $this->session->userdata('username');
                 <!-- /.card -->
             </div>
             <!-- /.col -->
-
-            <?php echo form_open_multipart('tabel/do_upload'); ?>
-
-            <input type="file" name="userfile" size="20" />
-
-            <br /><br />
-
-            <input type="submit" value="upload" />
-
-            </form>
         </div>
 </div><!-- /.container-fluid -->
 </section>

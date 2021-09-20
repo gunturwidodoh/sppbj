@@ -28,6 +28,7 @@
                                     <th>Progress</th>
                                     <th>Terakhir Diupdate</th>
                                     <th>Action</th>
+                                    <th>Download</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,7 +48,16 @@
                                                 <i class="fas fa-pen"></i>
                                                 <b class="ml-1">Edit Data</b>
                                             </a>
-                                            
+                                        </td>
+                                        <td class="text-center">
+                                            <?php if ($tb['path'] != NULL) : ?>
+                                                <a href="<?= site_url() ?>/tabel/download_data/<?= $tb['id']; ?>" class="badge badge-info">
+                                                    <i class="fas fa-file-download"></i>
+                                                    <b class="ml-1">Download File</b>
+                                                </a>
+                                            <?php else : ?>
+                                                <span class="badge badge-danger">Belum upload file</span>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -60,4 +70,3 @@
         </div>
     </section>
 </div>
-

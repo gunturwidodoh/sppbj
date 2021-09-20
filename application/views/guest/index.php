@@ -101,22 +101,20 @@ $username = $this->session->userdata('username');
                         <table id="table1" class="table table-bordered m-0">
                             <thead>
                                 <tr>
-                                    <?php foreach ($guest as $gs) : ?>
-                                        <?php if ($gs['stat'] == 0) : ?>
-                                            <th rowspan="2">Tiket yang belum diproses</th>
-                                            <th rowspan="2">Status</th>
-                                        <?php endif; ?>
-                                    <?php endforeach; ?>
+                                    <th rowspan="2">Tiket yang belum diproses</th>
+                                    <th rowspan="2">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($guest as $gs) : ?>
-                                    <?php if ($gs['stat'] == 0) : ?>
+                                    <?php if ($gs['stat'] == 0 || $gs['stat'] == 2) : ?>
                                         <tr>
                                             <td><?= $gs['project_name']; ?></td>
                                             <td>
                                                 <?php if ($gs['stat'] == 0) : ?>
-                                                    <span class="badge badge-danger">Menunggu penginputan</span>
+                                                    <span class="badge badge-secondary">Menunggu penginputan</span>
+                                                <?php elseif ($gs['stat'] == 2) : ?>
+                                                    <span class="badge badge-danger">Direject</span>
                                                 <?php else : ?>
                                                     <span> </span>
                                                 <?php endif; ?>

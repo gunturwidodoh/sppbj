@@ -32,6 +32,9 @@
                 },
                 {
                     "searchable": false
+                },
+                {
+                    "searchable": false
                 }
             ],
             "language": {

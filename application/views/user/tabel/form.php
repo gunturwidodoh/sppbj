@@ -14,7 +14,10 @@
                     </a>
                 </div>
             </div>
-
+            <?php if ($this->session->flashdata('message')) : ?>
+                <div style="color:green;"><?= $this->session->flashdata('message'); ?></div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
             <!-- Form -->
             <form action="" method="post">
                 <!-- Hidden ID Form -->
@@ -552,7 +555,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Tombol Submit -->
                 <div class="row">
                     <div class="col-auto">
@@ -569,6 +571,25 @@
                     </div>
                 </div>
             </form>
+            <form method="post" enctype="multipart/form-data" action="<?php echo site_url(); ?>/tabel/do_upload/<?= $row['id'] ?>">
+                <div class="card mb-4">
+                    <h6 class="card-header bg-warning"><b>Upload</b></h6>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Form Column 1 -->
+                            <div class="col-6">
+                                <!-- Form Group Keterangan -->
+                                <div class="form-group">
+                                    <label for="userfile">Upload file</label>
+                                    <input type="file" class="form-control" id="userfile" name="userfile">
+                                </div>
+                            </div>
+                            <input type="submit" value="upload" />
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-    </section>
+</div>
+</section>
 </div>

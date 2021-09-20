@@ -323,10 +323,22 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <input class="btn btn-primary" type="submit" value="Simpan">
-                    <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>Kembali</button>
+                    <div class="row mb-2">
+                        <div>
+                            <h3>Upload</h3>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col sm-6">
+                            <div class="form-group">
+                                <label for="inputFilename">Upload file</label>
+                                <input type="file" value="<?= $row['filename'] ?>" class="form-control" id="inputFilename" name="inputFilename">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input class="btn btn-primary" type="submit" value="Simpan">
+                        <button href="javascript:history.go(-1)" class="btn btn-secondary"><span class="glyphicon glyphicon-home"></span>Kembali</button>
             </form>
         </div>
         <div class="col">

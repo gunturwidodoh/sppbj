@@ -243,7 +243,7 @@ class Tabel extends CI_Controller
             }
         }
     }
-    
+
     public function detail($id)
     {
         $data['judul'] = 'Detail Data';
@@ -267,6 +267,14 @@ class Tabel extends CI_Controller
             $this->load->view('errors/html/error_session');
             $this->load->view('templates/footer');
         }
+    }
+
+    public function rejectTiket($id)
+    {
+
+        $this->Tabel_model->reject($id);
+        $this->session->set_flashdata('message', 'Data Request Ticket Telah Direject');
+        redirect('home');
     }
 
     public function history_awal()
@@ -342,24 +350,33 @@ class Tabel extends CI_Controller
         }
     }
 
-    public function do_upload()
+    public function do_upload($id)
     {
         $config['upload_path']          = './upload/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
+        $config['allowed_types']        = 'docx|xlsx|xldm|csv|jpg|png';
 
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('userfile')) {
             $error = $this->upload->display_errors();
             $this->session->set_flashdata('message', $error);
-            redirect('home');
+            redirect('tabel');
         } else {
-            array('upload_data' => $this->upload->data());
+            $upload_data = $this->upload->data();
+            $filename = $upload_data['file_name'];
+            $path = $upload_data['full_path'];
+            $this->Tabel_model->uploadData($filename, $path, $id);
             $this->session->set_flashdata('message', 'Data telah diupload');
-            redirect('home');
+            redirect('tabel');
         }
     }
 
+    public function download_data($id)
+    {
+        $this->load->helper('download');
+        $data = $this->db->get_where('project', ['id' => $id])->row_array();
+        $path = $data['path'];
+
+        force_download($path, NULL);
+    }
 }
