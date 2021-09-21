@@ -17,14 +17,14 @@ class User extends CI_Controller
         redirect('user');
     }
 
-    public function deleteHistory($id)
+    public function delete_history($id)
     {
         $this->User_model->deleteDataHistory($id);
         $this->session->set_flashdata('message', 'Data Telah Dihapus!');
         redirect('global/history');
     }
 
-    public function moveData($id)
+    public function move_data($id)
     {
         $this->User_model->moveDataById($id);
         $this->session->set_flashdata('message', 'Project Telah Selesai!');

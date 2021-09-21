@@ -96,6 +96,7 @@ $username = $this->session->userdata('username');
                             <thead>
                                 <tr>
                                     <th rowspan="2">Tiket yang belum diproses</th>
+                                    <th rowspan="2">Waktu pengajuan tiket</th>
                                     <th rowspan="2">Status</th>
                                 </tr>
                             </thead>
@@ -104,9 +105,10 @@ $username = $this->session->userdata('username');
                                     <?php if ($gs['stat'] == 0 || $gs['stat'] == 2) : ?>
                                         <tr>
                                             <td><?= $gs['project_name']; ?></td>
+                                            <td><?= $gs['created_date']; ?></td>
                                             <td>
                                                 <?php if ($gs['stat'] == 0) : ?>
-                                                    <span class="badge badge-secondary">Menunggu penginputan</span>
+                                                    <span class="badge badge-secondary">Menunggu persetujuan</span>
                                                 <?php elseif ($gs['stat'] == 2) : ?>
                                                     <span class="badge badge-danger">Ditolak</span>
                                                 <?php else : ?>
@@ -137,7 +139,7 @@ $username = $this->session->userdata('username');
                             <tbody>
                                 <?php foreach ($tabel as $tb) : ?>
                                     <tr>
-                                        <td><?= $tb['project_name']; ?></td>
+                                        <td><?= $tb['nama']; ?></td>
                                         <td><?= $tb['keterangan']; ?></td>
                                         <td>
                                             <?php if ($tb['status'] == 100) : ?>

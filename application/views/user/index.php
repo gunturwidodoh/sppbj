@@ -64,10 +64,12 @@ $username = $this->session->userdata('username');
                                         <td><?= $tb['created_date']; ?></td>
                                         <td>
                                             <?php if ($tb['stat'] == 0) : ?>
-                                                <a href="<?= site_url() ?>/tabel/edit_data_ticket/<?= $tb['id'] ?>" class="badge badge-primary">Tambah</a>
-                                                <a href="<?= site_url() ?>/tabel/rejectTiket/<?= $tb['id'] ?>" class="badge badge-danger">Tolak</a>
+                                                <a href="<?= site_url() ?>/user/edit_data_ticket/<?= $tb['id'] ?>" class="badge badge-primary">Tambah</a>
+                                                <a href="<?= site_url() ?>/user/rejectTiket/<?= $tb['id'] ?>" class="badge badge-danger">Tolak</a>
+                                            <?php elseif ($tb['stat'] == 1) : ?>
+                                                <a href="<?= site_url() ?>/user/tabel" class="badge badge-success">Lihat tabel</a>
                                             <?php else : ?>
-                                                <a href="<?= site_url() ?>/tabel" class="badge badge-success">Lihat tabel</a>
+                                                <span> </span>
                                             <?php endif; ?>
                                         </td>
                                         <td>

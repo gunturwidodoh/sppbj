@@ -36,33 +36,40 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($tabel as $tb) : ?>
-                                    <tr>
-                                        <td class="text-center"><?= $tb['code']; ?></td>
-                                        <td style="max-width: 300px; white-space: normal;">
-                                            <?= $tb['nama']; ?><br>
-                                            <small><a href="<?= site_url() ?>/user/detail/<?= $tb['id']; ?>">Lihat Detail ></a></small>
-                                        </td>
-                                        <td class="text-center"><?= $tb['pic']; ?></td>
-                                        <td class="text-center"><?= $tb['status']; ?>%</td>
-                                        <td class="text-center"><?= $tb['modified_date']; ?></td>
-                                        <!-- Action -->
-                                        <td class="text-center">
-                                            <a href="<?= site_url() ?>/user/edit_data/<?= $tb['id']; ?>" class="badge badge-info">
-                                                <i class="fas fa-pen"></i>
-                                                <b class="ml-1">Edit Data</b>
-                                            </a>
-                                        </td>
-                                        <td class="text-center">
-                                            <?php if ($tb['path'] != NULL) : ?>
-                                                <a href="<?= site_url() ?>/user/download_data/<?= $tb['id']; ?>" class="badge badge-info">
-                                                    <i class="fas fa-file-download"></i>
-                                                    <b class="ml-1">Download File</b>
+                                    <?php if ($tb['status'] != 100) : ?>
+                                        <tr>
+                                            <td class="text-center"><?= $tb['code']; ?></td>
+                                            <td style="max-width: 300px; white-space: normal;">
+                                                <?= $tb['nama']; ?><br>
+                                                <small><a href="<?= site_url() ?>/user/detail/<?= $tb['id']; ?>">Lihat Detail ></a></small>
+                                            </td>
+                                            <td class="text-center"><?= $tb['pic']; ?></td>
+                                            <td class="text-center"><?= $tb['status']; ?>%</td>
+                                            <td class="text-center"><?= $tb['modified_date']; ?></td>
+                                            <!-- Action -->
+                                            <td class="text-center">
+                                                <a href="<?= site_url() ?>/user/edit_data/<?= $tb['id']; ?>" class="badge badge-info">
+                                                    <i class="fas fa-pen"></i>
+                                                    <b class="ml-1">Edit Data</b>
                                                 </a>
-                                            <?php else : ?>
-                                                <span class="badge badge-danger">Belum upload file</span>
-                                            <?php endif; ?>
-                                        </td>
-                                    </tr>
+                                                <br />
+                                                <a href="<?= site_url() ?>/user/move_data/<?= $tb['id']; ?>" class="badge badge-success">
+                                                    <i class="fas fa-pen"></i>
+                                                    <b class="ml-1">Selesai</b>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <?php if ($tb['path'] != NULL) : ?>
+                                                    <a href="<?= site_url() ?>/user/download_data/<?= $tb['id']; ?>" class="badge badge-info">
+                                                        <i class="fas fa-file-download"></i>
+                                                        <b class="ml-1">Download File</b>
+                                                    </a>
+                                                <?php else : ?>
+                                                    <span class="badge badge-danger">Belum upload file</span>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>

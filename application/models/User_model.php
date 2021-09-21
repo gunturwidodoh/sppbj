@@ -161,12 +161,12 @@ class User_model extends CI_model
         //update modified_date
         $this->db->where('id', $id);
         $this->db->set('modified_date', 'NOW()', FALSE);
+        $this->db->set('status', '100');
         $this->db->update('project');
 
         //move row db project ke db history
         $data = $this->db->get_where('project', ['id' => $id])->row_array();
         $this->db->insert('history', $data);
-        $this->db->delete('project', ['id' => $id]);
     }
 
     public function addData()
