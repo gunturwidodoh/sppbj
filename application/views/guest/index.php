@@ -85,20 +85,14 @@ $username = $this->session->userdata('username');
                 </form>
             </div>
 
-            <!-- TABLE: LATEST ORDERS -->
+            <?php if ($this->session->flashdata('message')) : ?>
+                <div style="color:green;"><?= $this->session->flashdata('message'); ?></div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
             <div class="card">
-                <div class="card-header border-transparent">
-                    <h3 class="card-title">Status Tiket</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body p-0">
+                <div class="card-body">
                     <div class="table-responsive">
-                        <table id="table1" class="table table-bordered m-0">
+                        <table id="tableRequest" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th rowspan="2">Tiket yang belum diproses</th>
@@ -114,7 +108,7 @@ $username = $this->session->userdata('username');
                                                 <?php if ($gs['stat'] == 0) : ?>
                                                     <span class="badge badge-secondary">Menunggu penginputan</span>
                                                 <?php elseif ($gs['stat'] == 2) : ?>
-                                                    <span class="badge badge-danger">Direject</span>
+                                                    <span class="badge badge-danger">Ditolak</span>
                                                 <?php else : ?>
                                                     <span> </span>
                                                 <?php endif; ?>
@@ -125,8 +119,13 @@ $username = $this->session->userdata('username');
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
                     <div class="table-responsive">
-                        <table id="table1" class="table table-bordered m-0">
+                        <table id="tableRequest" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th rowspan="2">Tiket yang sedang diproses</th>
@@ -153,10 +152,7 @@ $username = $this->session->userdata('username');
                             </tbody>
                         </table>
                     </div>
-                    <!-- /.table-responsive -->
                 </div>
-                <!-- /.card-body -->
-                <!-- /.card-footer -->
             </div>
             <!-- /.card -->
         </div>

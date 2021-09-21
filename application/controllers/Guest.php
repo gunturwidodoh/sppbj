@@ -18,7 +18,7 @@ class Guest extends CI_Controller
         $data['jumlahAplikasi'] = $this->Guest_model->jumlah_aplikasi_eksisting();
         $data['username'] = $this->session->userdata('username');
         $data['tabel'] = $this->Guest_model->getGuest($data['username']);
-        $data['guest'] = $this->Guest_model->getAllGuest();
+        $data['guest'] = $this->Guest_model->getDataGuest($data['username']);
         $data['role'] = $this->session->userdata('role');
 
         $this->form_validation->set_rules($this->Guest_model->rules());
@@ -43,7 +43,7 @@ class Guest extends CI_Controller
         }
     }
 
-    public function view_project_awal()
+    public function view_project()
     {
         // view
         $data['judul'] = 'Tabel Project Awal';
@@ -53,49 +53,7 @@ class Guest extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('guest/viewproject/view_project_awal', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('templates/header', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-    }
-
-    public function view_project_drp()
-    {
-        // view
-        $data['judul'] = 'Tabel Project DRP';
-
-
-        $data['tabel'] = $this->Guest_model->getAllData();
-        $data['role'] = $this->session->userdata('role');
-        if ($data["role"] != NULL) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('guest/viewproject/view_project_drp', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('templates/header', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-    }
-
-    public function view_project_kontrak()
-    {
-        // view
-        $data['judul'] = 'Tabel Project Kontrak';
-
-
-        $data['tabel'] = $this->Guest_model->getAllData();
-        $data['role'] = $this->session->userdata('role');
-        if ($data["role"] != NULL) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('guest/viewproject/view_project_kontrak', $data);
+            $this->load->view('guest/view_project', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/header', $data);
@@ -122,7 +80,7 @@ class Guest extends CI_Controller
         }
     }
 
-    public function view_history_awal()
+    public function view_history()
     {
         $data['judul'] = 'Tabel History Aplikasi';
         $data['role'] = $this->session->userdata('role');
@@ -131,61 +89,7 @@ class Guest extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('guest/viewhistory/view_history_awal', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('templates/headererror', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-    }
-
-    public function view_history_drp()
-    {
-        $data['judul'] = 'Tabel History Aplikasi';
-        $data['role'] = $this->session->userdata('role');
-        $data['tabel'] = $this->Guest_model->getAllDataHistory();
-        if ($data["role"] != NULL) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('guest/viewhistory/view_history_drp', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('templates/headererror', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-    }
-
-    public function view_history_kontrak()
-    {
-        $data['judul'] = 'Tabel History Aplikasi';
-        $data['role'] = $this->session->userdata('role');
-        $data['tabel'] = $this->Guest_model->getAllDataHistory();
-        if ($data["role"] != NULL) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('guest/viewhistory/view_history_kontrak', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->load->view('templates/headererror', $data);
-            $this->load->view('errors/html/error_session');
-            $this->load->view('templates/footer');
-        }
-    }
-
-    public function ticket()
-    {
-        $data['judul'] = 'Request Tiket';
-        $data['role'] = $this->session->userdata('role');
-        $data['tabel'] = $this->Guest_model->getAllData();
-        if ($data["role"] != NULL) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('guest/ticket/index', $data);
+            $this->load->view('guest/view_history', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/headererror', $data);

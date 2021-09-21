@@ -571,24 +571,30 @@
                     </div>
                 </div>
             </form>
-            <form method="post" enctype="multipart/form-data" action="<?php echo site_url(); ?>/tabel/do_upload/<?= $row['id'] ?>">
-                <div class="card mb-4">
-                    <h6 class="card-header bg-warning"><b>Upload</b></h6>
-                    <div class="card-body">
-                        <div class="row">
-                            <!-- Form Column 1 -->
-                            <div class="col-6">
-                                <!-- Form Group Keterangan -->
-                                <div class="form-group">
-                                    <label for="userfile">Upload file</label>
-                                    <input type="file" class="form-control" id="userfile" name="userfile">
+            <div class="row mt-3 ml-auto">
+                <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#demo">Upload File</button>
+            </div>
+
+            <div class="collapse" id="demo">
+                <form method="post" enctype="multipart/form-data" action="<?php echo site_url(); ?>/user/do_upload/<?= $row['id'] ?>">
+                    <div class="card mb-4">
+                        <h6 class="card-header bg-warning"><b>Upload</b></h6>
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- Form Column 1 -->
+                                <div class="col-6">
+                                    <!-- Form Group Keterangan -->
+                                    <div class="form-group">
+                                        <label for="userfile">Upload file</label>
+                                        <input type="file" class="form-control" id="userfile" name="userfile">
+                                    </div>
                                 </div>
+                                <button class="btn btn-sm btn-primary" type="submit" value="upload">Upload</button>
                             </div>
-                            <input type="submit" value="upload" />
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
 </div>
 </section>

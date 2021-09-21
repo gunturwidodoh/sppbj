@@ -6,28 +6,28 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Tabel_model');
+        $this->load->model('User_model');
     }
 
     public function index()
     {
         $data['judul'] = 'Halaman Utama';
-        $data['jumlah'] = $this->Tabel_model->jumlah_project();
-        $data['jumlahHistory'] = $this->Tabel_model->jumlah_history_project();
-        $data['tabel'] = $this->Tabel_model->getDataGuest();
+        $data['jumlah'] = $this->User_model->jumlah_project();
+        $data['jumlahHistory'] = $this->User_model->jumlah_history_project();
+        $data['tabel'] = $this->User_model->getDataGuest();
 
         $data['role'] = $this->session->userdata('role');
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('user/home/index', $data);
+            $this->load->view('user/index', $data);
             $this->load->view('templates/footer');
         } else if ($data["role"] == '2') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('user/home/index', $data);
+            $this->load->view('user/index', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/headererror', $data);

@@ -135,7 +135,11 @@ class Guest_model extends CI_model
 
     public function getDataGuest($username)
     {
-        return $this->db->get_where('guest', ['guest_username' => $username])->row_array();
+        //return $this->db->get_where('guest', ['guest_username' => $username])->row_array();
+        $this->db->select('*');
+        $this->db->from('guest');
+        $this->db->where('guest_username', $username);
+        return $this->db->get()->result_array();
     }
 
     public function getGuest($username)
@@ -146,7 +150,6 @@ class Guest_model extends CI_model
                         ON `code` = `project_id`
                         WHERE `guest_username` = '$username'                   
                         ";
-        $this->db->order_by('created_date', 'desc');
         return $this->db->query($queryMenu)->result_array();
     }
 

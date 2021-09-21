@@ -8,13 +8,16 @@
                     <h1><b><?= $judul; ?></b></h1>
                 </div>
                 <div class="col-auto">
-                    <a href="<?php echo site_url(); ?>/tabel/add_data" type="submit" class="btn btn-primary">
+                    <a href="<?php echo site_url(); ?>/user/add_data" type="submit" class="btn btn-primary">
                         <i class="fas fa-plus"></i>
                         <b class="ml-2">Tambah Data Baru</b>
                     </a>
                 </div>
             </div>
-
+            <?php if ($this->session->flashdata('message')) : ?>
+                <div style="color:green;"><?= $this->session->flashdata('message'); ?></div>
+                <?php unset($_SESSION['message']); ?>
+            <?php endif; ?>
             <!-- Card Tabel -->
             <div class="card">
                 <div class="card-body">
@@ -37,21 +40,21 @@
                                         <td class="text-center"><?= $tb['code']; ?></td>
                                         <td style="max-width: 300px; white-space: normal;">
                                             <?= $tb['nama']; ?><br>
-                                            <small><a href="<?= site_url() ?>/tabel/detail/<?= $tb['id']; ?>">Lihat Detail ></a></small>
+                                            <small><a href="<?= site_url() ?>/user/detail/<?= $tb['id']; ?>">Lihat Detail ></a></small>
                                         </td>
                                         <td class="text-center"><?= $tb['pic']; ?></td>
                                         <td class="text-center"><?= $tb['status']; ?>%</td>
                                         <td class="text-center"><?= $tb['modified_date']; ?></td>
                                         <!-- Action -->
                                         <td class="text-center">
-                                            <a href="<?= site_url() ?>/tabel/edit_data/<?= $tb['id']; ?>" class="badge badge-info">
+                                            <a href="<?= site_url() ?>/user/edit_data/<?= $tb['id']; ?>" class="badge badge-info">
                                                 <i class="fas fa-pen"></i>
                                                 <b class="ml-1">Edit Data</b>
                                             </a>
                                         </td>
                                         <td class="text-center">
                                             <?php if ($tb['path'] != NULL) : ?>
-                                                <a href="<?= site_url() ?>/tabel/download_data/<?= $tb['id']; ?>" class="badge badge-info">
+                                                <a href="<?= site_url() ?>/user/download_data/<?= $tb['id']; ?>" class="badge badge-info">
                                                     <i class="fas fa-file-download"></i>
                                                     <b class="ml-1">Download File</b>
                                                 </a>

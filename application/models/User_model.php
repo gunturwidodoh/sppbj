@@ -1,6 +1,6 @@
 <?php
 
-class Tabel_model extends CI_model
+class User_model extends CI_model
 {
     public function jumlah_project()
     {
