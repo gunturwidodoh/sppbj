@@ -1,18 +1,22 @@
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1><?php echo $judul; ?></h1>
+    <section class="content-header py-3">
+        <div class="container">
+
+            <!-- Judul -->
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <h1><b><?= $judul; ?></b></h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="card">
-                    <div class="card-body" style="overflow-x:auto">
-                        <table id="table4" class="table table-bordered table-striped dataTable" role="grid" style="width: 100%" width="100%" cellspacing="0">
+
+            <!-- Card Tabel -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <!-- Tabel -->
+                        <table id="tableIndex" class="table table-striped table-bordered table-hover">
                             <thead>
-                                <tr class="text-center" role="row" style="white-space: nowrap">
+                                <tr>
                                     <th>No.</th>
                                     <th>Nama Aplikasi</th>
                                     <th>Business Owner</th>
@@ -21,26 +25,27 @@
                                     <th>IP Public</th>
                                 </tr>
                             </thead>
-                            <tbody style="text-align: center;">
+                            <tbody>
+                                <!-- Count nomor aplikasi -->
                                 <?php $i = 1; ?>
                                 <?php foreach ($tabel as $tb) : ?>
                                     <tr>
-                                        <td><?= $i++; ?></td>
-                                        <td class="text-left"><?= $tb['nama_aplikasi']; ?></td>
-                                        <td><?= $tb['business_owner']; ?></td>
-                                        <td><?= $tb['domain_aplikasi']; ?></td>
-                                        <td><?= $tb['ip_local']; ?></td>
-                                        <td><?= $tb['ip_public']; ?></td>
+                                        <td><?= $i; ?></td>
+                                        <td style="max-width: 300px; white-space: normal;"><?= $tb['nama_aplikasi']; ?></td>
+                                        <td class="text-center"><?= $tb['business_owner']; ?></td>
+                                        <td class="text-center"><?= $tb['domain_aplikasi']; ?></td>
+                                        <td class="text-center"><?= $tb['ip_local']; ?></td>
+                                        <td class="text-center"><?= $tb['ip_public']; ?></td>
                                     </tr>
-                                <?php endforeach ?>
+                                    <?php $i++; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <?= $this->pagination->create_links(); ?>
+                    
                     </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
             </div>
-        </div><!-- /.container-fluid -->
+
+        </div>
     </section>
 </div>
