@@ -63,6 +63,9 @@ class User extends CI_Controller
         // view
         $data['judul'] = 'Data Pengadaan';
         $data['tabel'] = $this->User_model->getAllData();
+        $data['addClass'] = '';
+        $data['editClass'] = '';
+        $data['detailPath'] = '/user/detail/';
 
         //cek role yang sedang login
         $data['role'] = $this->session->userdata('role');
@@ -217,11 +220,20 @@ class User extends CI_Controller
         }
     }
 
+    public function rejectTiket($id)
+    {
+
+        $this->User_model->reject($id);
+        $this->session->set_flashdata('message', 'Data Request Ticket Telah Direject');
+        redirect('home');
+    }
+
     public function detail($id)
     {
         $data['judul'] = 'Detail Data';
         $data['tabel'] = $this->User_model->getDataById($id);
         $data['role'] = $this->session->userdata('role');
+        $data['editClass'] = '';
 
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
@@ -242,19 +254,15 @@ class User extends CI_Controller
         }
     }
 
-    public function rejectTiket($id)
-    {
-
-        $this->User_model->reject($id);
-        $this->session->set_flashdata('message', 'Data Request Ticket Telah Direject');
-        redirect('home');
-    }
-
     public function history()
     {
-        $data['judul'] = 'Tabel History Aplikasi';
+        // view
+        $data['judul'] = 'History Pengadaan';
         $data['tabel'] = $this->User_model->getAllDataHistory();
         $data['role'] = $this->session->userdata('role');
+        $data['deleteClass'] = '';
+
+        // cek role
         if ($data["role"] == '1') {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
@@ -266,6 +274,34 @@ class User extends CI_Controller
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
             $this->load->view('global/history', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/headererror', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function history_detail($id)
+    {
+        // view
+        $data['judul'] = 'Detail History Pengadaan';
+        $data['tabel'] = $this->User_model->getDataHistoryById($id);
+        $data['role'] = $this->session->userdata('role');
+        $data['editClass'] = '';
+
+        // cek role
+        if ($data["role"] == '1') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('global/detail', $data);
+            $this->load->view('templates/footer');
+        } else if ($data["role"] == '2') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('global/detail', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/headererror', $data);

@@ -7,7 +7,7 @@
                 <div class="col-auto">
                     <h1><b><?= $judul; ?></b></h1>
                 </div>
-                <div class="col-auto">
+                <div class="col-auto<?= $addClass; ?>">
                     <a href="<?php echo site_url(); ?>/user/add_data" type="submit" class="btn btn-primary">
                         <i class="fas fa-plus"></i>
                         <b class="ml-2">Tambah Data Baru</b>
@@ -30,7 +30,7 @@
                                     <th>PIC</th>
                                     <th>Progress</th>
                                     <th>Terakhir Diupdate</th>
-                                    <th>Action</th>
+                                    <th class="<?= $editClass; ?>">Action</th>
                                     <th>Download</th>
                                 </tr>
                             </thead>
@@ -41,13 +41,13 @@
                                             <td class="text-center"><?= $tb['code']; ?></td>
                                             <td style="max-width: 300px; white-space: normal;">
                                                 <?= $tb['nama']; ?><br>
-                                                <small><a href="<?= site_url() ?>/user/detail/<?= $tb['id']; ?>">Lihat Detail ></a></small>
+                                                <small><a href="<?= site_url() . $detailPath . $tb['id']; ?>">Lihat Detail ></a></small>
                                             </td>
                                             <td class="text-center"><?= $tb['pic']; ?></td>
                                             <td class="text-center"><?= $tb['status']; ?>%</td>
                                             <td class="text-center"><?= $tb['modified_date']; ?></td>
                                             <!-- Action -->
-                                            <td class="text-center">
+                                            <td class="text-center <?= $editClass; ?>">
                                                 <a href="<?= site_url() ?>/user/edit_data/<?= $tb['id']; ?>" class="badge badge-info">
                                                     <i class="fas fa-pen"></i>
                                                     <b class="ml-1">Edit Data</b>
@@ -58,6 +58,7 @@
                                                     <b class="ml-1">Selesai</b>
                                                 </a>
                                             </td>
+                                            <!-- Upload/Download File -->
                                             <td class="text-center">
                                                 <?php if ($tb['path'] != NULL) : ?>
                                                     <a href="<?= site_url() ?>/user/download_data/<?= $tb['id']; ?>" class="badge badge-info">

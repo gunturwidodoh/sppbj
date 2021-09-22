@@ -42,9 +42,19 @@ class Guest_model extends CI_model
         return $this->db->get('history')->result_array();
     }
 
+    public function getDataHistoryById($id)
+    {
+        return $this->db->get_where('history', ['id' => $id])->row_array();
+    }
+
     public function getAllData()
     {
         return $this->db->get('project')->result_array();
+    }
+
+    public function getDataById($id)
+    {
+        return $this->db->get_where('project', ['id' => $id])->row_array();
     }
 
     public function getData($limit)

@@ -7,14 +7,14 @@
                 <div class="col-auto">
                     <h1><b><?= $judul ?></b></h1>
                 </div>
-                <div class="col-auto">
-                    <a href="<?php echo site_url(); ?>/tabel/edit_data/<?= $tabel['id']; ?>" type="submit" class="btn btn-info">
+                <div class="col-auto<?= $editClass; ?>">
+                    <a href="<?php echo site_url(); ?>/user/edit_data/<?= $tabel['id']; ?>" type="submit" class="btn btn-info">
                         <i class="fas fa-edit"></i>
                         <b class="ml-2">Edit Data</b>
                     </a>
                 </div>
                 <div class="col-auto">
-                    <a href="<?php echo site_url(); ?>/tabel/index" type="submit" class="btn btn-secondary">
+                    <a href="#" onclick="history.go(-1)" type="submit" class="btn btn-secondary">
                         <i class="fas fa-home"></i>
                         <b class="ml-2">Kembali ke Tabel Data</b>
                     </a>

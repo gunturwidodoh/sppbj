@@ -46,14 +46,19 @@ class Guest extends CI_Controller
     public function view_project()
     {
         // view
-        $data['judul'] = 'Tabel Project Awal';
+        $data['judul'] = 'Data Pengadaan';
         $data['tabel'] = $this->Guest_model->getAllData();
         $data['role'] = $this->session->userdata('role');
+        $data['addClass'] = ' d-none';
+        $data['editClass'] = ' d-none';
+        $data['detailPath'] = '/guest/view_detail/';
+
+        // cek role
         if ($data["role"] != NULL) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('guest/view_project', $data);
+            $this->load->view('global/table', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/header', $data);
@@ -80,16 +85,60 @@ class Guest extends CI_Controller
         }
     }
 
-    public function view_history()
+    public function view_detail($id)
     {
-        $data['judul'] = 'Tabel History Aplikasi';
+        $data['judul'] = 'Detail Data';
+        $data['tabel'] = $this->Guest_model->getDataById($id);
         $data['role'] = $this->session->userdata('role');
-        $data['tabel'] = $this->Guest_model->getAllDataHistory();
+        $data['editClass'] = ' d-none';
+
         if ($data["role"] != NULL) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
-            $this->load->view('guest/view_history', $data);
+            $this->load->view('global/detail', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/headererror', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function view_history()
+    {
+        $data['judul'] = 'History Pengadaan';
+        $data['role'] = $this->session->userdata('role');
+        $data['tabel'] = $this->Guest_model->getAllDataHistory();
+        $data['deleteClass'] = ' d-none';
+
+        if ($data["role"] != NULL) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('global/history', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/headererror', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function view_history_detail($id)
+    {
+        // view
+        $data['judul'] = 'Detail History Pengadaan';
+        $data['tabel'] = $this->Guest_model->getDataHistoryById($id);
+        $data['role'] = $this->session->userdata('role');
+        $data['editClass'] = ' d-none';
+
+        // cek role
+        if ($data["role"] != NULL) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('global/detail', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/headererror', $data);
