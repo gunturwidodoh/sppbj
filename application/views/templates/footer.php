@@ -55,7 +55,7 @@
         });
         $('#tableRequest').DataTable({
             "order": [
-                [2, "desc"]
+                [3, "desc"]
             ],
             "language": {
                 "searchPlaceholder": "ketik di sini untuk mencari",
@@ -73,12 +73,35 @@
                 },
             }
         });
-        $('#tableAplikasi').DataTable({
+        $('#tableBelum').DataTable({
+            "order": [
+                [1, "desc"]
+            ],
             "language": {
                 "searchPlaceholder": "ketik di sini untuk mencari",
                 "search": "Cari:",
                 "lengthMenu": "Tampilkan _MENU_ data per halaman.",
-                "zeroRecords": "Tidak ada data.",
+                "zeroRecords": "Tidak ada tiket yang belum diproses.",
+                "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+                "infoEmpty": "Tidak ada data.",
+                "infoFiltered": "(hasil pencarian dari _MAX_ data)",
+                "paginate": {
+                    "first": "Pertama",
+                    "last": "Terakhir",
+                    "next": "Selanjutnya",
+                    "previous": "Sebelumnya"
+                },
+            }
+        });
+        $('#tableSedang').DataTable({
+            "order": [
+                [3, "desc"]
+            ],
+            "language": {
+                "searchPlaceholder": "ketik di sini untuk mencari",
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ data per halaman.",
+                "zeroRecords": "Tidak ada tiket yang sedang diproses.",
                 "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
                 "infoEmpty": "Tidak ada data",
                 "infoFiltered": "(hasil pencarian dari _MAX_ data)",
@@ -89,7 +112,44 @@
                     "previous": "Sebelumnya"
                 },
             }
-        })
+        });
+        $('#tableBarang').DataTable({
+            "language": {
+                "searchPlaceholder": "ketik di sini untuk mencari",
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ data per halaman.",
+                "zeroRecords": "Tidak ada data barang.",
+                "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+                "infoEmpty": "Tidak ada data",
+                "infoFiltered": "(hasil pencarian dari _MAX_ data)",
+                "paginate": {
+                    "first": "Pertama",
+                    "last": "Terakhir",
+                    "next": "Selanjutnya",
+                    "previous": "Sebelumnya"
+                },
+            }
+        });
+        $('#tableHistoryTiket').DataTable({
+            "order": [
+                [4, "desc"]
+            ],
+            "language": {
+                "searchPlaceholder": "ketik di sini untuk mencari",
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ data per halaman.",
+                "zeroRecords": "Tidak ada data barang.",
+                "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+                "infoEmpty": "Tidak ada data",
+                "infoFiltered": "(hasil pencarian dari _MAX_ data)",
+                "paginate": {
+                    "first": "Pertama",
+                    "last": "Terakhir",
+                    "next": "Selanjutnya",
+                    "previous": "Sebelumnya"
+                },
+            }
+        });
     });
 </script>
 </body>

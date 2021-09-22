@@ -51,6 +51,7 @@ $username = $this->session->userdata('username');
                                 <tr>
                                     <th>Nama Project</th>
                                     <th>Nama Person in Charge</th>
+                                    <th>Detail</th>
                                     <th>Tanggal request</th>
                                     <th>Action</th>
                                     <th>Status</th>
@@ -61,15 +62,16 @@ $username = $this->session->userdata('username');
                                     <tr>
                                         <td><?= $tb['project_name']; ?></td>
                                         <td><?= $tb['nama_pic']; ?></td>
+                                        <td><?= $tb['detail']; ?></td>
                                         <td><?= $tb['created_date']; ?></td>
                                         <td>
                                             <?php if ($tb['stat'] == 0) : ?>
                                                 <a href="<?= site_url() ?>/user/edit_data_ticket/<?= $tb['id'] ?>" class="badge badge-primary">Tambah</a>
-                                                <a href="<?= site_url() ?>/user/rejectTiket/<?= $tb['id'] ?>" class="badge badge-danger">Tolak</a>
+                                                <a href="<?= site_url() ?>/user/reject_tiket/<?= $tb['id'] ?>" class="badge badge-danger">Tolak</a>
                                             <?php elseif ($tb['stat'] == 1) : ?>
                                                 <a href="<?= site_url() ?>/user/tabel" class="badge badge-success">Lihat tabel</a>
                                             <?php else : ?>
-                                                <span> </span>
+                                                <span></span>
                                             <?php endif; ?>
                                         </td>
                                         <td>
@@ -77,8 +79,10 @@ $username = $this->session->userdata('username');
                                                 <span class="badge badge-warning">Belum ditambahkan</span>
                                             <?php elseif ($tb['stat'] == 2) : ?>
                                                 <span class="badge badge-danger">Tiket ditolak</span>
-                                            <?php else : ?>
+                                            <?php elseif ($tb['stat'] == 1) : ?>
                                                 <span class="badge badge-success">Tiket telah ditambahkan</span>
+                                            <?php else : ?>
+                                                <span class="badge badge-success">Selesai</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>

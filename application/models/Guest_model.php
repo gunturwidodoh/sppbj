@@ -57,6 +57,11 @@ class Guest_model extends CI_model
         return $this->db->get_where('project', ['id' => $id])->row_array();
     }
 
+    public function getAllDataHistoryTiket()
+    {
+        return $this->db->get('history_guest')->result_array();
+    }
+
     public function getData($limit)
     {
         //return $this->db->get('project', $limit, $start)->result_array();
@@ -137,6 +142,7 @@ class Guest_model extends CI_model
             'guest_username' => $this->input->post('inputUsername', true),
             'nama_pic' => $this->input->post('inputNamaPic', true),
             'project_name' => $this->input->post('inputNamaProject', true),
+            'detail' => $this->input->post('inputDetail', true)
         ];
 
         $this->db->set('created_date', 'NOW()', FALSE);
@@ -163,9 +169,33 @@ class Guest_model extends CI_model
         return $this->db->query($queryMenu)->result_array();
     }
 
+    public function getGuestHistory($username)
+    {
+        $queryMenu =   "SELECT *
+                        FROM `project` 
+                        JOIN `history_guest`
+                        ON `code` = `project_id`
+                        WHERE `guest_username` = '$username'                   
+                        ";
+        return $this->db->query($queryMenu)->result_array();
+    }
+
     public function getAllGuest()
     {
         return $this->db->get('guest')->result_array();
+    }
+
+    public function moveDataById($id)
+    {
+        //update modified_date
+        $this->db->where('id', $id);
+        $this->db->set('modified_date', 'NOW()', FALSE);
+        $this->db->update('guest');
+
+        //move row db project ke db history
+        $data = $this->db->get_where('guest', ['id' => $id])->row_array();
+        $this->db->insert('history_guest', $data);
+        $this->db->delete('guest', ['id' => $id]);
     }
 
     // public function getProgress($username)

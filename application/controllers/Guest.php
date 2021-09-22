@@ -30,7 +30,7 @@ class Guest extends CI_Controller
                 $this->load->view('guest/index', $data);
                 $this->load->view('templates/footer');
             } else {
-                $this->load->view('templates/header', $data);
+                $this->load->view('templates/headererror', $data);
                 $this->load->view('errors/html/error_session');
                 $this->load->view('templates/footer');
             }
@@ -139,6 +139,36 @@ class Guest extends CI_Controller
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
             $this->load->view('global/detail', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/headererror', $data);
+            $this->load->view('errors/html/error_session');
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function move_data($id)
+    {
+        $this->Guest_model->moveDataById($id);
+        $this->session->set_flashdata('message', 'Project Telah Dipindahkan!');
+        redirect('guest');
+    }
+
+    public function history_tiket()
+    {
+        // view
+        $data['judul'] = 'Detail History Pengadaan';
+        $data['tabel'] = $this->Guest_model->getAllDataHistoryTiket();
+        $data['username'] = $this->session->userdata('username');
+        $data['tabel'] = $this->Guest_model->getGuestHistory($data['username']);
+        $data['role'] = $this->session->userdata('role');
+
+        // cek role
+        if ($data["role"] != NULL) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('guest/history_tiket', $data);
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/headererror', $data);

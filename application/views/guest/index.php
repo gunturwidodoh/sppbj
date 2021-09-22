@@ -65,15 +65,19 @@ $username = $this->session->userdata('username');
                 <form action="" method="post">
                     <div class="row">
                         <input hidden type="text" value="<?= $username; ?>" class="form-control" id="inputUsername" name="inputUsername"></input>
-                        <input hidden type="text" value="<?= random_string('alnum', 16); ?>" class="form-control" id="inputId" name="inputId"></input>
-                        <div class="col-sm-5">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="inputNamaProject">Nama Project</label>
                                 <textarea type="text" value="" class="form-control" id="inputNamaProject" name="inputNamaProject"></textarea>
                             </div>
-
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="inputDetail">Detail</label>
+                                <textarea type="text" value="" class="form-control" id="inputDetail" name="inputDetail"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="inputNamaPic">Nama PIC</label>
                                 <input Disabled type="text" value="<?= $nama; ?>" class="form-control"></input>
@@ -92,12 +96,13 @@ $username = $this->session->userdata('username');
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tableRequest" class="table table-striped table-bordered table-hover">
+                        <table id="tableBelum" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th rowspan="2">Tiket yang belum diproses</th>
-                                    <th rowspan="2">Waktu pengajuan tiket</th>
-                                    <th rowspan="2">Status</th>
+                                    <th>Tiket yang belum diproses</th>
+                                    <th>Waktu pengajuan tiket</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -115,6 +120,15 @@ $username = $this->session->userdata('username');
                                                     <span> </span>
                                                 <?php endif; ?>
                                             </td>
+                                            <td>
+                                                <?php if ($gs['stat'] == 0) : ?>
+                                                    <span> </span>
+                                                <?php elseif ($gs['stat'] == 2) : ?>
+                                                    <a href="<?= site_url() ?>/guest/move_data/<?= $gs['id'] ?>" class="badge badge-danger">Hapus</a>
+                                                <?php else : ?>
+                                                    <span> </span>
+                                                <?php endif; ?>
+                                            </td>
                                         </tr>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
@@ -127,28 +141,39 @@ $username = $this->session->userdata('username');
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tableRequest" class="table table-striped table-bordered table-hover">
+                        <table id="tableSedang" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th rowspan="2">Tiket yang sedang diproses</th>
-                                    <th rowspan="2">Keterangan</th>
-                                    <th rowspan="2">Status</th>
-                                    <th rowspan="2">Progress</th>
+                                    <th>ID</th>
+                                    <th>Tiket yang sedang diproses</th>
+                                    <th>Keterangan</th>
+                                    <th>Status</th>
+                                    <th>Progress</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($tabel as $tb) : ?>
                                     <tr>
+                                        <td><?= $tb['code']; ?></td>
                                         <td><?= $tb['nama']; ?></td>
                                         <td><?= $tb['keterangan']; ?></td>
                                         <td>
                                             <?php if ($tb['status'] == 100) : ?>
                                                 <span class="badge badge-success">Selesai</span>
+                                                <a href="<?= site_url() ?>/guest/move_data/<?= $tb['id'] ?>" class="badge badge-danger">Hapus</a>
                                             <?php else :  ?>
                                                 <span class="badge badge-warning">Sedang diproses</span>
                                             <?php endif; ?>
                                         </td>
                                         <td><?= $tb['status']; ?>%</td>
+                                        <td>
+                                            <?php if ($tb['status'] == 100) : ?>
+                                                <a href="<?= site_url() ?>/guest/move_data/<?= $tb['id'] ?>" class="badge badge-danger">Hapus</a>
+                                            <?php else :  ?>
+                                                <a href="<?= site_url() ?>/guest/view_project" class="badge badge-primary">Lihat tabel</a>
+                                            <?php endif; ?>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

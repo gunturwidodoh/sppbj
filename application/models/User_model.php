@@ -4,7 +4,11 @@ class User_model extends CI_model
 {
     public function jumlah_project()
     {
-        $query = $this->db->query('SELECT * FROM project');
+        $q = "SELECT *
+              FROM `project`
+              WHERE `status` < '100'                  
+              ";
+        $query = $this->db->query($q);
         return $query->num_rows();
     }
 
@@ -171,7 +175,13 @@ class User_model extends CI_model
 
         //move row db project ke db history
         $data = $this->db->get_where('project', ['id' => $id])->row_array();
+        $code = $data['code'];
         $this->db->insert('history', $data);
+
+        $this->db->get('guest');
+        $this->db->where('project_id', $code);
+        $this->db->set('stat', '4');
+        $this->db->update('guest');
     }
 
     public function addData()

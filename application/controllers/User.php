@@ -215,17 +215,17 @@ class User extends CI_Controller
             if ($this->input->post()) {
                 $this->User_model->addDataTicket($id);
                 $this->session->set_flashdata('message', 'Data Request Ticket Telah Ditambahkan');
-                redirect('home');
+                redirect('user');
             }
         }
     }
 
-    public function rejectTiket($id)
+    public function reject_tiket($id)
     {
 
         $this->User_model->reject($id);
         $this->session->set_flashdata('message', 'Data Request Ticket Telah Direject');
-        redirect('home');
+        redirect('user');
     }
 
     public function detail($id)
