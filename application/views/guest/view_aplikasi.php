@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <!-- Tabel -->
-                        <table id="tableIndex" class="table table-striped table-bordered table-hover">
+                        <table id="tableAplikasi" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>No.</th>
